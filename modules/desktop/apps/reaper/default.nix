@@ -1,0 +1,189 @@
+{ inputs, pkgs, lib, config, user, ... }:
+let
+  inherit (lib) mkIf mkEnableOption mkOption types concatStringsSep hasAttr;
+
+  cfg = config.modules.desktop.apps.reaper;
+
+  # FIXME: borks reaper's files if path is not correct ;p
+  files = "$HOME/nixfiles/modules/desktop/apps/reaper";
+
+  reaper-fixed = let
+    systemToRepo = /* bash */ ''
+      # Copy reaper settings to the repo
+      CONFIGS="${files}/configs"
+      cp -vf $HOME/.config/REAPER/*.ini "$CONFIGS"
+      [[ -e "$HOME/.config/REAPER/nixtimestamp" ]] && cp -vf "$HOME/.config/REAPER/nixtimestamp" "$CONFIGS"
+
+      # Omit cache files
+      ${concatStringsSep "\n" (map (x: "rm -vf $CONFIGS/reaper-${x}.ini") [ "recentfx" "fxtags" "vstplugins64" "jsfx" ])}
+
+      # TODO: Obfuscate some parts of the reaper.ini (recent paths, ...)
+    '';
+
+    repoToSystem = /* bash */ ''
+      # Copy reaper settings from the repo
+      cp -vf "${files}"/configs/*.ini "$HOME/.config/REAPER/"
+      [[ -e "${files}/configs/nixtimestamp" ]] && cp -vf "${files}/configs/nixtimestamp" "$HOME/.config/REAPER/"
+    '';
+  in pkgs.wrapWine rec {
+    name = "reaper";
+    executable = "${pkgs.reaper}/bin/reaper";
+
+    tricks = [ "d3d9" "mfc42" "vcrun2019" ];
+
+    isWinBin = false;
+
+    setupScript = concatStringsSep "\n" (map (x: /* bash */ ''
+      DSTPATH="$HOME/.wine-nix/reaper/drive_c/${x.path}"
+      mkdir --mode=755 -pv "`dirname "$DSTPATH"`"
+      ${if hasAttr "dontLink" x then "cp -r" else "ln -s"} -vf "${x.src}" "$DSTPATH"
+      chmod -Rcf 755 "$DSTPATH"
+    '') data);
+
+    preScript = ''
+      # Read timestamps
+      REPOSTAMP=`cat "${files}/configs/nixtimestamp" 2>/dev/null || echo "1"`
+      SYSTEMSTAMP=`cat "$HOME/.config/reaper/nixtimestamp" 2>/dev/null || echo "0"`
+
+      # note: if the timestamps are equal,
+      #       then reaper maybe was forcibly terminated,
+      #       so we should execute `postScript` hook to recover
+
+      if [ "$REPOSTAMP" -gt "$SYSTEMSTAMP" ]; then
+        ${repoToSystem}
+      else
+        ${postScript}
+      fi
+    '';
+
+    postScript = ''
+      # Update the timestamp
+      echo $EPOCHSECONDS > "$HOME/.config/REAPER/nixtimestamp"
+
+      ${systemToRepo}
+    '';
+  };
+
+  arch = pkgs.stdenv.targetPlatform.linuxArch;
+
+  plugins = config.modules.desktop.apps.reaper.plugins;
+  data = config.modules.desktop.apps.reaper.data;
+in {
+  imports = [ inputs.musnix.nixosModules.musnix ];
+
+  options.modules.desktop.apps.reaper = {
+    enable = mkEnableOption "reaper";
+
+    plugins = mkOption {
+      type = with types; listOf path;
+      default = [
+        # Pitchproof by Aegean Music
+        (pkgs.fetchzip {
+          url = "https://aegeanmusic.com/sitedownload/pitchproof.zip";
+          hash = "sha256-tJWPP3QTmwWxOTuMvwi4OxM3lArGN8GoqU0/3G+cnYY=";
+          stripRoot = false;
+        } + "/pitchproof${if arch == "x86_64" then "-x64" else ""}.dll")
+      ];
+    };
+
+    data = mkOption {
+      type = with types; listOf attrs;
+      default = [
+        # Neural DSP: Archetype Gojira (Stock presets)
+        {
+          src = "${inputs.ndsp-gojira}";
+          path = "ProgramData/Neural DSP/Archetype Gojira";
+          dontLink = true;
+        }
+
+        # Neural DSP: Archetype Gojira (User presets)
+        {
+          src = "${files}/presets/gojira";
+          path = "ProgramData/Neural DSP/Archetype Gojira/User";
+        }
+
+        # Neural DSP: Archetype Nolly (Stock presets)
+        {
+          src = "${inputs.ndsp-nolly}";
+          path = "ProgramData/Neural DSP/Archetype Nolly";
+          dontLink = true;
+        }
+
+        # Neural DSP: Archetype Nolly (User presets)
+        {
+          src = "${files}/presets/nolly";
+          path = "ProgramData/Neural DSP/Archetype Nolly/User";
+        }
+      ];
+    };
+  };
+
+  config = mkIf cfg.enable {
+    home-manager.users.${user} = { lib, ... }: {
+      home.packages = with pkgs; [ reaper-fixed yabridge ];
+
+      # TODO: remove .wvst* lookups
+      home.file.".config/yabridgectl/config.toml".text = ''
+        plugin_dirs = [${concatStringsSep ", " (map (x: "\"${x}\"") plugins)}, "/home/${user}/.wvst3", "/home/${user}/.wvst"]
+      '';
+
+      # Do not isolate VST2 plugins
+      home.file.".vst/yabridge/yabridge.toml".text = ''
+        ["*"]
+        group = "all"
+      '';
+
+      home.activation.yabridge-sync = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        $DRY_RUN_CMD ${pkgs.yabridgectl}/bin/yabridgectl sync -p -n $VERBOSE_ARG
+      '';
+
+      # Reaper MIDI notes colormap
+      home.file.".config/REAPER/Data/color_maps/default.png".source = pkgs.fetchurl {
+        url = "https://i.imgur.com/Ca0JhRF.png";
+        hash = "sha256-FSANQn2V4TjYUvNr4UV1qUhOSeUkT+gsd1pPj4214GY=";
+      };
+
+      # TODO: link reapertips theme
+
+      # SWS Extension
+      home.file.".config/REAPER/UserPlugins/reaper_sws-${arch}.so".source = "${pkgs.reaper-sws-extension}/UserPlugins/reaper_sws-${arch}.so";
+      home.file.".config/REAPER/Scripts/sws_python.py".source = "${pkgs.reaper-sws-extension}/Scripts/sws_python.py";
+      home.file.".config/REAPER/Scripts/sws_python64.py".source = "${pkgs.reaper-sws-extension}/Scripts/sws_python64.py";
+
+      # JSFX Plugins
+      home.file.".config/REAPER/Effects/Geraint".source = inputs.jsfx-geraint;
+      home.file.".config/REAPER/Effects/ReJJ".source = inputs.jsfx-rejj;
+      home.file.".config/REAPER/Effects/chkhld".source = inputs.jsfx-chkhld;
+
+      # FIXME(test): https://github.com/NixOS/nix/pull/9053
+      home.file.".config/REAPER/Effects/Tale".source = pkgs.fetchzip {
+        url = "https://www.taletn.com/reaper/mono_synth/Tale_20230711.zip";
+        hash = "sha256-3qfOgAsQR91hXXah44PrLITNS44a5VMitbIVKZ4E9y4=";
+        stripRoot = false;
+      } + "/Effects/Tale";
+
+      # Reaper Scripts
+      # note: you must import them in the REAPER Actions menu
+      # reaper-kb.ini: `SCR 4 0 RS{hash?} "{Script Name}" {relative_path}`
+
+      # MK Slicer, MK Shaper
+      home.file.".config/REAPER/Scripts/cool/MKSlicer.lua".source = "${inputs.reascripts}/Items Editing/cool_MK Slicer.lua";
+      home.file.".config/REAPER/Scripts/cool/MKShaper.lua".source = "${inputs.reascripts}/Envelopes/cool_MK ShaperStutter.lua";
+
+      # LSP Plugins
+      home.file.".vst/lsp-plugins".source = "${pkgs.lsp-plugins}/lib/vst/lsp-plugins";
+    };
+
+    # Real-time audio tweaks
+    musnix.enable = true;
+    musnix.kernel.packages = pkgs.linuxPackages_latest_rt;
+    environment.sessionVariables.WINEFSYNC = "1";
+
+    environment.systemPackages = with pkgs; [
+      # FIXME: neuralnote
+      neural-amp-modeler-lv2
+    ];
+
+    # TODO: split this :)
+  };
+}
