@@ -8,22 +8,72 @@ let
   files = "$HOME/nixfiles/modules/desktop/apps/reaper";
 
   reaper-fixed = let
+    # Used to protect some values for privacy reasons
+    privateFiles = [
+      {
+        name = "reaper.ini";
+        settings = [ "importpath" "lastproject" "lastprojuiref" "lastscript" "projecttab1" ];
+        chunks = [ "Recent" "RecentFX" ];
+      }
+
+      { name = "reaper-reginfo2.ini"; settings = [ "uss" ]; chunks = []; }
+    ];
+
+    cacheFiles = [ "recentfx" "fxtags" "vstplugins64" "jsfx" "extstate" "midihw-linux" "midihw-alsa" "wndpos" ];
+
+    # Shortcuts: map&concat
+    mapLines = func: data: concatStringsSep "\n" (map func data);
+
+    # Shortcuts: copy file if it exists
+    copyExisting = from: to: ''[[ -e "${from}" ]] && cp -vf "${from}" "${to}"'';
+
+    # Shortcuts: colored logs
+    sequences = { green = "\\033[0;32m"; reset = "\\033[0m"; };
+    mkSeqWrap = x: color: ''${color}${x}${sequences.reset}'';
+    mkLog = x: ''echo -e "[${mkSeqWrap "!" sequences.green}] ${mkSeqWrap x sequences.green}"'';
+
     systemToRepo = /* bash */ ''
-      # Copy reaper settings to the repo
+      ${mkLog "Copying reaper settings to the repo..."}
       CONFIGS="${files}/configs"
       cp -vf $HOME/.config/REAPER/*.ini "$CONFIGS"
-      [[ -e "$HOME/.config/REAPER/nixtimestamp" ]] && cp -vf "$HOME/.config/REAPER/nixtimestamp" "$CONFIGS"
 
-      # Omit cache files
-      ${concatStringsSep "\n" (map (x: "rm -vf $CONFIGS/reaper-${x}.ini") [ "recentfx" "fxtags" "vstplugins64" "jsfx" ])}
+      ${mkLog "Copying timestamp to the repo..."}
+      ${copyExisting "$HOME/.config/REAPER/nixtimestamp" "$CONFIGS"}
 
-      # TODO: Obfuscate some parts of the reaper.ini (recent paths, ...)
+      ${mkLog "Removing cache files..."}
+      ${mapLines (x: "rm -vf $CONFIGS/reaper-${x}.ini") cacheFiles}
+
+      ${mkLog "Making copies of private files..."}
+      ${mapLines (x: ''cp -vf "$CONFIGS/${x.name}" "$CONFIGS/.priv-${x.name}"'') privateFiles}
+      ${mkLog "Obfuscating private files..."}
+      ${obfuscateFiles}
     '';
 
+    obfuscateFiles = let
+      escapeRegex = str: lib.strings.escape [ "." "*" "+" "?" "^" "$" "(" ")" "[" "]" "{" "}" "|" "\\" "/" ] str;
+      settingQuery = filename: setting: ''sed -i "s|${escapeRegex setting}=.*|${escapeRegex setting}=|g" "$CONFIGS/${filename}"'';
+      chunkQuery = filename: chunk: ''sed -i "/^\[${escapeRegex chunk}\]/,/^\[/ s/=.*$/=/" "$CONFIGS/${filename}"'';
+
+      mapQuery = filename: query: list: mapLines (x: query filename x) list;
+
+      mapFileSettings = file: with file; mapQuery name settingQuery settings;
+      mapFileChunks = file: with file; mapQuery name chunkQuery chunks;
+      mapFile = file: concatStringsSep "\n" [ (mapFileSettings file) (mapFileChunks file) ];
+    in mapLines mapFile privateFiles;
+
     repoToSystem = /* bash */ ''
-      # Copy reaper settings from the repo
+      ${mkLog "Copying reaper settings from the repo..."}
       cp -vf "${files}"/configs/*.ini "$HOME/.config/REAPER/"
-      [[ -e "${files}/configs/nixtimestamp" ]] && cp -vf "${files}/configs/nixtimestamp" "$HOME/.config/REAPER/"
+
+      ${mkLog "Copying private files if any..."}
+      ${
+        mapLines
+        (x: copyExisting "${files}/configs/.priv-${x.name}" "$HOME/.config/REAPER/${x.name}")
+        privateFiles
+      }
+
+      ${mkLog "Updating the timestamp..."}
+      ${copyExisting "${files}/configs/nixtimestamp" "$HOME/.config/REAPER/"}
     '';
   in pkgs.wrapWine rec {
     name = "reaper";
