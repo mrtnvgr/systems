@@ -1,6 +1,7 @@
 <h1 align="center">❄️</h1>
 
 [![Automatic ISO builds](https://github.com/mrtnvgr/nixfiles/actions/workflows/build_iso.yml/badge.svg)](https://github.com/mrtnvgr/nixfiles/actions/workflows/build_iso.yml)
+[![Grawler checks](https://github.com/mrtnvgr/nixfiles/actions/workflows/grawler.yml/badge.svg)](https://github.com/mrtnvgr/nixfiles/actions/workflows/grawler.yml)
 
 This repository contains my [NixOS](https://nixos.org/) configurations
 
