@@ -12,8 +12,17 @@ let
     privateFiles = [
       {
         name = "reaper.ini";
-        settings = [ "importpath" "lastproject" "lastprojuiref" "lastscript" "projecttab1" ];
-        chunks = [ "Recent" "RecentFX" ];
+
+        # note: use "..*" instead of ".+"
+        settings = [
+          "importpath"
+          "^lastproject" "^lastprojuiref" "^lastscript"
+          "^projecttab.+"
+          "wnd_(h|w|x|y)"
+          "^BR - StartupVersionCheck"
+        ];
+
+        chunks = [ ".swell_recent_path" "Recent" "RecentFX" "nag" "reasamplomatic" ];
       }
 
       { name = "reaper-reginfo2.ini"; settings = [ "uss" ]; chunks = []; }
@@ -50,15 +59,14 @@ let
     '';
 
     obfuscateFiles = let
-      escapeRegex = str: lib.strings.escape [ "." "*" "+" "?" "^" "$" "(" ")" "[" "]" "{" "}" "|" "\\" "/" ] str;
-      settingQuery = filename: setting: ''sed -i "s|${escapeRegex setting}=.*|${escapeRegex setting}=|g" "$CONFIGS/${filename}"'';
-      chunkQuery = filename: chunk: ''sed -i "/^\[${escapeRegex chunk}\]/,/^\[/ s/=.*$/=/" "$CONFIGS/${filename}"'';
+      settingQuery = filename: setting: ''sed -i -E "/${setting}=/s/=.+/=/g" "$CONFIGS/${filename}"'';
+      chunkQuery = filename: chunk: ''sed -i "/^\[${chunk}\]/,/^\[/ s/=.*$/=/" "$CONFIGS/${filename}"'';
 
       mapQuery = filename: query: list: mapLines (x: query filename x) list;
 
       mapFileSettings = file: with file; mapQuery name settingQuery settings;
       mapFileChunks = file: with file; mapQuery name chunkQuery chunks;
-      mapFile = file: concatStringsSep "\n" [ (mapFileSettings file) (mapFileChunks file) ];
+      mapFile = file: concatStringsSep "\n" [ "set -x" (mapFileSettings file) (mapFileChunks file) "set +x" ];
     in mapLines mapFile privateFiles;
 
     repoToSystem = /* bash */ ''
