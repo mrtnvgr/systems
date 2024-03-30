@@ -52,3 +52,9 @@ This repository contains my [NixOS](https://nixos.org/) configurations
 - **Only for isoplus with persistence**:
   - Create a new volume: `fdisk /dev/sdX <<<$'n\np\n\n\n\nw'`
   - Format the volume: `mkfs.ext4 -L <YOUR-HOST-NAME>persistence /dev/sdX3`
+
+## FAQ
+
+- `git-crypt: error: encrypted file has been tampered with!`:
+
+[Solution](https://github.com/AGWA/git-crypt/issues/59#issuecomment-129958806)
