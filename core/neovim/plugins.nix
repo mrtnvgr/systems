@@ -12,7 +12,7 @@ in {
       ];
 
       # Comments
-      plugins.comment-nvim.enable = true;
+      plugins.comment.enable = true;
       highlightOverride = with palette; {
         "DiagnosticInfo" = mkStandout sky;
         "DiagnosticHint" = mkStandout violet;
