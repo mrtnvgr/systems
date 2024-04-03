@@ -21,6 +21,7 @@ let
 
     # Web scraping
     beautifulsoup4
+    lxml
 
     # Notebooks
     jupyter
@@ -32,6 +33,9 @@ let
     pandas
     nltk
     natasha
+    pytorch
+    transformers
+    scikit-learn
 
     # FIXME: pygame
     # FIXME: pyppeteer
