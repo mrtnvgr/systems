@@ -42,6 +42,11 @@ in {
       type = types.attrsOf types.str;
       default = {};
     };
+
+    webUsers = mkOption {
+      type = types.attrsOf types.str;
+      default = {};
+    };
   };
 
   config = mkIf cfg.enable {
@@ -87,7 +92,10 @@ in {
     networking.firewall.allowedUDPPorts = mkIf cfg.expose [ cfg.port ];
 
     services.nginx.virtualHosts."ts.${domain}" = mkIf webIsSupported {
-      locations."/".proxyPass = "http://localhost:${toString cfg.port}";
+      locations."/" = {
+        proxyPass = "http://localhost:${toString cfg.port}";
+        basicAuth = cfg.webUsers;
+      };
 
       enableACME = true;
       forceSSL = true;

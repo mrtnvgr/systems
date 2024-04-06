@@ -43,7 +43,8 @@
       torrserver = {
         enable = true;
         expose = true;
-        users = import ./secrets/tsdb.nix;
+        users = import ./secrets/tsusers.nix;
+        webUsers = import ./secrets/tsweb.nix;
       };
     };
   };
