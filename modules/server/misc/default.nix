@@ -6,5 +6,6 @@ in {
 
   imports = [
     ./vkreborn
+    ./torrserver
   ];
 }
