@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 let
-  inherit (lib) mkIf mkEnableOption mkOption types;
+  inherit (lib) mkIf mkEnableOption mkOption types optionalString;
   cfg = config.modules.server.misc.torrserver;
 
   pkg = pkgs.stdenv.mkDerivation rec {
@@ -21,9 +21,24 @@ let
       runHook postInstall
     '';
   };
+
+  has_users = cfg.users != {};
+  flags = "--port ${cfg.port} ${optionalString has_users "-a"}";
 in {
   options.modules.server.misc.torrserver = {
     enable = mkEnableOption "torrserver";
+
+    port = mkOption {
+      type = types.port;
+      default = 8090;
+    };
+
+    expose = mkEnableOption "expose torrserver in firewall";
+
+    users = mkOption {
+      type = types.attrsOf types.string;
+      default = {};
+    };
   };
 
   config = mkIf cfg.enable {
@@ -40,9 +55,8 @@ in {
         Group = "torrserver";
         Type = "simple";
         NonBlocking = true;
-        # EnvironmentFile = "$dirInstall/$serviceName.config"
         WorkingDirectory = "/var/lib/torrserver";
-        ExecStart = "${pkg}/bin/torrserver";
+        ExecStart = "${pkg}/bin/torrserver ${flags}";
         ExecReload = "/bin/sh kill -HUP \${MAINPID}";
         ExecStop = "/bin/sh kill -INT \${MAINPID}";
         TimeoutSec = 30;
@@ -63,5 +77,9 @@ in {
       group = "torrserver";
       isSystemUser = true;
     };
+
+    networking.firewall.allowedTCPPorts = mkIf cfg.expose [ cfg.port ];
+
+    file."/var/lib/torrserver".text = mkIf has_users builtins.toJSON cfg.users;
   };
 }

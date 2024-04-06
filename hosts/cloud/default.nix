@@ -40,7 +40,11 @@
         dbEnv = ./secrets/vkrdb;
       };
 
-      torrserver.enable = true;
+      torrserver = {
+        enable = true;
+        expose = true;
+        users = import ./secrets/tsdb.nix {};
+      };
     };
   };
 
