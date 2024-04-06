@@ -37,6 +37,7 @@ in {
       "-Wclippy::unneeded_field_pattern"
       "-Wclippy::unnecessary_self_imports"
       "-Wclippy::unseparated_literal_suffix"
+      "-Wclippy::todo"
 
       # Allows
       "-Aclippy::missing_errors_doc"
