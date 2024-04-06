@@ -26,7 +26,7 @@ let
   domain = config.modules.server.web.domain;
 
   hasUsers = cfg.users != {};
-  flags = "--port ${toString cfg.port} ${optionalString hasUsers "-a"}";
+  flags = "--port ${toString cfg.port}";
 in {
   options.modules.server.misc.torrserver = {
     enable = mkEnableOption "torrserver";
