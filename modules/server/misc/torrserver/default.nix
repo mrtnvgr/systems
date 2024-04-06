@@ -22,8 +22,8 @@ let
     '';
   };
 
-  has_users = cfg.users != {};
-  flags = "--port ${cfg.port} ${optionalString has_users "-a"}";
+  webIsSupported = config.modules.server.web.enable;
+  domain = config.modules.server.web.domain;
 in {
   options.modules.server.misc.torrserver = {
     enable = mkEnableOption "torrserver";
@@ -56,21 +56,17 @@ in {
         Type = "simple";
         NonBlocking = true;
         WorkingDirectory = "/var/lib/torrserver";
-        ExecStart = "${pkg}/bin/torrserver ${flags}";
+        ExecStart = "${pkg}/bin/torrserver --port ${toString cfg.port}";
         ExecReload = "/bin/sh kill -HUP \${MAINPID}";
         ExecStop = "/bin/sh kill -INT \${MAINPID}";
         TimeoutSec = 30;
         Restart = "on-failure";
         RestartSec = "5s";
+        StateDirectory = "torrserver";
       };
 
       wantedBy = [ "multi-user.target" ];
     };
-
-    system.activationScripts.torrserver = lib.stringAfter [ "var" ] ''
-      mkdir -p /var/lib/torrserver
-      chown -R torrserver:torrserver /var/lib/torrserver
-    '';
 
     users.groups.torrserver = {};
     users.users.torrserver = {
@@ -80,6 +76,13 @@ in {
 
     networking.firewall.allowedTCPPorts = mkIf cfg.expose [ cfg.port ];
 
-    file."/var/lib/torrserver".text = mkIf has_users builtins.toJSON cfg.users;
+    services.nginx.virtualHosts."ts.${domain}" = mkIf webIsSupported {
+      locations."/".proxyPass = "http://localhost:${toString cfg.port}";
+
+      basicAuth = cfg.users;
+
+      enableACME = true;
+      forceSSL = true;
+    };
   };
 }
