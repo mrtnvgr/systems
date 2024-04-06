@@ -36,7 +36,7 @@ in {
     expose = mkEnableOption "expose torrserver in firewall";
 
     users = mkOption {
-      type = types.attrsOf types.string;
+      type = types.attrsOf types.str;
       default = {};
     };
   };
