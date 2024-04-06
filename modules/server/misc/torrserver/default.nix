@@ -24,6 +24,9 @@ let
 
   webIsSupported = config.modules.server.web.enable;
   domain = config.modules.server.web.domain;
+
+  hasUsers = cfg.users != {};
+  flags = "--port ${toString cfg.port} ${optionalString hasUsers "-a"}";
 in {
   options.modules.server.misc.torrserver = {
     enable = mkEnableOption "torrserver";
@@ -55,14 +58,14 @@ in {
         Group = "torrserver";
         Type = "simple";
         NonBlocking = true;
-        WorkingDirectory = "/var/lib/torrserver";
-        ExecStart = "${pkg}/bin/torrserver --port ${toString cfg.port}";
+        WorkingDirectory = "/etc/torrserver";
+        ExecStart = "${pkg}/bin/torrserver ${flags}";
         ExecReload = "/bin/sh kill -HUP \${MAINPID}";
         ExecStop = "/bin/sh kill -INT \${MAINPID}";
         TimeoutSec = 30;
         Restart = "on-failure";
         RestartSec = "5s";
-        StateDirectory = "torrserver";
+        # StateDirectory = "torrserver";
       };
 
       wantedBy = [ "multi-user.target" ];
@@ -74,12 +77,17 @@ in {
       isSystemUser = true;
     };
 
+    systemd.tmpfiles.rules = [
+      "d /etc/torrserver 0755 torrserver torrserver"
+    ];
+
+    environment.etc."torrserver/accs.db".text = mkIf hasUsers (builtins.toJSON cfg.users);
+
     networking.firewall.allowedTCPPorts = mkIf cfg.expose [ cfg.port ];
+    networking.firewall.allowedUDPPorts = mkIf cfg.expose [ cfg.port ];
 
     services.nginx.virtualHosts."ts.${domain}" = mkIf webIsSupported {
       locations."/".proxyPass = "http://localhost:${toString cfg.port}";
-
-      basicAuth = cfg.users;
 
       enableACME = true;
       forceSSL = true;
