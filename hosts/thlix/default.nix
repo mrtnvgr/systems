@@ -8,11 +8,4 @@
   ];
 
   time.timeZone = "Asia/Novosibirsk";
-
-  modules.desktop = {
-    apps = {
-      # FIXME: fix codeium
-      neovim.codeiumConfig = ./secrets/codeium.json;
-    };
-  };
 }
