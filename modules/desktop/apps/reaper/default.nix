@@ -7,6 +7,20 @@ let
   # FIXME: borks reaper's files if path is not correct ;p
   files = "$HOME/nixfiles/modules/desktop/apps/reaper";
 
+  # TODO: https://github.com/NixOS/nixpkgs/issues/300755
+  # TODO: https://bugs.winehq.org/show_bug.cgi?id=54692
+  # FIXME: pitchproof, MT-PowerDrumKit are broken
+  # Let's use a stable release for now
+  reaperPkgs = import (pkgs.fetchFromGitHub {
+    owner = "NixOS";
+    repo = "nixpkgs";
+    rev = "nixos-23.11";
+    hash = "sha256-XgC/a/giEeNkhme/AV1ToipoZ/IVm1MV2ntiK4Tm+pw=";
+  }) { system = pkgs.stdenv.system; };
+  winePkg = reaperPkgs.wineWowPackages.stagingFull;
+  yabridge-fixed = reaperPkgs.yabridge;
+  yabridgectl-fixed = reaperPkgs.yabridgectl;
+
   reaper-fixed = let
     # Used to protect some values for privacy reasons
     privateFiles = [
