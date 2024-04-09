@@ -101,7 +101,9 @@ let
     name = "reaper";
     executable = "${pkgs.reaper}/bin/reaper";
 
-    tricks = [ "d3d9" "mfc42" "vcrun2019" ];
+    wine = winePkg;
+
+    tricks = [ "mfc42" "vcrun2019" ];
 
     isWinBin = false;
 
@@ -192,7 +194,7 @@ in {
 
   config = mkIf cfg.enable {
     home-manager.users.${user} = { lib, ... }: {
-      home.packages = with pkgs; [ reaper-fixed yabridge ];
+      home.packages = with pkgs; [ reaper-fixed yabridge-fixed ];
 
       # TODO: remove .wvst* lookups
       home.file.".config/yabridgectl/config.toml".text = ''
@@ -206,7 +208,7 @@ in {
       '';
 
       home.activation.yabridge-sync = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        $DRY_RUN_CMD ${pkgs.yabridgectl}/bin/yabridgectl sync -p -n $VERBOSE_ARG
+        $DRY_RUN_CMD ${yabridgectl-fixed}/bin/yabridgectl sync -p -n $VERBOSE_ARG
       '';
 
       # Reaper MIDI notes colormap
