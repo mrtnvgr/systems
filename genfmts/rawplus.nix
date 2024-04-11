@@ -13,7 +13,7 @@ in {
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/ESP";
     fsType = "vfat";
-    # TODO: https://github.com/NixOS/nixpkgs/issues/279362
+    options = [ "umask=077" ];
   };
 
   boot.growPartition = true;
