@@ -14,9 +14,9 @@ in {
       enable = true;
       package = catppuccin-git;
 
-      transparentBackground = !(isNull opacity || opacity == 1.0);
+      transparent_background = !(isNull opacity || opacity == 1.0);
 
-      colorOverrides.mocha = {
+      color_overrides.mocha = {
         base = "#${palette.background}";
         mantle = "#${palette.darkness}";
         crust = "#${palette.void}";
