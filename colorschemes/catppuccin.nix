@@ -3,7 +3,7 @@
   slug = "catppuccin";
   author = "https://github.com/catppuccin";
 
-  palette = rec {
+  palette = {
     background = "#24273a"; # base
     darkness = "#1e2030"; # mantle
     void = "#181926"; # crust

@@ -59,7 +59,7 @@ in {
 
       # Invert kinds
       # credits: https://github.com/catppuccin/nvim/issues/667#issuecomment-1965426553
-      programs.nixvim.colorschemes.catppuccin.custom_highlights = /* lua */ ''
+      programs.nixvim.colorschemes.catppuccin.settings.custom_highlights = /* lua */ ''
         function(C)
           local cmpfn = require("catppuccin.groups.integrations.cmp")
           setfenv(cmpfn.get, { C = C })
