@@ -5,7 +5,7 @@ let
   cfg = config.modules.desktop.apps.reaper;
 
   # FIXME: borks reaper's files if path is not correct ;p
-  files = "$HOME/nixfiles/modules/desktop/apps/reaper";
+  files = "$HOME/.systems/modules/desktop/apps/reaper";
 
   # TODO: https://github.com/NixOS/nixpkgs/issues/300755
   # TODO: https://bugs.winehq.org/show_bug.cgi?id=54692

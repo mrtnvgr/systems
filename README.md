@@ -1,7 +1,7 @@
 <h1 align="center">❄️</h1>
 
-[![Automatic ISO builds](https://github.com/mrtnvgr/nixfiles/actions/workflows/build_iso.yml/badge.svg)](https://github.com/mrtnvgr/nixfiles/actions/workflows/build_iso.yml)
-[![Grawler checks](https://github.com/mrtnvgr/nixfiles/actions/workflows/grawler.yml/badge.svg)](https://github.com/mrtnvgr/nixfiles/actions/workflows/grawler.yml)
+[![Automatic ISO builds](https://github.com/mrtnvgr/systems/actions/workflows/build_iso.yml/badge.svg)](https://github.com/mrtnvgr/systems/actions/workflows/build_iso.yml)
+[![Grawler checks](https://github.com/mrtnvgr/systems/actions/workflows/grawler.yml/badge.svg)](https://github.com/mrtnvgr/systems/actions/workflows/grawler.yml)
 
 This repository contains my [NixOS](https://nixos.org/) configurations
 
@@ -25,11 +25,11 @@ This repository contains my [NixOS](https://nixos.org/) configurations
 ### Real-hardware installation
 
 - Follow the official NixOS installation [guide](https://nixos.wiki/wiki/NixOS_Installation_Guide) **until `NixOS Installation` section**
-- Clone this repo: `git clone https://github.com/mrtnvgr/nixfiles`
+- Clone this repo: `git clone https://github.com/mrtnvgr/systems`
 - Create your host (look in `flake.nix` and `hosts` for examples)
   - Copy `/mnt/etc/nixos/hardware-configuration.nix` to `hardware.nix`
 - Install: `nixos-install --root /mnt --flake .#<YOUR-HOST-NAME>`
-- Move this repo to installed system: `mv nixfiles /mnt/home/<your-username>/`
+- Move this repo to installed system: `mv .systems /mnt/home/<your-username>/`
 - Reboot: `reboot`
 
 ### Portable environment
