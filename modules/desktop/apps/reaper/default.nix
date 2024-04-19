@@ -4,8 +4,7 @@ let
 
   cfg = config.modules.desktop.apps.reaper;
 
-  # FIXME: borks reaper's files if path is not correct ;p
-  files = "$HOME/.systems/modules/desktop/apps/reaper";
+  files = "$FLAKE/modules/desktop/apps/reaper";
 
   # TODO: https://github.com/NixOS/nixpkgs/issues/300755
   # TODO: https://bugs.winehq.org/show_bug.cgi?id=54692
@@ -115,6 +114,12 @@ let
     '') data);
 
     preScript = ''
+      # Check if FLAKE is set
+      if [[ -z $FLAKE ]]; then
+        echo "\$FLAKE is empty"
+        exit 1
+      fi
+
       # Read timestamps
       REPOSTAMP=`cat "${files}/configs/nixtimestamp" 2>/dev/null || echo "1"`
       SYSTEMSTAMP=`cat "$HOME/.config/reaper/nixtimestamp" 2>/dev/null || echo "0"`

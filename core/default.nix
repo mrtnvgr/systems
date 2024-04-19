@@ -2,6 +2,7 @@
   imports = [
     ./bootloader.nix
     ./nix.nix
+    ./flake.nix
     ./packages.nix
     ./fat.nix
     ./overlays.nix
