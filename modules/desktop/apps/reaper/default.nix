@@ -4,7 +4,7 @@ let
 
   cfg = config.modules.desktop.apps.reaper;
 
-  files = "$FLAKE/modules/desktop/apps/reaper";
+  files = "${config.flakePath}/modules/desktop/apps/reaper";
 
   # TODO: https://github.com/NixOS/nixpkgs/issues/300755
   # TODO: https://bugs.winehq.org/show_bug.cgi?id=54692
@@ -109,7 +109,7 @@ let
     setupScript = concatStringsSep "\n" (map (x: /* bash */ ''
       DSTPATH="$HOME/.wine-nix/reaper/drive_c/${x.path}"
       mkdir --mode=755 -pv "`dirname "$DSTPATH"`"
-      ${if hasAttr "dontLink" x then "cp -r" else "ln -s"} -vf "${x.src}" "$DSTPATH"
+      ${if x.dontLink then "cp -r" else "ln -s"} -vf "${x.src}" "$DSTPATH"
       chmod -Rcf 755 "$DSTPATH"
     '') data);
 
@@ -166,7 +166,14 @@ in {
     };
 
     data = mkOption {
-      type = with types; listOf attrs;
+      type = with types; listOf (submodule {
+        options = {
+          src = mkOption { type = str; };
+          path = mkOption { type = str; };
+          dontLink = mkOption { type = bool; default = false; };
+        };
+      });
+
       default = [
         # Neural DSP: Archetype Gojira (Stock presets)
         {
@@ -234,7 +241,7 @@ in {
       home.file.".config/REAPER/Effects/ReJJ".source = inputs.jsfx-rejj;
       home.file.".config/REAPER/Effects/chkhld".source = inputs.jsfx-chkhld;
 
-      # FIXME(test): https://github.com/NixOS/nix/pull/9053
+      # FIXME: https://github.com/NixOS/nix/pull/9053
       home.file.".config/REAPER/Effects/Tale".source = pkgs.fetchzip {
         url = "https://www.taletn.com/reaper/mono_synth/Tale_20230711.zip";
         hash = "sha256-3qfOgAsQR91hXXah44PrLITNS44a5VMitbIVKZ4E9y4=";
