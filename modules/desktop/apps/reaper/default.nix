@@ -106,20 +106,22 @@ let
 
     isWinBin = false;
 
-    setupScript = concatStringsSep "\n" (map (x: /* bash */ ''
-      DSTPATH="$HOME/.wine-nix/reaper/drive_c/${x.path}"
-      mkdir --mode=755 -pv "`dirname "$DSTPATH"`"
-      ${if x.dontLink then "cp -r" else "ln -s"} -vf "${x.src}" "$DSTPATH"
-      chmod -Rcf 755 "$DSTPATH"
-    '') data);
+    setupScript = let
+      dataScript = concatStringsSep "\n" (map (x: /* bash */ ''
+        DSTPATH="$HOME/.wine-nix/reaper/drive_c/${x.path}"
+        mkdir --mode=755 -pv "`dirname "$DSTPATH"`"
+        ${if x.dontLink then "cp -r" else "ln -s"} -vf "${x.src}" "$DSTPATH"
+        chmod -Rcf 755 "$DSTPATH"
+      '') cfg.data);
+
+      regScript = concatStringsSep "\n" (map (x: /* bash */ ''
+        wine regedit ${x}
+      '') cfg.regFiles);
+
+      script = concatStringsSep "\n" [ dataScript regScript ];
+    in script;
 
     preScript = ''
-      # Check if FLAKE is set
-      if [[ -z $FLAKE ]]; then
-        echo "\$FLAKE is empty"
-        exit 1
-      fi
-
       # Read timestamps
       REPOSTAMP=`cat "${files}/configs/nixtimestamp" 2>/dev/null || echo "1"`
       SYSTEMSTAMP=`cat "$HOME/.config/reaper/nixtimestamp" 2>/dev/null || echo "0"`
@@ -144,9 +146,6 @@ let
   };
 
   arch = pkgs.stdenv.targetPlatform.linuxArch;
-
-  plugins = config.modules.desktop.apps.reaper.plugins;
-  data = config.modules.desktop.apps.reaper.data;
 in {
   imports = [ inputs.musnix.nixosModules.musnix ];
 
@@ -202,6 +201,11 @@ in {
         }
       ];
     };
+
+    regFiles = mkOption {
+      type = with types; listOf path;
+      default = [ ];
+    };
   };
 
   config = mkIf cfg.enable {
@@ -210,7 +214,7 @@ in {
 
       # TODO: remove .wvst* lookups
       home.file.".config/yabridgectl/config.toml".text = ''
-        plugin_dirs = [${concatStringsSep ", " (map (x: "\"${x}\"") plugins)}, "/home/${user}/.wvst3", "/home/${user}/.wvst"]
+        plugin_dirs = [${concatStringsSep ", " (map (x: "\"${x}\"") cfg.plugins)}, "/home/${user}/.wvst3", "/home/${user}/.wvst"]
       '';
 
       # Do not isolate VST2 plugins
