@@ -44,7 +44,7 @@
         enable = true;
         expose = true;
         users = import ./secrets/tsusers.nix;
-        # TODO: webUsers = import ./secrets/tsweb.nix;
+        webUsers = import ./secrets/tsweb.nix;
       };
     };
   };

@@ -92,9 +92,14 @@ in {
     networking.firewall.allowedUDPPorts = mkIf cfg.expose [ cfg.port ];
 
     services.nginx.virtualHosts."ts.${domain}" = mkIf webIsSupported {
-      locations."/" = {
-        proxyPass = "http://localhost:${toString cfg.port}";
-        basicAuth = cfg.webUsers;
+      locations = {
+        "/" = {
+          proxyPass = "http://localhost:${toString cfg.port}";
+        };
+
+        "= /" = {
+          basicAuth = cfg.webUsers;
+        };
       };
 
       enableACME = true;
