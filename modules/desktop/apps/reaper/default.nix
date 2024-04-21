@@ -259,9 +259,6 @@ in {
       # MK Slicer, MK Shaper
       home.file.".config/REAPER/Scripts/cool/MKSlicer.lua".source = "${inputs.reascripts}/Items Editing/cool_MK Slicer.lua";
       home.file.".config/REAPER/Scripts/cool/MKShaper.lua".source = "${inputs.reascripts}/Envelopes/cool_MK ShaperStutter.lua";
-
-      # LSP Plugins
-      home.file.".vst/lsp-plugins".source = "${pkgs.lsp-plugins}/lib/vst/lsp-plugins";
     };
 
     # Real-time audio tweaks
