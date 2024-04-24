@@ -118,7 +118,17 @@ let
         wine regedit ${x}
       '') cfg.regFiles);
 
-      script = concatStringsSep "\n" [ dataScript regScript ];
+      script = concatStringsSep "\n" [
+        (mkLog "Copying data...")
+        dataScript
+
+        "set -x"
+
+        (mkLog "Applying reg files...")
+        regScript
+
+        "set +x"
+      ];
     in script;
 
     preScript = ''
