@@ -7,9 +7,6 @@
     generators.url = "github:nix-community/nixos-generators";
     generators.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-
     mrtnvgr = {
       url = "github:mrtnvgr/nurpkgs";
       inputs.nixpkgs.follows = "nixpkgs";

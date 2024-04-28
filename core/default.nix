@@ -21,7 +21,6 @@
     ./archiving.nix
     ./gpg.nix
     ./firmware.nix
-    ./not-found.nix
     ./kernel.nix
   ];
 
