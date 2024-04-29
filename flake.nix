@@ -1,6 +1,4 @@
 {
-  description = "My NixOS Flake";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -32,11 +30,8 @@
 
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
 
-    ndsp-gojira.url = "github:musicprodcdn/presets/ndsp-gojira";
-    ndsp-gojira.flake = false;
-
-    ndsp-nolly.url = "github:musicprodcdn/presets/ndsp-nolly";
-    ndsp-nolly.flake = false;
+    ndsp-presets.url = "github:musicprodcdn/presets";
+    ndsp-presets.flake = false;
 
     eggs.url = "https://github.com/mrtnvgr/eggs/releases/download/master/built.zip";
     eggs.flake = false;
@@ -58,6 +53,8 @@
 
     reascripts.url = "github:ReaTeam/ReaScripts";
     reascripts.flake = false;
+
+    oxidec.url = "/home/user/oxidec";
   };
 
   outputs = { nixpkgs, home-manager, ... } @ inputs:

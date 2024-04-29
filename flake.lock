@@ -693,11 +693,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714275083,
-        "narHash": "sha256-/hKJQ7l4qFIJqwygVbJe8j7cEq5B4FKi5UKq5eTCDP4=",
+        "lastModified": 1714276235,
+        "narHash": "sha256-TH59Ujeh37m9ntR/oHdy7I5MVs5URlG1gTj9eB/1Y4w=",
         "owner": "mrtnvgr",
         "repo": "nurpkgs",
-        "rev": "8584d60dacfabd7bd6b39aa933e69d10e2c1ecad",
+        "rev": "72ecda61e3986b337e5fe25a5ec472c0c1f821db",
         "type": "github"
       },
       "original": {
@@ -724,36 +724,18 @@
         "type": "github"
       }
     },
-    "ndsp-gojira": {
+    "ndsp-presets": {
       "flake": false,
       "locked": {
-        "lastModified": 1706100678,
-        "narHash": "sha256-r/dODuMNgxOIxZeUi5fSIu91uH+ayzIUtTgsAb7ApHE=",
+        "lastModified": 1714305973,
+        "narHash": "sha256-fUBCr4RRz+0frAor8TkDOaLo4DuJ0Qo7152EM6LSLWw=",
         "owner": "musicprodcdn",
         "repo": "presets",
-        "rev": "46c6045bbb577a346010786625e64fe82503d394",
+        "rev": "ac824a738f2a6e6acb0aa51abac86de821615e04",
         "type": "github"
       },
       "original": {
         "owner": "musicprodcdn",
-        "ref": "ndsp-gojira",
-        "repo": "presets",
-        "type": "github"
-      }
-    },
-    "ndsp-nolly": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1708441009,
-        "narHash": "sha256-zsb37UljgRuYJjqjP5hQBknqKoLFyUiFRgaQsHm3hqk=",
-        "owner": "musicprodcdn",
-        "repo": "presets",
-        "rev": "fdf91ffff133bf623b3619cfcdf3288f64ebea4d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "musicprodcdn",
-        "ref": "ndsp-nolly",
         "repo": "presets",
         "type": "github"
       }
@@ -844,26 +826,6 @@
         "type": "github"
       }
     },
-    "nix-index-database": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1714273701,
-        "narHash": "sha256-bmoeZ5zMSSO/e8P51yjrzaxA9uzA3SZAEFvih6S3LFo=",
-        "owner": "nix-community",
-        "repo": "nix-index-database",
-        "rev": "941c4973c824509e0356be455d89613611f76c8a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix-index-database",
-        "type": "github"
-      }
-    },
     "nixlib": {
       "locked": {
         "lastModified": 1712450863,
@@ -887,11 +849,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1713012165,
-        "narHash": "sha256-z/soXKDnz+w4Nw0LkRaM73YqolhSmIYy6cpg1F2ps8I=",
+        "lastModified": 1714298568,
+        "narHash": "sha256-HzgySE+n7Ri8faGo+uxYdjlCicgVGV0eJT86cWYIvo4=",
         "owner": "simple-nixos-mailserver",
         "repo": "nixos-mailserver",
-        "rev": "9f6635a0351c190179dc6904545f950108a23dd8",
+        "rev": "ef4756bcfc8a6791adbcae2b32f87e2f0a00525d",
         "type": "gitlab"
       },
       "original": {
@@ -1141,11 +1103,11 @@
     "reascripts": {
       "flake": false,
       "locked": {
-        "lastModified": 1714213561,
-        "narHash": "sha256-DXwanfZag8vzfabpmzdQzOV0MTOK3vi9smTKYp4NI3Y=",
+        "lastModified": 1714297047,
+        "narHash": "sha256-SN7ICNc+WtHZ70IuX8OW2GXhFwBgpR8swiT6bHhzXXU=",
         "owner": "ReaTeam",
         "repo": "ReaScripts",
-        "rev": "3a77c5d8303d97b6db8a18aa7bfada90a1d7f128",
+        "rev": "ab50b652efaa61d5886e4c5c37bc2e5786fb31cd",
         "type": "github"
       },
       "original": {
@@ -1167,11 +1129,9 @@
         "jsfx-rejj": "jsfx-rejj",
         "mrtnvgr": "mrtnvgr",
         "musnix": "musnix",
-        "ndsp-gojira": "ndsp-gojira",
-        "ndsp-nolly": "ndsp-nolly",
+        "ndsp-presets": "ndsp-presets",
         "neovim-nightly": "neovim-nightly",
         "nix-colors": "nix-colors",
-        "nix-index-database": "nix-index-database",
         "nixos-mailserver": "nixos-mailserver",
         "nixpkgs": "nixpkgs_5",
         "nixvim": "nixvim",

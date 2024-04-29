@@ -107,12 +107,22 @@ let
     isWinBin = false;
 
     setupScript = let
-      dataScript = concatStringsSep "\n" (map (x: /* bash */ ''
-        DSTPATH="$HOME/.wine-nix/reaper/drive_c/${x.path}"
-        mkdir --mode=755 -pv "`dirname "$DSTPATH"`"
-        ${if x.dontLink then "cp -r" else "ln -s"} -vf "${x.src}" "$DSTPATH"
-        chmod -Rcf 755 "$DSTPATH"
-      '') cfg.data);
+      dataScript = let
+        getCopyMethod = x: if (x.symlink && !x.linkContents) then
+          "ln -s"
+        else if x.linkContents then
+          "cp -rs"
+        else
+          "cp -r";
+
+        mkData = x: /* bash */ ''
+          DSTPATH="$HOME/.wine-nix/reaper/drive_c/${x.path}"
+          mkdir --mode=755 -pv "`dirname "$DSTPATH"`"
+          ${getCopyMethod x} -vf "${x.src}" "$DSTPATH"
+          chmod -Rcf 755 "$DSTPATH"
+        '';
+      in
+        concatStringsSep "\n" (map mkData cfg.data);
 
       regScript = concatStringsSep "\n" (map (x: /* bash */ ''
         wine regedit ${x}
@@ -179,29 +189,23 @@ in {
         options = {
           src = mkOption { type = str; };
           path = mkOption { type = str; };
-          dontLink = mkOption { type = bool; default = false; };
+          symlink = mkOption { type = bool; default = true; };
+          linkContents = mkOption { type = bool; default = false; };
         };
       });
 
       default = [
-        # Neural DSP: Archetype Gojira (Stock presets)
+        # Neural DSP (Stock presets)
         {
-          src = "${inputs.ndsp-gojira}";
-          path = "ProgramData/Neural DSP/Archetype Gojira";
-          dontLink = true;
+          src = "${inputs.ndsp-presets}";
+          path = "ProgramData/Neural DSP";
+          linkContents = true;
         }
 
         # Neural DSP: Archetype Gojira (User presets)
         {
           src = "${files}/presets/gojira";
           path = "ProgramData/Neural DSP/Archetype Gojira/User";
-        }
-
-        # Neural DSP: Archetype Nolly (Stock presets)
-        {
-          src = "${inputs.ndsp-nolly}";
-          path = "ProgramData/Neural DSP/Archetype Nolly";
-          dontLink = true;
         }
 
         # Neural DSP: Archetype Nolly (User presets)
