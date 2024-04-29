@@ -1,13 +1,13 @@
 { inputs, pkgs, lib, config, user, ... }:
 let
-  inherit (lib) mkIf mkEnableOption mkOption types concatStringsSep hasAttr;
+  inherit (lib) mkIf mkEnableOption mkOption types concatStringsSep;
 
   cfg = config.modules.desktop.apps.reaper;
 
   files = "${config.flakePath}/modules/desktop/apps/reaper";
 
   # TODO: https://github.com/NixOS/nixpkgs/issues/300755
-  # TODO: https://bugs.winehq.org/show_bug.cgi?id=54692
+  # TODO!: https://bugs.winehq.org/show_bug.cgi?id=54692
   # FIXME: pitchproof, MT-PowerDrumKit are broken
   # Let's use a stable release for now
   reaperPkgs = import (pkgs.fetchFromGitHub {
@@ -16,11 +16,14 @@ let
     rev = "nixos-23.11";
     hash = "sha256-XgC/a/giEeNkhme/AV1ToipoZ/IVm1MV2ntiK4Tm+pw=";
   }) { system = pkgs.stdenv.system; };
-  winePkg = reaperPkgs.wineWowPackages.stagingFull;
-  yabridge-fixed = reaperPkgs.yabridge;
-  yabridgectl-fixed = reaperPkgs.yabridgectl;
+  # NOTE: using >9.0, because of https://bugs.winehq.org/show_bug.cgi?id=55813
+  winePkg = reaperPkgs.wineWowPackages.stableFull;
 
-  reaper-fixed = let
+  yabridge-fixed = pkgs.yabridge.override {
+    wine = winePkg;
+  };
+
+  reaper-wrapped = let
     # Used to protect some values for privacy reasons
     privateFiles = [
       {
@@ -238,7 +241,7 @@ in {
       '';
 
       home.activation.yabridge-sync = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        $DRY_RUN_CMD ${yabridgectl-fixed}/bin/yabridgectl sync -p -n $VERBOSE_ARG
+        $DRY_RUN_CMD ${pkgs.yabridgectl}/bin/yabridgectl sync -p -n $VERBOSE_ARG
       '';
 
       # Reaper MIDI notes colormap
