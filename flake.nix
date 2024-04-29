@@ -54,7 +54,7 @@
     reascripts.url = "github:ReaTeam/ReaScripts";
     reascripts.flake = false;
 
-    oxidec.url = "/home/user/oxidec";
+    oxidec.url = "github:mrtnvgr/oxidec";
   };
 
   outputs = { nixpkgs, home-manager, ... } @ inputs:
