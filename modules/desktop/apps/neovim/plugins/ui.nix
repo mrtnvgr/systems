@@ -6,6 +6,7 @@ in {
   home-manager.users.${user}.programs.nixvim = mkIf cfg.enable {
     plugins = {
       # TODO: mini
+      lualine.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
