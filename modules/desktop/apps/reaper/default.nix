@@ -227,7 +227,7 @@ in {
 
   config = mkIf cfg.enable {
     home-manager.users.${user} = { lib, ... }: {
-      home.packages = with pkgs; [ reaper-fixed yabridge-fixed ];
+      home.packages = [ reaper-wrapped yabridge-fixed ];
 
       # TODO: remove .wvst* lookups
       home.file.".config/yabridgectl/config.toml".text = ''
