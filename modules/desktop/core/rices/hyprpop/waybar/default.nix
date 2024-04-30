@@ -1,7 +1,9 @@
-{ inputs, lib, config, user, ... }:
+{ inputs, pkgs, lib, config, user, ... }:
 let
   inherit (config.colorScheme) palette;
   inherit (lib) mkIf optionalString optionals;
+
+  waybar-nightly = inputs.waybar.packages.${pkgs.system}.waybar;
 
   rgb_background = inputs.nix-colors.lib.conversions.hexToRGBString ", " palette.background;
   theme = config.modules.desktop.theme;
@@ -218,6 +220,7 @@ in {
     home-manager.users.${user} = {
       programs.waybar = {
         enable = true;
+        package = waybar-nightly;
 
         inherit style settings;
       };

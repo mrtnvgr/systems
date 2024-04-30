@@ -22,8 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     hyprland.url = "github:hyprwm/Hyprland";
+    waybar.url = "github:Alexays/waybar";
+
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+
     schizofox.url = "github:schizofox/schizofox";
 
     musnix.url = "github:musnix/musnix";
@@ -57,7 +60,7 @@
     oxidec.url = "github:mrtnvgr/oxidec";
   };
 
-  outputs = { nixpkgs, home-manager, ... } @ inputs:
+  outputs = { nixpkgs, ... } @ inputs:
     let
       colorschemes = import ./colorschemes;
 
