@@ -8,7 +8,7 @@ let
 
   isMpdSupported = config.modules.desktop.feats.music.enable;
 
-  style = with palette; /* css */ ''
+  style = /* css */ ''
     * {
       border: none;
       border-radius: 0;
@@ -22,9 +22,10 @@ let
     }
 
     @keyframes blink_red {
-      to { background-color: #${red}; }
+      to { background-color: #${palette.red}; }
     }
 
+    /* TODO: hide if the laptop is connected to a charger */
     .warning, .critical, .urgent {
       animation-name: blink_red;
       animation-duration: 1s;
@@ -42,8 +43,8 @@ let
     }
 
     window>box {
-      color: #${text};
-      border: 2px solid #${blue};
+      color: #${palette.text};
+      border: 2px solid #${palette.blue};
       margin: 8px 10px 0;
     }
 
@@ -57,50 +58,50 @@ let
     }
 
     #workspaces button:nth-child(1) {
-      color: #${red};
+      color: #${palette.red};
     }
     #workspaces button.active:nth-child(1) {
-      border-color: #${red};
+      border-color: #${palette.red};
     }
 
     #workspaces button:nth-child(2) {
-      color: #${teal};
+      color: #${palette.teal};
     }
     #workspaces button.active:nth-child(2) {
-      border-color: #${teal};
+      border-color: #${palette.teal};
     }
 
     #workspaces button:nth-child(3) {
-      color: #${blue};
+      color: #${palette.blue};
     }
     #workspaces button.active:nth-child(3) {
-      border-color: #${blue};
+      border-color: #${palette.blue};
     }
 
     #workspaces button:nth-child(4) {
-      color: #${violet};
+      color: #${palette.violet};
     }
     #workspaces button.active:nth-child(4) {
-      border-color: #${violet};
+      border-color: #${palette.violet};
     }
 
     #workspaces button.empty {
-      color: #${text};
+      color: #${palette.text};
     }
 
     tooltip {
-      border: 2px solid #${lavender};
+      border: 2px solid #${palette.lavender};
     }
 
     tooltip label {
-      color: #${text};
+      color: #${palette.text};
     }
 
     #custom-flake {
       font-size: 18px;
       padding-left: 10px;
       padding-right: 6px;
-      color: #${blue};
+      color: #${palette.blue};
     }
 
     ${optionalString isMpdSupported "#mpd,"}
@@ -122,30 +123,30 @@ let
 
     ${optionalString isMpdSupported ''
       #mpd.playing {
-        color: #${violet};
+        color: #${palette.violet};
       }
       #mpd.paused {
-        color: #${text};
+        color: #${palette.text};
       }
     ''}
 
     #wireplumber {
-      color: #${red};
+      color: #${palette.red};
     }
     #wireplumber.muted {
-      color: #${text};
+      color: #${palette.text};
     }
 
     #backlight {
-      color: #${teal};
+      color: #${palette.teal};
     }
 
     #battery {
-      color: #${lavender};
+      color: #${palette.lavender};
     }
 
     #clock {
-      color: #${violet};
+      color: #${palette.violet};
     }
   '';
 

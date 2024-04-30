@@ -727,11 +727,11 @@
     "ndsp-presets": {
       "flake": false,
       "locked": {
-        "lastModified": 1714439330,
-        "narHash": "sha256-8LWDW0xP6vP7p1zwB7dxBAkMz/20l+m92Jr2+VFEv84=",
+        "lastModified": 1714440462,
+        "narHash": "sha256-Em0LanOfcSrzZEzyHR0jycoHPr7zpbH24eBTwhwLCUM=",
         "owner": "musicprodcdn",
         "repo": "presets",
-        "rev": "e669435a3dd2a9f503dd6ffe9ea68cf479bb165b",
+        "rev": "77276554e59441e04a7120e7cbc1072d10cc98bb",
         "type": "github"
       },
       "original": {
