@@ -14,6 +14,6 @@ in {
       userDefaultOptions.names = false;
     };
 
-    lualine.enable = true;
+    oil.enable = true;
   };
 }
