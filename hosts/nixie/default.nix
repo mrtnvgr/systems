@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   imports = [
     # Personal base (base with secrets)
     ../thlix
@@ -23,9 +23,4 @@
       reaper.enable = true;
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    # ghidra
-    # (cutter.withPlugins (plugins: with plugins; [ rz-ghidra ]))
-  ];
 }

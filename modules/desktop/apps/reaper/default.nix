@@ -8,7 +8,6 @@ let
 
   # TODO: https://github.com/NixOS/nixpkgs/issues/300755
   # TODO!: https://bugs.winehq.org/show_bug.cgi?id=54692
-  # FIXME: pitchproof, MT-PowerDrumKit are broken
   # Let's use a stable release for now
   reaperPkgs = import (pkgs.fetchFromGitHub {
     owner = "NixOS";
