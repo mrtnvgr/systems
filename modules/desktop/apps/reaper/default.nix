@@ -6,21 +6,9 @@ let
 
   files = "${config.flakePath}/modules/desktop/apps/reaper";
 
-  # TODO: https://github.com/NixOS/nixpkgs/issues/300755
-  # TODO!: https://bugs.winehq.org/show_bug.cgi?id=54692
-  # Let's use a stable release for now
-  reaperPkgs = import (pkgs.fetchFromGitHub {
-    owner = "NixOS";
-    repo = "nixpkgs";
-    rev = "nixos-23.11";
-    hash = "sha256-XgC/a/giEeNkhme/AV1ToipoZ/IVm1MV2ntiK4Tm+pw=";
-  }) { system = pkgs.stdenv.system; };
-  # NOTE: using >9.0, because of https://bugs.winehq.org/show_bug.cgi?id=55813
-  winePkg = reaperPkgs.wineWowPackages.stableFull;
-
-  yabridge-fixed = pkgs.yabridge.override {
-    wine = winePkg;
-  };
+  winePkg = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
+  yabridge-fixed = pkgs.yabridge.override { wine = winePkg; };
+  yabridgectl-fixed = pkgs.yabridgectl.override { wine = winePkg; };
 
   reaper-wrapped = let
     # Used to protect some values for privacy reasons
