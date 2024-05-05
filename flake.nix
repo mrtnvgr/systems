@@ -15,6 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
     nix-colors.url = "github:Misterio77/nix-colors";
 
     nixvim = {
