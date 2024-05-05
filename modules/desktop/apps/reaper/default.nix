@@ -208,6 +208,12 @@ in {
           src = "${files}/presets/nolly";
           path = "ProgramData/Neural DSP/Archetype Nolly/User";
         }
+
+        # Neural DSP: OMEGA Ampworks Granophyre (User presets)
+        {
+          src = "${files}/presets/granophyre";
+          path = "ProgramData/Neural DSP/OMEGA Ampworks Granophyre/User";
+        }
       ];
     };
 
