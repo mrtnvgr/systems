@@ -157,7 +157,12 @@ let
 
   arch = pkgs.stdenv.targetPlatform.linuxArch;
 in {
-  imports = [ inputs.musnix.nixosModules.musnix ];
+  imports = [
+    inputs.musnix.nixosModules.musnix
+
+    inputs.nix-gaming.nixosModules.pipewireLowLatency
+    inputs.nix-gaming.nixosModules.platformOptimizations
+  ];
 
   options.modules.desktop.apps.reaper = {
     enable = mkEnableOption "reaper";
@@ -228,7 +233,7 @@ in {
       '';
 
       home.activation.yabridge-sync = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        $DRY_RUN_CMD ${pkgs.yabridgectl}/bin/yabridgectl sync -p -n $VERBOSE_ARG
+        $DRY_RUN_CMD ${yabridgectl-fixed}/bin/yabridgectl sync -p -n $VERBOSE_ARG
       '';
 
       # Reaper MIDI notes colormap
@@ -268,7 +273,18 @@ in {
     # Real-time audio tweaks
     musnix.enable = true;
     musnix.kernel.packages = pkgs.linuxPackages_latest_rt;
-    environment.sessionVariables.WINEFSYNC = "1";
+
+    # Provided by nix-gaming modules
+    services.pipewire.lowLatency.enable = true;
+    programs.steam.platformOptimizations.enable = true;
+
+    # note: workaround for fufexan/nix-gaming#173
+    security.pam.loginLimits = [{
+      domain = user;
+      item = "nice";
+      type = "hard";
+      value = "-20";
+    }];
 
     environment.systemPackages = with pkgs; [
       # FIXME: neuralnote
