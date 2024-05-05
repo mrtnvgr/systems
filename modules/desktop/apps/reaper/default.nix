@@ -67,8 +67,8 @@ let
 
       mapQuery = filename: query: list: mapLines (x: query filename x) list;
 
-      mapFileSettings = file: with file; mapQuery name settingQuery settings;
-      mapFileChunks = file: with file; mapQuery name chunkQuery chunks;
+      mapFileSettings = file: mapQuery file.name settingQuery file.settings;
+      mapFileChunks = file: mapQuery file.name chunkQuery file.chunks;
       mapFile = file: concatStringsSep "\n" [ "set -x" (mapFileSettings file) (mapFileChunks file) "set +x" ];
     in mapLines mapFile privateFiles;
 
@@ -175,12 +175,12 @@ in {
     };
 
     data = mkOption {
-      type = with types; listOf (submodule {
+      type = types.listOf (types.submodule {
         options = {
-          src = mkOption { type = str; };
-          path = mkOption { type = str; };
-          symlink = mkOption { type = bool; default = true; };
-          linkContents = mkOption { type = bool; default = false; };
+          src = mkOption { type = types.str; };
+          path = mkOption { type = types.str; };
+          symlink = mkOption { type = types.bool; default = true; };
+          linkContents = mkOption { type = types.bool; default = false; };
         };
       });
 
