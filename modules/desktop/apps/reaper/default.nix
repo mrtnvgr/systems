@@ -106,7 +106,8 @@ let
           "cp -r";
 
         mkData = x: /* bash */ ''
-          DSTPATH="$HOME/.wine-nix/reaper/drive_c/${x.path}"
+          DSTPATH="$HOME/.wine-nix/reaper/drive_c/${x.dest}"
+          # TODO: 644 for files
           mkdir --mode=755 -pv "`dirname "$DSTPATH"`"
           ${getCopyMethod x} -vf "${x.src}" "$DSTPATH"
           chmod -Rcf 755 "$DSTPATH"
@@ -182,8 +183,8 @@ in {
     data = mkOption {
       type = types.listOf (types.submodule {
         options = {
-          src = mkOption { type = types.str; };
-          path = mkOption { type = types.str; };
+          src = mkOption { type = types.path; };
+          dest = mkOption { type = types.str; };
           symlink = mkOption { type = types.bool; default = true; };
           linkContents = mkOption { type = types.bool; default = false; };
         };
@@ -193,26 +194,26 @@ in {
         # Neural DSP (Stock presets)
         {
           src = "${inputs.ndsp-presets}";
-          path = "ProgramData/Neural DSP";
+          dest = "ProgramData/Neural DSP";
           linkContents = true;
         }
 
         # Neural DSP: Archetype Gojira (User presets)
         {
           src = "${files}/presets/gojira";
-          path = "ProgramData/Neural DSP/Archetype Gojira/User";
+          dest = "ProgramData/Neural DSP/Archetype Gojira/User";
         }
 
         # Neural DSP: Archetype Nolly (User presets)
         {
           src = "${files}/presets/nolly";
-          path = "ProgramData/Neural DSP/Archetype Nolly/User";
+          dest = "ProgramData/Neural DSP/Archetype Nolly/User";
         }
 
         # Neural DSP: OMEGA Ampworks Granophyre (User presets)
         {
           src = "${files}/presets/granophyre";
-          path = "ProgramData/Neural DSP/OMEGA Ampworks Granophyre/User";
+          dest = "ProgramData/Neural DSP/OMEGA Ampworks Granophyre/User";
         }
       ];
     };
