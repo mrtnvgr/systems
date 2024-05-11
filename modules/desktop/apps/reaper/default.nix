@@ -228,9 +228,8 @@ in {
     home-manager.users.${user} = { lib, ... }: {
       home.packages = [ reaper-wrapped yabridge-fixed ];
 
-      # TODO: remove .wvst* lookups
       home.file.".config/yabridgectl/config.toml".text = ''
-        plugin_dirs = [${concatStringsSep ", " (map (x: "\"${x}\"") cfg.plugins)}, "/home/${user}/.wvst3", "/home/${user}/.wvst"]
+        plugin_dirs = [${concatStringsSep ", " (map (x: "\"${x}\"") cfg.plugins)}, "/home/${user}/.wplugs"]
       '';
 
       # Do not isolate VST2 plugins
