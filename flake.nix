@@ -24,9 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    waybar.url = "github:Alexays/waybar";
-
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
     schizofox.url = "github:schizofox/schizofox";

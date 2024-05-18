@@ -3,7 +3,6 @@ let
   inherit (lib) mkIf fileContents;
   inherit (config.colorScheme) palette;
 
-  hyprland-nightly = inputs.hyprland.packages.${pkgs.system}.hyprland;
   theme = config.modules.desktop.theme;
 in {
   imports = [
@@ -15,7 +14,6 @@ in {
     home-manager.users.${user} = {
       wayland.windowManager.hyprland = {
         enable = true;
-        package = hyprland-nightly;
 
         settings = with palette; {
           general = {
