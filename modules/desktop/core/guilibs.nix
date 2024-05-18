@@ -3,16 +3,6 @@ let
   inherit (lib) mkIf;
   cfg = config.modules.desktop;
   nix-colors-lib = inputs.nix-colors.lib.contrib { inherit pkgs; };
-  palette = config.colorScheme.palette;
-
-  # TODO: bibata-custom = pkgs.bibata-cursors.overrideAttrs (srcAttrs: {
-  #   buildInputs = with pkgs; (srcAttrs.buildInputs or []) ++ [ cbmp ];
-  #
-  #   buildPhase = ''
-  #     cbmp -d "svg/modern" -o "bitmaps/Bibata-Custom" -bc "#${palette.background}" -oc "#${palette.text}" -wc "#${palette.background}"
-  #     ctgen build.toml -p x11 -d "bitmaps/Bibata-Custom" -n "Bibata-Custom" -c "Custom colored, rounded edge Bibata cursors."
-  #   '';
-  # });
 in {
   config = mkIf cfg.enable {
     home-manager.users."${user}" = {
@@ -36,10 +26,10 @@ in {
       };
 
       home.pointerCursor = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Ice";
+        package = pkgs.catppuccin-cursors.macchiatoPink;
+        name = "Catppuccin-Macchiato-Pink-Cursors";
 
-        size = 16;
+        size = 24;
 
         x11.enable = true;
         gtk.enable = true;
