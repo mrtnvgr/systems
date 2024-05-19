@@ -13,8 +13,8 @@ This repository contains my [NixOS](https://nixos.org/) configurations
 ### Desktops
 
 - **nixie** - daily driver laptop
-- _**thlix** - personal ISO with secrets (basically personal `nixie`)_
-- _**minix** - base for all desktops (mainly used for ISO builds)_
+- _**thlix** - minimal personal desktop_
+- _**minix** - base of all desktops (ISO builds)_
 
 ### Servers
 
@@ -53,7 +53,7 @@ This repository contains my [NixOS](https://nixos.org/) configurations
   - Create a new volume: `fdisk /dev/sdX <<<$'n\np\n\n\n\nw'`
   - Format the volume: `mkfs.ext4 -L <YOUR-HOST-NAME>persistence /dev/sdX3`
 
-## FAQ
+## Troubleshooting
 
 - `git-crypt: error: encrypted file has been tampered with!`:
 
