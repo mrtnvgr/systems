@@ -107,10 +107,12 @@ let
 
         mkData = x: /* bash */ ''
           DSTPATH="$HOME/.wine-nix/reaper/drive_c/${x.dest}"
-          # TODO: 644 for files
           mkdir --mode=755 -pv "`dirname "$DSTPATH"`"
           ${getCopyMethod x} -vf "${x.src}" "$DSTPATH"
-          chmod -Rcf 755 "$DSTPATH"
+
+          # https://superuser.com/a/91938
+          find "$DSTPATH" -type d -print0 | xargs -0 chmod 755
+          find "$DSTPATH" -type f -print0 | xargs -0 chmod 644
         '';
       in
         concatStringsSep "\n" (map mkData cfg.data);
