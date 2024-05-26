@@ -31,7 +31,7 @@ let
       { name = "reaper-reginfo2.ini"; settings = [ "uss" ]; chunks = []; }
     ];
 
-    cacheFiles = [ "recentfx" "fxtags" "vstplugins64" "jsfx" "extstate" "midihw-linux" "midihw-alsa" "wndpos" ];
+    cacheFiles = [ "recentfx" "fxtags" "vstplugins64" "jsfx" "extstate" "midihw-linux" "midihw-alsa" "wndpos" "vstshells64" ];
 
     # Shortcuts: map&concat
     mapLines = func: data: concatStringsSep "\n" (map func data);
