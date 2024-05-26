@@ -111,8 +111,8 @@ let
           ${getCopyMethod x} -vf "${x.src}" "$DSTPATH"
 
           # https://superuser.com/a/91938
-          find "$DSTPATH" -type d -print0 | xargs -0 chmod 755
-          find "$DSTPATH" -type f -print0 | xargs -0 chmod 644
+          find "$DSTPATH" -type d -exec chmod 755 {} +
+          find "$DSTPATH" -type f -exec chmod 644 {} +
         '';
       in
         concatStringsSep "\n" (map mkData cfg.data);
