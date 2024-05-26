@@ -1,6 +1,6 @@
 { inputs, ... }: {
   nixpkgs.overlays = with inputs; [
-    neovim-nightly.overlay
-    mrtnvgr.overlay
+    neovim-nightly.overlays.default
+    mrtnvgr.outputs.overlay
   ];
 }

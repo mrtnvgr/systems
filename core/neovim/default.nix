@@ -1,10 +1,9 @@
-{ inputs, pkgs, config, user, ... }: {
+{ inputs, pkgs, user, ... }: {
   home-manager.users.${user} = {
     imports = [ inputs.nixvim.homeManagerModules.nixvim ];
 
     programs.nixvim = {
       enable = true;
-      package = pkgs.neovim-nightly;
 
       viAlias = true;
       vimAlias = true;
