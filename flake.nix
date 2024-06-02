@@ -56,7 +56,8 @@
     reascripts.url = "github:ReaTeam/ReaScripts";
     reascripts.flake = false;
 
-    oxidec.url = "github:mrtnvgr/oxidec";
+    reaper-ytpmv.url = "github:tweelix/Midi-to-Video";
+    reaper-ytpmv.flake = false;
   };
 
   outputs = { nixpkgs, ... } @ inputs:

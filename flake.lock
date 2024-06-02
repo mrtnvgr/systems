@@ -1058,6 +1058,22 @@
         "type": "github"
       }
     },
+    "reaper-ytpmv": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1556110451,
+        "narHash": "sha256-/31Q0Pl4pYP/GGBAn5Oycc27xNgBaWzc2RsekKMtObk=",
+        "owner": "tweelix",
+        "repo": "Midi-to-Video",
+        "rev": "59306ac1c1b05d97494723e88b4762a0629dd08c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tweelix",
+        "repo": "Midi-to-Video",
+        "type": "github"
+      }
+    },
     "reascripts": {
       "flake": false,
       "locked": {
@@ -1094,6 +1110,7 @@
         "nixpkgs": "nixpkgs_5",
         "nixvim": "nixvim",
         "oxidec": "oxidec",
+        "reaper-ytpmv": "reaper-ytpmv",
         "reascripts": "reascripts",
         "schizofox": "schizofox"
       }
