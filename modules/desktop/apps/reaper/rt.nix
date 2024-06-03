@@ -5,7 +5,14 @@ in {
   config = mkIf cfg.enable {
     # Real-time audio tweaks
     musnix.enable = true;
+    musnix.kernel.realtime = true;
     musnix.kernel.packages = pkgs.linuxPackages_latest_rt;
+    musnix.rtirq.enable = true;
+
+    powerManagement = {
+      enable = true;
+      cpuFreqGovernor = "performance";
+    };
 
     # Provided by nix-gaming modules
     services.pipewire.lowLatency.enable = true;
