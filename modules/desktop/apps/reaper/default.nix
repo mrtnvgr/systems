@@ -173,6 +173,7 @@ in {
     ./theme.nix
     ./jsfx.nix
     ./reascripts.nix
+    ./sws.nix
   ];
 
   config = mkIf cfg.enable {
