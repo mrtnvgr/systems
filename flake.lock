@@ -633,11 +633,11 @@
     "ndsp-presets": {
       "flake": false,
       "locked": {
-        "lastModified": 1716698458,
-        "narHash": "sha256-K3tZW3OrpRPwTVIb+X1YolNwzDKrNM4SeiMiFZQj65M=",
+        "lastModified": 1717469706,
+        "narHash": "sha256-7PZQ3x79wKR4BPD0s/dDjJCphGn8/OnaOxETeaTcMQQ=",
         "owner": "musicprodcdn",
         "repo": "presets",
-        "rev": "adb0fa21cf9490e56a616f96813972634706f11f",
+        "rev": "1e8ec03d61e08c448d17e8bd2f507e1bd0e6b630",
         "type": "github"
       },
       "original": {
