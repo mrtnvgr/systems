@@ -1,26 +1,13 @@
-{ inputs, config, user, hostname, ... }:
-let
-  inherit (inputs.nix-colors.lib.conversions) hexToRGBString;
-
-  mkHexColor = x: ''\e[38;2;${hexToRGBString ";" x}m'';
-  reset = ''\e[0m'';
-
-  palette = config.colorScheme.palette;
-
-  icon = with palette;
-  # TODO: better way to determine this
-  if hostname == "thlix" then
-    "${mkHexColor pink}󱊞"
-  else if config.modules.desktop.enable then
-    "${mkHexColor blue}"
-  else
-    "";
+{ pkgs, user, ... }: let
+  fixperms = pkgs.writeShellScriptBin "fixperms" ''
+    find "$1" -type d -exec chmod 755 {} +
+    find "$1" -type f -exec chmod 644 {} +
+  '';
 in {
   home-manager.users.${user} = {
     programs.bash = {
       enable = true;
 
-      # initExtra = ''PS1="${icon} \W ${reset}"'';
       initExtra = ''
         PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
       '';
@@ -33,5 +20,7 @@ in {
         rsync-mirror-fat = "rsync -r --update --delete --size-only";
       };
     };
+
+    home.packages = [ fixperms ];
   };
 }
