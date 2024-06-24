@@ -7,6 +7,10 @@ in {
       # FIXME: neuralnote
       neural-amp-modeler-lv2
       sfizz
+
+      # Synths
+      vital
+      surge
     ];
   };
 }
