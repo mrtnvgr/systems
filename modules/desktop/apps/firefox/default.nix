@@ -91,14 +91,7 @@ in {
         #   --webextension-menupanel-image: [[ICON URL]] !important;
         # }
 
-        # TODO: https://github.com/schizofox/schizofox/issues/84
-        extensions = {
-          # Overwriting default extensions
-          defaultExtensions = {
-            "uBlock0@raymondhill.net".install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-            "DontFuckWithPaste@raim.ist".install_url = "https://addons.mozilla.org/firefox/downloads/latest/don-t-fuck-with-paste/latest.xpi";
-          };
-        };
+        extensions.enableDefaultExtensions = true;
       };
     };
   };
