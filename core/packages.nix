@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
 
@@ -9,5 +9,6 @@
     file
     dos2unix
     progress
+    procps # replaces coreutils uptime
   ];
 }
