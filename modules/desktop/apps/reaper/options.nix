@@ -9,15 +9,15 @@ in {
     plugins = mkOption {
       type = with types; listOf path;
       default = [
-        # Pitchproof by Aegean Music
         (pkgs.fetchzip {
+          name = "Pitchproof";
           url = "https://aegeanmusic.com/sitedownload/pitchproof.zip";
           hash = "sha256-tJWPP3QTmwWxOTuMvwi4OxM3lArGN8GoqU0/3G+cnYY=";
           stripRoot = false;
         } + "/pitchproof${if arch == "x86_64" then "-x64" else ""}.dll")
 
-        # TSE808
         (pkgs.fetchzip {
+          name = "TSE808";
           url = "https://www.tseaudio.com/files/TSE808_win64.zip";
           hash = "sha256-gHpC71bkoNUcALxyLOpGFVHJlTe01hYAnfnpLcXMsOY=";
           stripRoot = false;
@@ -59,6 +59,12 @@ in {
         {
           src = "${files}/presets/granophyre";
           dest = "ProgramData/Neural DSP/OMEGA Ampworks Granophyre/User";
+        }
+
+        # Neural DSP: Archetype Plini (User presets)
+        {
+          src = "${files}/presets/plini";
+          dest = "ProgramData/Neural DSP/Archetype Plini/User";
         }
       ];
     };

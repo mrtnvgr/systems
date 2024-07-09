@@ -6,8 +6,8 @@ let
 
   files = "${config.flakePath}/modules/desktop/apps/reaper";
 
-  # winePkg = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
-  winePkg = pkgs.wineWowPackages.stagingFull;
+  winePkg = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
+  # winePkg = pkgs.wineWowPackages.stagingFull;
   reaper-yabridge = pkgs.yabridge.override { wine = winePkg; };
   reaper-yabridgectl = pkgs.yabridgectl.override { wine = winePkg; };
 
@@ -174,6 +174,7 @@ in {
     ./jsfx.nix
     ./reascripts.nix
     ./sws.nix
+    ./avoid-gc.nix
   ];
 
   config = mkIf cfg.enable {
