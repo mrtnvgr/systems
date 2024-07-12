@@ -8,6 +8,7 @@ in {
     musnix.kernel.realtime = true;
     musnix.kernel.packages = pkgs.linuxPackages_latest_rt;
     musnix.rtirq.enable = true;
+    musnix.rtcqs.enable = true;
 
     powerManagement = {
       enable = true;

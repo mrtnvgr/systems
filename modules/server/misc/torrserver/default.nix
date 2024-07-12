@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 let
-  inherit (lib) mkIf mkEnableOption mkOption types optionalString;
+  inherit (lib) mkIf mkEnableOption mkOption types;
   cfg = config.modules.server.misc.torrserver;
 
   pkg = pkgs.stdenv.mkDerivation rec {
