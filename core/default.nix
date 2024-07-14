@@ -22,6 +22,7 @@
     ./gpg.nix
     ./firmware.nix
     ./kernel.nix
+    ./gc-whitelist.nix
   ];
 
   networking.hostName = hostname;

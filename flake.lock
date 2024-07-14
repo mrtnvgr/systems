@@ -932,19 +932,6 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1713537308,
-        "narHash": "sha256-XtTSSIB2DA6tOv+l0FhvfDMiyCmhoRbNB+0SeInZkbk=",
-        "path": "/nix/store/v4pcs3nzx54m5bmxd39win0rgl2d2hbx-source",
-        "rev": "5c24cf2f0a12ad855f444c30b2421d044120c66f",
-        "type": "path"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_7": {
-      "locked": {
         "lastModified": 1718419000,
         "narHash": "sha256-v4+aJpRDbJil691DXo5SydqowcB01B6E9+wFH/pNk6k=",
         "owner": "NixOS",
@@ -985,23 +972,6 @@
         "owner": "nix-community",
         "repo": "nixvim",
         "type": "github"
-      }
-    },
-    "oxidec": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_6"
-      },
-      "locked": {
-        "dirtyRev": "4927f834de18829d1b3aa0ceef58c4472267ecbc-dirty",
-        "dirtyShortRev": "4927f83-dirty",
-        "lastModified": 1716105191,
-        "narHash": "sha256-MY/bdRSlsAcmrpHBet8f/zEG4uPg51Cw2zoUqF3ldOg=",
-        "type": "git",
-        "url": "file:///home/user/repos/oxidec"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:///home/user/repos/oxidec"
       }
     },
     "pre-commit-hooks": {
@@ -1109,7 +1079,6 @@
         "nixos-mailserver": "nixos-mailserver",
         "nixpkgs": "nixpkgs_5",
         "nixvim": "nixvim",
-        "oxidec": "oxidec",
         "reaper-ytpmv": "reaper-ytpmv",
         "reascripts": "reascripts",
         "schizofox": "schizofox"
@@ -1121,7 +1090,7 @@
         "flake-parts": "flake-parts_5",
         "home-manager": "home-manager_3",
         "nixpak": "nixpak",
-        "nixpkgs": "nixpkgs_7",
+        "nixpkgs": "nixpkgs_6",
         "searx-randomizer": "searx-randomizer",
         "systems": "systems_3"
       },
