@@ -6,7 +6,7 @@ in {
   home-manager.users.${user}.programs.nixvim.plugins = mkIf cfg.enable {
     treesitter = {
       enable = true;
-      indent = true;
+      settings.indent.enable = true;
       nixvimInjections = true;
     };
   };
