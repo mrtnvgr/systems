@@ -27,7 +27,7 @@ in {
 
       home.pointerCursor = {
         package = pkgs.catppuccin-cursors.macchiatoPink;
-        name = "Catppuccin-Macchiato-Pink-Cursors";
+        name = "catppuccin-macchiato-pink-cursors";
 
         size = 24;
 

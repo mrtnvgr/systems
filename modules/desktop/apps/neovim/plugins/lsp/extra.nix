@@ -36,5 +36,7 @@ in {
       vim.lsp.handlers.signature_help,
       { border = "${cfg.border}" }
     )
+
+    vim.lsp.set_log_level("off")
   '';
 }

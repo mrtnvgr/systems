@@ -13,9 +13,9 @@ in {
   config = mkIf cfg.enable {
     fonts = {
       enableDefaultPackages = true;
-      packages = with pkgs; [
-        corefonts
-        dejavu_fonts
+      packages = [
+        pkgs.corefonts
+        pkgs.dejavu_fonts
         font.package
       ];
     };

@@ -1,4 +1,4 @@
-{ colorschemes, pkgs, ... }: rec {
+{ colorschemes, pkgs, ... }: {
   colorScheme = colorschemes.catppuccin;
 
   modules.desktop = {
