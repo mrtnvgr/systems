@@ -8,10 +8,10 @@
     ./packages.nix
     ./network.nix
     ./screenshots.nix
-    ./wayland.nix
     ./adb.nix
     ./wallpapers.nix
 
     ./rices
+    ./guiServers
   ];
 }

@@ -181,8 +181,10 @@ in {
     home-manager.users.${user} = { lib, ... }: {
       home.packages = [ reaper-wrapped reaper-yabridge reaper-yabridgectl ];
 
-      home.file.".config/yabridgectl/config.toml".text = ''
-        plugin_dirs = [${concatStringsSep ", " (map (x: "\"${x}\"") cfg.plugins)}, "/home/${user}/.wplugs"]
+      home.file.".config/yabridgectl/config.toml".text = let
+        plugins = cfg.plugins ++ [ "/home/${user}/.wplugs" ];
+      in ''
+        plugin_dirs = [${concatStringsSep ", " (map (x: "\"${x}\"") plugins)}]
       '';
 
       # Do not isolate VST2 plugins

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, user, ... }:
+{ pkgs, lib, config, ... }:
 let
   inherit (lib) mkIf;
   cfg = config.modules.desktop;
@@ -6,13 +6,6 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       xdg-utils
-
-      # Media capturing
-      wl-clipboard
-      wl-screenrec
-
-      # Media conversion
-      ffmpeg
     ];
   };
 }

@@ -1,4 +1,5 @@
 { config, pkgs, lib, ... }: let
+  # TODO: Xorg support
   inherit (lib) mkIf mkOption mkOptionType types hasPrefix removePrefix;
   inherit (builtins) isString concatStringsSep;
 

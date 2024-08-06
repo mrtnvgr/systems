@@ -33,10 +33,10 @@
           hash = "sha256-H9VpfpdOQzfzHkKE1HzjbfUdBLqGU0+5wuWzxQBB0cc=";
         })
 
-        (fetchurl {
-          url = "https://w.wallhaven.cc/full/m3/wallhaven-m3zrmy.png";
-          hash = "sha256-BNsKALFBm9Ukb6j62fap3n/O0bHlyYFj0ic5qnfdbnI=";
-        })
+        # (fetchurl {
+        #   url = "https://w.wallhaven.cc/full/m3/wallhaven-m3zrmy.png";
+        #   hash = "sha256-BNsKALFBm9Ukb6j62fap3n/O0bHlyYFj0ic5qnfdbnI=";
+        # })
 
         (fetchurl {
           url = "https://w.wallhaven.cc/full/2y/wallhaven-2yw9w9.png";

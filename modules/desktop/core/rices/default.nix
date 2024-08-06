@@ -5,7 +5,7 @@ let
 in {
   options.modules.desktop.theme = {
     rice = mkOption {
-      type = with types; nullOr (enum rices);
+      type = types.nullOr (types.enum rices);
       default = null;
     };
 
