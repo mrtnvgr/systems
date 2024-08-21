@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, config, user, ... }:
+{ lib, config, user, ... }:
 let
   inherit (lib) mkIf fileContents;
   inherit (config.colorScheme) palette;
@@ -7,6 +7,7 @@ let
 in {
   imports = [
     ./portal.nix
+    ./polkit.nix
     ./wallpaper.nix
   ];
 

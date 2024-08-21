@@ -136,7 +136,7 @@ let
       ];
     in script;
 
-    preScript = ''
+    preScript = /* bash */ ''
       # Read timestamps
       REPOSTAMP=`cat "${files}/configs/nixtimestamp" 2>/dev/null || echo "1"`
       SYSTEMSTAMP=`cat "$HOME/.config/reaper/nixtimestamp" 2>/dev/null || echo "0"`
@@ -150,6 +150,9 @@ let
       else
         ${postScript}
       fi
+
+      ${mkLog "Running preRun hook..."}
+      ${cfg.extraPreRunScript}
     '';
 
     postScript = ''

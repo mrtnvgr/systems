@@ -30,6 +30,11 @@ let
 
     # pygame
     # pyppeteer
+
+    django
+    django-tables2
+    pandas
+    openpyxl
   ];
 
   cfg = config.modules.desktop.dev.python;

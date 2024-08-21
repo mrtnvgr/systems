@@ -73,5 +73,10 @@ in {
       type = with types; listOf path;
       default = [ ];
     };
+
+    extraPreRunScript = mkOption {
+      type = types.str;
+      default = "";
+    };
   };
 }
