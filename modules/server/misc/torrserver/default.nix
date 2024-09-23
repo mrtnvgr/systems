@@ -36,11 +36,6 @@ in {
       default = 8090;
     };
 
-    jackettPort = mkOption {
-      type = types.port;
-      default = 9117;
-    };
-
     expose = mkEnableOption "expose torrserver in firewall";
 
     users = mkOption {
@@ -96,33 +91,19 @@ in {
     networking.firewall.allowedTCPPorts = mkIf cfg.expose [ cfg.port ];
     networking.firewall.allowedUDPPorts = mkIf cfg.expose [ cfg.port ];
 
-    services.nginx.virtualHosts = mkIf webIsSupported {
-      "ts.${domain}" = {
-        locations = {
-          "/" = {
-            proxyPass = "http://localhost:${toString cfg.port}";
-          };
-
-          "= /" = {
-            basicAuth = cfg.webUsers;
-          };
+    services.nginx.virtualHosts."ts.${domain}" = mkIf webIsSupported {
+      locations = {
+        "/" = {
+          proxyPass = "http://localhost:${toString cfg.port}";
         };
 
-        enableACME = true;
-        forceSSL = true;
+        "= /" = {
+          basicAuth = cfg.webUsers;
+        };
       };
 
-      "jck.${domain}" = {
-        locations."/".proxyPass = "http://localhost:${toString config.modules.server.misc.torrserver.jackettPort}";
-
-        enableACME = true;
-        forceSSL = true;
-      };
-    };
-
-    services.jackett = {
-      enable = true;
-      openFirewall = cfg.expose;
+      enableACME = true;
+      forceSSL = true;
     };
   };
 }
