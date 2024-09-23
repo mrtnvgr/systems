@@ -1,7 +1,7 @@
 { user, ... }: {
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "disk" ];
+    extraGroups = [ "wheel" "disk" "dialout" ];
     initialPassword = "password";
   };
 
