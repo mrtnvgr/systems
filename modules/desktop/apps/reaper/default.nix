@@ -93,8 +93,7 @@ let
 
     wine = winePkg;
 
-    # FIXME: dxvk breaks pitchproof, dxvk fixes cab-lab :/
-    tricks = [ "mfc42" "vcrun2022" "dxvk" ];
+    tricks = [ "mfc42" "vcrun2022" "dxvk" "gdiplus" ];
 
     isWinBin = false;
 

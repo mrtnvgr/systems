@@ -11,6 +11,7 @@ in {
       # Synths
       vital
       surge
+      helm
     ];
   };
 }
