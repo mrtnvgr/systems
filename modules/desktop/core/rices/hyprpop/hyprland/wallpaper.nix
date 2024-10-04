@@ -5,7 +5,7 @@ in {
   config = mkIf (theme.rice == "hyprpop") {
     home-manager.users.${user} = {
       wayland.windowManager.hyprland.extraConfig = ''
-        exec-once = chwl & waybar
+        exec-once = ${pkgs.swaybg}/bin/swaybg -i ${theme.wallpaper} & waybar
       '';
     };
   };

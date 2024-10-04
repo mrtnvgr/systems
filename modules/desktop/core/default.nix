@@ -9,7 +9,7 @@
     ./network.nix
     ./screenshots.nix
     ./adb.nix
-    ./wallpapers.nix
+    ./wallpaper.nix
 
     ./rices
     ./guiServers
