@@ -31,10 +31,15 @@ let
     # pygame
     # pyppeteer
 
+    gunicorn
     django
     django-tables2
+    django-filter
     pandas
     openpyxl
+    pymorphy3 num2words
+
+    pydub
   ];
 
   cfg = config.modules.desktop.dev.python;

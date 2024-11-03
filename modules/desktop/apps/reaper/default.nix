@@ -20,8 +20,8 @@ let
         # note: use "..*" instead of ".+"
         settings = [
           "importpath"
-          "^lastproject" "^lastprojuiref" "^lastscript"
-          "^projecttab.+"
+          "^lastproject" "^lastprojuiref" "^lastscript" "^lastrenderpath..*"
+          "^projecttab..*"
           "wnd_(h|w|x|y)"
           "^BR - StartupVersionCheck"
         ];
