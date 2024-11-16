@@ -32,14 +32,6 @@
     };
 
     misc = {
-      vkreborn = {
-        enable = true;
-        env = ./secrets/vkreborn;
-
-        dbPath = "/home/user/vkrdb";
-        dbEnv = ./secrets/vkrdb;
-      };
-
       torrserver = {
         enable = true;
         expose = true;

@@ -1,11 +1,10 @@
-{ lib, config, ... }:
+{ lib, ... }:
 let
-  inherit (lib) mkOption mkEnableOption types;
+  inherit (lib) mkEnableOption;
 in {
   options.modules.server.misc.enable = mkEnableOption "other services";
 
   imports = [
-    ./vkreborn
     ./torrserver
   ];
 }
