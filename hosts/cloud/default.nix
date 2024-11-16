@@ -41,13 +41,15 @@
     };
   };
 
-  systemd.user.services.botb-battles = {
+  systemd.services.botb-battles = {
     enable = true;
+
+    wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
-    wantedBy = [ "default.target" ];
+
     serviceConfig = {
-        Type = "simple";
-        ExecStart = ''${pkgs.python3} ${./botb_battles.py}'';
+      Restart = "always";
+      ExecStart = "${pkgs.python3.withPackages (ps: with ps; [ requests ])}/bin/python ${./botb_battles.py}";
     };
   };
 
