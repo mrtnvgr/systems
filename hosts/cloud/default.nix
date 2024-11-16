@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   modules.server = {
     enable = true;
 
@@ -46,6 +46,16 @@
         users = import ./secrets/tsusers.nix;
         webUsers = import ./secrets/tsweb.nix;
       };
+    };
+  };
+
+  systemd.user.services.botb-battles = {
+    enable = true;
+    after = [ "network.target" ];
+    wantedBy = [ "default.target" ];
+    serviceConfig = {
+        Type = "simple";
+        ExecStart = ''${pkgs.python3} ${./botb_battles.py}'';
     };
   };
 
