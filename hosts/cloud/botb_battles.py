@@ -35,7 +35,7 @@ while True:
         sent_battles.append(battle)
         sent_battles_ids.add(battle["id"])
 
-    time.sleep(3600) # 1h
+    time.sleep(1500) # 25m
 
     # Collect garbage battles
     for battle in sent_battles:
