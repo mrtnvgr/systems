@@ -1,5 +1,8 @@
+#!/usr/bin/env python
+
 # Simple script to notify me about new BotB battles
 
+from requests.exceptions import RequestException, HTTPError
 from datetime import datetime, timedelta
 import requests, time
 
@@ -12,16 +15,23 @@ def get_adjusted_time(x):
 
 def ntfy_send(text):
     print(f"Sent: \"{text}\"")
-    resp = requests.post(f"https://ntfy.sh/{NTFY_TOPIC}", data = text.encode(encoding="utf-8"))
-    if resp.status_code != 200:
-        print(resp.json())
+
+    while True:
+        try:
+            requests.post(f"https://ntfy.sh/{NTFY_TOPIC}", data = text.encode(encoding="utf-8"))
+            break
+        except HTTPError as e:
+            print(e.response.json())
+        except RequestException as e:
+            print(f"Error: {e}")
+            time.sleep(600) # 10m
 
 sent_battles = []
 sent_battles_ids = set()
 
 while True:
     battles = requests.get("https://battleofthebits.com/api/v1/battle/current").json()
-    battles = [x for x in battles if x["period"] == "warmup"]
+    battles = [x for x in battles if x.get("period") == "warmup"]
 
     for battle in battles:
         if battle["id"] in sent_battles_ids:
@@ -39,6 +49,6 @@ while True:
 
     # Collect garbage battles
     for battle in sent_battles:
-        if get_adjusted_time(battle["start"]) > datetime.now():
+        if datetime.now() > get_adjusted_time(battle["start"]):
             sent_battles.remove(battle)
             sent_battles_ids.remove(battle["id"])
