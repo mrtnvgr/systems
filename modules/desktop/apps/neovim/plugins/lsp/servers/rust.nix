@@ -2,7 +2,7 @@
 let
   cfg = config.modules.desktop.dev.rust;
 in {
-  home-manager.users.${user}.programs.nixvim.plugins.lsp.servers.rust-analyzer = lib.mkIf cfg.enable {
+  home-manager.users.${user}.programs.nixvim.plugins.lsp.servers.rust_analyzer = lib.mkIf cfg.enable {
     enable = true;
 
     installCargo = false;

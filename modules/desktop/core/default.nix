@@ -10,6 +10,7 @@
     ./screenshots.nix
     ./adb.nix
     ./wallpaper.nix
+    ./hidraw.nix
 
     ./rices
     ./guiServers

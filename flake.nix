@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-wine.url = "github:nixos/nixpkgs/b73c2221a46c13557b1b3be9c2070cc42cf01eb3";
 
     generators.url = "github:nix-community/nixos-generators";
     generators.inputs.nixpkgs.follows = "nixpkgs";
@@ -41,9 +42,6 @@
     blog.url = "github:mrtnvgr/blog";
     blog.flake = false;
 
-    catppuccin-nvim.url = "github:catppuccin/nvim";
-    catppuccin-nvim.flake = false;
-
     jsfx-geraint.url = "github:musicprodcdn/geraintluff-jsfx";
     jsfx-geraint.flake = false;
 
@@ -55,9 +53,6 @@
 
     reascripts.url = "github:ReaTeam/ReaScripts";
     reascripts.flake = false;
-
-    reaper-ytpmv.url = "github:tweelix/Midi-to-Video";
-    reaper-ytpmv.flake = false;
   };
 
   outputs = { nixpkgs, ... } @ inputs:

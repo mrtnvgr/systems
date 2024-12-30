@@ -6,8 +6,8 @@ let
 
   files = "${config.flakePath}/modules/desktop/apps/reaper";
 
-  winePkg = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
-  # winePkg = pkgs.wineWowPackages.stagingFull;
+  winePkg = inputs.nixpkgs-wine.legacyPackages.${pkgs.system}.wineWowPackages.stagingFull;
+
   reaper-yabridge = pkgs.yabridge.override { wine = winePkg; };
   reaper-yabridgectl = pkgs.yabridgectl.override { wine = winePkg; };
 
@@ -20,7 +20,7 @@ let
         # note: use "..*" instead of ".+"
         settings = [
           "importpath"
-          "^lastproject" "^lastprojuiref" "^lastscript" "^lastrenderpath..*"
+          "^lastproject" "^lastprojuiref" "^lastscript" "^lastrenderpath"
           "^projecttab..*"
           "wnd_(h|w|x|y)"
           "^BR - StartupVersionCheck"

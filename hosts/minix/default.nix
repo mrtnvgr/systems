@@ -15,7 +15,7 @@
       # FIXME: Propo doesn't work with foot terminal! (Propo == "No prefix")
       font = {
         name = "CaskaydiaMono Nerd Font Propo";
-        package = pkgs.cascadia-mono-nerd-font;
+        package = pkgs.nerd-fonts.caskaydia-mono;
       };
 
       # font = {

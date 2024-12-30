@@ -1,18 +1,11 @@
-{ inputs, pkgs, config, user, ... }:
+{ config, user, ... }:
 let
   inherit (config.colorScheme) palette;
-
-  catppuccin-git = pkgs.vimUtils.buildVimPlugin {
-    name = "catppuccin";
-    src = inputs.catppuccin-nvim;
-  };
-
   opacity = config.modules.desktop.theme.opacity;
 in {
   home-manager.users.${user}.programs.nixvim = {
     colorschemes.catppuccin = {
       enable = true;
-      package = catppuccin-git;
 
       settings = {
         transparent_background = !(isNull opacity || opacity == 1.0);

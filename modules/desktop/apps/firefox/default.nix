@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, config, user, ... }:
+{ inputs, lib, config, user, ... }:
 let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.modules.desktop.apps.firefox;
@@ -47,7 +47,12 @@ in {
 
         # Disable Dark Reader
         extensions.darkreader.enable = false;
+
+        # Tell websites that we need a dark theme
         settings."privacy.resistFingerprinting" = false;
+
+        # Use full resolution
+        settings."privacy.resistFingerprinting.letterboxing" = false;
 
         # Enable browser toolbox
         settings."devtools.chrome.enabled" = true;

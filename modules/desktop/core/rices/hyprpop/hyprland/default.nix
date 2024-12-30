@@ -22,7 +22,6 @@ in {
             "col.inactive_border" = "rgb(${gray2})";
           };
 
-          decoration."col.shadow" = "rgb(${void})";
           misc."background_color" = "rgb(${background})";
         };
 

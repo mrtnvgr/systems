@@ -1,8 +1,5 @@
-{ pkgs, ... }: {
+{ ... }: {
   nix = {
-    # Use new experimental nix
-    package = pkgs.nixFlakes;
-
     settings = {
       # Enable flakes
       experimental-features = "nix-command flakes";
