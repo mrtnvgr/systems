@@ -54,4 +54,11 @@
   };
 
   system.stateVersion = "24.05";
+
+  imports = [
+    (import ./django.nix {
+      name = "quiz";
+      src = "/home/user/quiz";
+    })
+  ];
 }
