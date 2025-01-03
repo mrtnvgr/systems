@@ -13,7 +13,6 @@
       domain = "unixis.fun";
       master = "root@unixis.fun";
 
-      blog.enable = true;
       eggs.enable = true;
       cors.enable = true;
       cdn.enable = true;

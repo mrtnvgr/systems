@@ -54,7 +54,6 @@ in {
   };
 
   imports = [
-    ./blog.nix
     ./eggs.nix
     ./cors.nix
     ./cdn.nix
