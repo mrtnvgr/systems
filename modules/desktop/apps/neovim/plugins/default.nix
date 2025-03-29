@@ -8,5 +8,6 @@
     ./ui.nix
     ./nix.nix
     ./misc.nix
+    ./todo.nix
   ];
 }

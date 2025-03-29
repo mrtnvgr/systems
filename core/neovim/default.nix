@@ -1,4 +1,4 @@
-{ inputs, pkgs, user, ... }: {
+{ inputs, user, ... }: {
   home-manager.users.${user} = {
     imports = [ inputs.nixvim.homeManagerModules.nixvim ];
 

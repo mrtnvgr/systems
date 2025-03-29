@@ -19,19 +19,14 @@ in {
         "DiagnosticWarn" = mkStandout yellow;
         "DiagnosticError" = mkStandout red;
 
-        "@comment.todo".link = "DiagnosticInfo";
-        "@comment.note".link = "DiagnosticHint";
-        "@comment.warning".link = "DiagnosticWarn";
-        "@comment.error".link = "DiagnosticError";
-
-        "@comment.danger".link = "@comment.error";
+        "TODO".link = "DiagnosticInfo";
 
         "@constant.comment".fg = "#${pink}";
 
         "SpellBad" = mkMegaStandout red;
         "SpellCap".link = "SpellBad";
         "SpellLocal".link = "SpellBad";
-        "SpellRare".link = "SpellRare";
+        "SpellRare".link = "SpellBad";
       };
     };
   };
