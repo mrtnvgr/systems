@@ -173,7 +173,6 @@ in {
     ./rt.nix
     ./packages.nix
     ./theme.nix
-    ./jsfx.nix
     ./reascripts.nix
     ./sws.nix
     ./avoid-gc.nix

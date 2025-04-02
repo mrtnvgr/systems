@@ -39,18 +39,6 @@
     eggs.url = "https://github.com/mrtnvgr/eggs/releases/download/master/built.zip";
     eggs.flake = false;
 
-    blog.url = "github:mrtnvgr/blog";
-    blog.flake = false;
-
-    jsfx-geraint.url = "github:musicprodcdn/geraintluff-jsfx";
-    jsfx-geraint.flake = false;
-
-    jsfx-rejj.url = "github:musicprodcdn/ReJJ-jsfx";
-    jsfx-rejj.flake = false;
-
-    jsfx-chkhld.url = "github:musicprodcdn/chkhld-jsfx";
-    jsfx-chkhld.flake = false;
-
     reascripts.url = "github:ReaTeam/ReaScripts";
     reascripts.flake = false;
   };
