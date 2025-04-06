@@ -4,7 +4,7 @@
     programs.git = {
       enable = true;
       userName = "mrtnvgr";
-      userEmail = "root@unixis.fun";
+      userEmail = "martynovegorOF@yandex.ru";
 
       aliases = {
         ammit = "commit -a --amend --no-edit";
