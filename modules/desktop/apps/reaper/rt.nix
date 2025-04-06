@@ -5,9 +5,12 @@ in {
   config = mkIf cfg.enable {
     # Real-time audio tweaks
     musnix.enable = true;
+
     musnix.kernel.realtime = true;
-    musnix.kernel.packages = pkgs.linuxPackages-rt_latest;
-    musnix.rtirq.enable = true;
+    musnix.kernel.packages = pkgs.linuxPackages_latest_rt;
+
+    # Website that hosts the tarball is down
+    # FIXME: musnix.rtirq.enable = true;
     musnix.rtcqs.enable = true;
 
     powerManagement = {
