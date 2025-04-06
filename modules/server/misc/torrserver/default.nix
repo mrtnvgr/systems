@@ -26,6 +26,8 @@ let
   domain = config.modules.server.web.domain;
 
   hasUsers = cfg.users != {};
+  hasWebUsers = cfg.webUsers != {};
+
   flags = "--port ${toString cfg.port}";
 in {
   options.modules.server.misc.torrserver = {
@@ -36,7 +38,13 @@ in {
       default = 8090;
     };
 
-    expose = mkEnableOption "expose torrserver in firewall";
+    exposePort = mkOption {
+      type = types.bool;
+      default = cfg.enable;
+      description = "expose torrserver's port in firewall";
+    };
+
+    exposeWeb = mkEnableOption "expose torrserver to domain";
 
     users = mkOption {
       type = types.attrsOf types.str;
@@ -70,7 +78,6 @@ in {
         TimeoutSec = 30;
         Restart = "on-failure";
         RestartSec = "5s";
-        # StateDirectory = "torrserver";
       };
 
       wantedBy = [ "multi-user.target" ];
@@ -86,20 +93,20 @@ in {
       "d /etc/torrserver 0755 torrserver torrserver"
     ];
 
-    environment.etc."torrserver/accs.db".text = mkIf hasUsers (builtins.toJSON cfg.users);
+    environment.etc."torrserver/accs.db" = mkIf hasUsers {
+      text = builtins.toJSON cfg.users;
+    };
 
-    networking.firewall.allowedTCPPorts = mkIf cfg.expose [ cfg.port ];
-    networking.firewall.allowedUDPPorts = mkIf cfg.expose [ cfg.port ];
+    networking.firewall.allowedTCPPorts = mkIf cfg.exposePort [ cfg.port ];
+    networking.firewall.allowedUDPPorts = mkIf cfg.exposePort [ cfg.port ];
 
-    services.nginx.virtualHosts."ts.${domain}" = mkIf webIsSupported {
+    services.nginx.virtualHosts."ts.${domain}" = mkIf (webIsSupported && cfg.exposeWeb) {
       locations = {
         "/" = {
           proxyPass = "http://localhost:${toString cfg.port}";
         };
 
-        "= /" = {
-          basicAuth = cfg.webUsers;
-        };
+        "= /".basicAuth = mkIf hasWebUsers cfg.webUsers;
       };
 
       enableACME = true;

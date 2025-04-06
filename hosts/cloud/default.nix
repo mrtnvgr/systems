@@ -31,12 +31,7 @@
     };
 
     misc = {
-      torrserver = {
-        enable = true;
-        expose = true;
-        users = import ./secrets/tsusers.nix;
-        webUsers = import ./secrets/tsweb.nix;
-      };
+      torrserver.enable = true;
     };
   };
 
