@@ -55,7 +55,6 @@ in {
 
   imports = [
     ./eggs.nix
-    ./cors.nix
     ./cdn.nix
     ./redirects.nix
   ];

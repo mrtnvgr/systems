@@ -14,7 +14,6 @@
       master = "martynovegorOF@yandex.ru";
 
       eggs.enable = true;
-      cors.enable = true;
       cdn.enable = true;
 
       redirects = {
