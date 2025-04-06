@@ -31,8 +31,6 @@
 
     musnix.url = "github:musnix/musnix";
 
-    nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-
     ndsp-presets.url = "github:musicprodcdn/presets";
     ndsp-presets.flake = false;
 

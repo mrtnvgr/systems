@@ -23,13 +23,6 @@
       };
     };
 
-    # - Follow the setup guide: https://nixos-mailserver.readthedocs.io/en/latest/setup-guide.html
-    # - Open these ports in your router: 25, 143, 465, 587, 993
-    email = {
-      enable = true;
-      accounts."root@unixis.fun".hashedPasswordFile = ./secrets/mailpass;
-    };
-
     misc = {
       torrserver.enable = true;
     };
