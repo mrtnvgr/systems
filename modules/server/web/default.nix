@@ -14,6 +14,7 @@ in {
 
     security.acme = {
       acceptTerms = true;
+      defaults.email = cfg.master;
     };
 
     services.nginx = {

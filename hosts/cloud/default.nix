@@ -11,7 +11,7 @@
     web = {
       enable = true;
       domain = "unixis.fun";
-      master = "root@unixis.fun";
+      master = "martynovegorOF@yandex.ru";
 
       eggs.enable = true;
       cors.enable = true;
