@@ -2,13 +2,10 @@
 let
   inherit (lib) mkIf mkEnableOption mkOption types;
   cfg = config.modules.server.misc.telegram-api;
-
-  domain = config.modules.server.web.domain;
-
-  flags = "--local --api-id=\"${cfg.api_id}\" --api-hash=\"${cfg.api_hash}\" --http-port ${toString cfg.port} --dir=/tmp/";
+  flags = "--local --api-id=${cfg.api_id} --api-hash=${cfg.api_hash} --http-port ${toString cfg.port}";
 in {
   options.modules.server.misc.telegram-api = {
-    enable = mkEnableOption "torrserver";
+    enable = mkEnableOption "telegram-api";
 
     api_id = mkOption {
       type = types.str;
@@ -25,23 +22,19 @@ in {
   };
 
   config = mkIf cfg.enable {
-    systemd.services.torrserver = {
+    systemd.services.telegram-api = {
       enable = true;
-
-      path = with pkgs; [ telegram-bot-api ];
 
       after = [ "network.target" ];
       wants = [ "network-online.target" ];
 
       serviceConfig = {
-        # User = "telegram-api";
-        # Group = "telegram-api";
-        User = "nobody";
-        Group = "nogroup";
+        User = "telegram-api";
+        Group = "telegram-api";
         Type = "simple";
         NonBlocking = true;
         WorkingDirectory = "/etc/telegram-api";
-        ExecStart = "telegram-bot-api ${flags}";
+        ExecStart = "${pkgs.telegram-bot-api}/bin/telegram-bot-api ${flags}";
         ExecReload = "/bin/sh kill -HUP \${MAINPID}";
         ExecStop = "/bin/sh kill -INT \${MAINPID}";
         TimeoutSec = 30;
@@ -52,14 +45,14 @@ in {
       wantedBy = [ "multi-user.target" ];
     };
 
-    # users.groups.telegram-api = {};
-    # users.users.telegram-api = {
-    #   group = "telegram-api";
-    #   isSystemUser = true;
-    # };
-    #
-    # systemd.tmpfiles.rules = [
-    #   "d /etc/telegram-api 0755 telegram-api telegram-api"
-    # ];
+    users.groups.telegram-api = {};
+    users.users.telegram-api = {
+      group = "telegram-api";
+      isSystemUser = true;
+    };
+
+    systemd.tmpfiles.rules = [
+      "d /etc/telegram-api 0755 telegram-api telegram-api"
+    ];
   };
 }
