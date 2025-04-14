@@ -24,6 +24,13 @@
 
     misc = {
       torrserver.enable = true;
+
+      telegram-api = {
+        enable = true;
+
+        api_id = import ./tg_api_id;
+        api_hash = import ./tg_api_hash;
+      };
     };
   };
 
