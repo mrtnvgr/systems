@@ -23,6 +23,7 @@
     ./firmware.nix
     ./kernel.nix
     ./gc-whitelist.nix
+    ./logs.nix
   ];
 
   networking.hostName = hostname;
