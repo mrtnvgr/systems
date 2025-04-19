@@ -6,6 +6,5 @@ in {
 
   imports = [
     ./torrserver
-    ./telegram-api
   ];
 }

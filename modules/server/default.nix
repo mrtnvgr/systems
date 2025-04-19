@@ -3,5 +3,6 @@
     ./core
     ./web
     ./misc
+    ./telegram
   ];
 }

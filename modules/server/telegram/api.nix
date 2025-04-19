@@ -1,19 +1,16 @@
 { pkgs, lib, config, ... }:
 let
   inherit (lib) mkIf mkEnableOption mkOption types;
-  cfg = config.modules.server.misc.telegram-api;
+  cfg = config.modules.server.telegram.api;
   flags = "--local --api-id=${cfg.api_id} --api-hash=${cfg.api_hash} --http-port ${toString cfg.port}";
+  workdir = "/etc/telegram/api";
+  service-user = "telegram-api";
 in {
-  options.modules.server.misc.telegram-api = {
-    enable = mkEnableOption "telegram-api";
+  options.modules.server.telegram.api = {
+    enable = mkEnableOption "local telegram-bot-api instance";
 
-    api_id = mkOption {
-      type = types.str;
-    };
-
-    api_hash = mkOption {
-      type = types.str;
-    };
+    api_id = mkOption { type = types.str; };
+    api_hash = mkOption { type = types.str; };
 
     port = mkOption {
       type = types.port;
@@ -29,11 +26,11 @@ in {
       wants = [ "network-online.target" ];
 
       serviceConfig = {
-        User = "telegram-api";
-        Group = "telegram-api";
+        User = service-user;
+        Group = service-user;
         Type = "simple";
         NonBlocking = true;
-        WorkingDirectory = "/etc/telegram-api";
+        WorkingDirectory = workdir;
         ExecStart = "${pkgs.telegram-bot-api}/bin/telegram-bot-api ${flags}";
         ExecReload = "/bin/sh kill -HUP \${MAINPID}";
         ExecStop = "/bin/sh kill -INT \${MAINPID}";
@@ -45,14 +42,14 @@ in {
       wantedBy = [ "multi-user.target" ];
     };
 
-    users.groups.telegram-api = {};
-    users.users.telegram-api = {
-      group = "telegram-api";
+    users.groups.${service-user} = {};
+    users.users.${service-user} = {
+      group = service-user;
       isSystemUser = true;
     };
 
     systemd.tmpfiles.rules = [
-      "d /etc/telegram-api 0755 telegram-api telegram-api"
+      "d ${workdir} 0755 ${service-user} ${service-user}"
     ];
   };
 }

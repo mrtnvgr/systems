@@ -24,13 +24,18 @@
 
     misc = {
       torrserver.enable = true;
+    };
 
-      telegram-api = {
-        enable = true;
+    telegram.api = {
+      enable = true;
+      api_id = import ./secrets/tg_api_id;
+      api_hash = import ./secrets/tg_api_hash;
+    };
 
-        api_id = import ./secrets/tg_api_id;
-        api_hash = import ./secrets/tg_api_hash;
-      };
+    telegram.yt = {
+      enable = true;
+      token = import ./secrets/tg_yt_token;
+      adminId = 793346819;
     };
   };
 
