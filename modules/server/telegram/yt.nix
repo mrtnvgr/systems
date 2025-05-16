@@ -15,15 +15,15 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "mrtnvgr";
       repo = "yttg";
-      rev = "d25f00060c558dd58306eada5c1ae761bb1ec34b";
-      hash = "sha256-RsCGrLjplZVY9CqcwUiCI/7csrHNJRndQRXevzmhyq4=";
+      rev = "b2a199164de52f9be1d0c2a9bff1fb377b9fcc49";
+      hash = "sha256-VHrMPX8fpi7DPXUiYnx0hykHQltCp1/uP5SNO8mP/j8=";
     };
 
     nativeBuildInputs = with pkgs; [ pkg-config ];
     buildInputs = with pkgs; [ openssl ];
 
     useFetchCargoVendor = true;
-    cargoHash = "sha256-Bfu1VlhloIJQr8VTuMHF64UL3TUZ5VxP5ki/fkre67Q=";
+    cargoHash = "sha256-IuK2XWYHEwfnCHvkr2oY/NCnduPtdf8nVCew5LoWnwY=";
   };
 in {
   options.modules.server.telegram.yt = {
