@@ -7,21 +7,10 @@
     theme = {
       rice = "hyprpop";
 
-      # Double-width glyphs:
-      # No prefix - will overlap with other symbols
-      # "... Mono" - half-sized
-      # "... Propo" - grid is destroyed, but big symbols
-      # Source: https://github.com/ryanoasis/nerd-fonts/discussions/1103#discussioncomment-4852120
-      # FIXME: Propo doesn't work with foot terminal! (Propo == "No prefix")
       font = {
         name = "CaskaydiaMono Nerd Font Propo";
         package = pkgs.nerd-fonts.caskaydia-mono;
       };
-
-      # font = {
-      #   name = "Cozette";
-      #   package = pkgs.cozette;
-      # };
 
       opacity = 0.8;
 
