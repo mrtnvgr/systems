@@ -12,11 +12,6 @@
         enable = true;
         path = "/mnt/ssd/Music/sorted";
       };
-
-      rclone = {
-        enable = true;
-        config = ./secrets/rclone.conf;
-      };
     };
 
     apps = {
