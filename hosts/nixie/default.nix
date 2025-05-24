@@ -8,6 +8,7 @@
 
   modules.desktop = {
     feats = {
+      bluetooth.enable = true;
     };
 
     apps = {
