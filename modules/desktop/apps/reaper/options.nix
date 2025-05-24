@@ -22,6 +22,12 @@ in {
           hash = "sha256-gHpC71bkoNUcALxyLOpGFVHJlTe01hYAnfnpLcXMsOY=";
           stripRoot = false;
         } + "/TSE_808_2.0_x64.dll")
+
+        (pkgs.fetchurl {
+          name = "NeuralAmpModeler";
+          url = "https://cdn.unixis.fun/NeuralAmpModeler.vst3";
+          hash = "sha256-j8Cuh6djfnaK8doWyGHOc6LlyHgFkcf9Plwc0C8B9/g=";
+        })
       ];
     };
 
