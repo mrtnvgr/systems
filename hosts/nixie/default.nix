@@ -4,6 +4,7 @@
     ../thlix
 
     ./secrets/reaper.nix
+    ./secrets/celeste.nix
   ];
 
   modules.desktop = {
