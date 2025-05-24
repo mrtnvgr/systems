@@ -8,10 +8,6 @@
 
   modules.desktop = {
     feats = {
-      music = {
-        enable = true;
-        path = "/mnt/ssd/Music/sorted";
-      };
     };
 
     apps = {
