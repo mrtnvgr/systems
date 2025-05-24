@@ -17,7 +17,6 @@
       cdn.enable = true;
 
       redirects = {
-        # TODO: add "/" to the names as a prefix
         "/github" = "https://github.com/mrtnvgr";
       };
     };
