@@ -39,18 +39,6 @@
     };
   };
 
-  systemd.services.botb-battles = {
-    enable = true;
-
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
-
-    serviceConfig = {
-      Restart = "always";
-      ExecStart = "${pkgs.python3.withPackages (ps: with ps; [ requests ])}/bin/python ${./botb_battles.py}";
-    };
-  };
-
   system.stateVersion = "24.05";
 
   imports = [
