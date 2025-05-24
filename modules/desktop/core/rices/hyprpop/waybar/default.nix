@@ -1,12 +1,10 @@
-{ inputs, pkgs, lib, config, user, ... }:
+{ inputs, lib, config, user, ... }:
 let
   inherit (config.colorScheme) palette;
-  inherit (lib) mkIf optionalString optionals;
+  inherit (lib) mkIf;
 
   rgb_background = inputs.nix-colors.lib.conversions.hexToRGBString ", " palette.background;
   theme = config.modules.desktop.theme;
-
-  isMpdSupported = config.modules.desktop.feats.music.enable;
 
   style = /* css */ ''
     * {
@@ -104,7 +102,6 @@ let
       color: #${palette.blue};
     }
 
-    ${optionalString isMpdSupported "#mpd,"}
     #battery,
     #clock,
     #backlight,
@@ -120,15 +117,6 @@ let
       font-weight: bold;
       transition: all ease-in 200ms;
     }
-
-    ${optionalString isMpdSupported ''
-      #mpd.playing {
-        color: #${palette.violet};
-      }
-      #mpd.paused {
-        color: #${palette.text};
-      }
-    ''}
 
     #wireplumber {
       color: #${palette.red};
@@ -154,7 +142,7 @@ let
     layer = "top";
 
     modules-left = [ "custom/flake" "hyprland/workspaces" ];
-    modules-center = [ ] ++ optionals isMpdSupported [ "mpd" ];
+    modules-center = [ ];
     modules-right = [ "tray" "wireplumber" "backlight" "battery" "clock" ];
 
     "custom/flake" = {
@@ -165,17 +153,6 @@ let
 
 	"hyprland/workspaces" = {
 		"persistent-workspaces" = { "*" = 4; };
-	};
-
-	"mpd" = {
-		"format" = "{stateIcon} {artist} - {title} ({songPosition}/{queueLength})";
-		"state-icons" = { "playing" = ""; "paused" = ""; };
-		"on-click" = "mpc toggle -q";
-		"format-disconnected" = "";
-		"format-stopped" = "";
-        "max-length" = 140;
-		"tooltip" = false;
-		"interval" = 2;
 	};
 
 	"tray" = {
