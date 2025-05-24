@@ -6,8 +6,8 @@ in {
   config = mkIf cfg.enable {
     gc.whitelist = let
       plugins = cfg.plugins;
-      data = filter isStorePath (map (x: x.src) cfg.data);
+      data = map (x: x.src) cfg.data;
       regFiles = cfg.regFiles;
-    in plugins ++ data ++ regFiles;
+    in filter isStorePath (plugins ++ data ++ regFiles);
   };
 }
