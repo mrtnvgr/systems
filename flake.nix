@@ -39,6 +39,9 @@
 
     reascripts.url = "github:ReaTeam/ReaScripts";
     reascripts.flake = false;
+
+    catppuccin-renoise.url = "github:catppuccin/renoise";
+    catppuccin-renoise.flake = false;
   };
 
   outputs = { nixpkgs, ... } @ inputs:
