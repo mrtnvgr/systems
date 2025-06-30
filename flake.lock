@@ -452,22 +452,6 @@
         "type": "github"
       }
     },
-    "ndsp-presets": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1717469706,
-        "narHash": "sha256-7PZQ3x79wKR4BPD0s/dDjJCphGn8/OnaOxETeaTcMQQ=",
-        "owner": "musicprodcdn",
-        "repo": "presets",
-        "rev": "1e8ec03d61e08c448d17e8bd2f507e1bd0e6b630",
-        "type": "github"
-      },
-      "original": {
-        "owner": "musicprodcdn",
-        "repo": "presets",
-        "type": "github"
-      }
-    },
     "neovim-nightly": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -793,7 +777,6 @@
         "home-manager": "home-manager",
         "mrtnvgr": "mrtnvgr",
         "musnix": "musnix",
-        "ndsp-presets": "ndsp-presets",
         "neovim-nightly": "neovim-nightly",
         "nix-colors": "nix-colors",
         "nix-gaming": "nix-gaming",

@@ -42,12 +42,6 @@ in {
       });
 
       default = [
-        # Neural DSP (Stock presets)
-        {
-          src = "${inputs.ndsp-presets}";
-          dest = "ProgramData/Neural DSP";
-          linkContents = true;
-        }
 
         # Neural DSP: Archetype Gojira (User presets)
         {

@@ -31,9 +31,6 @@
 
     musnix.url = "github:musnix/musnix";
 
-    ndsp-presets.url = "github:musicprodcdn/presets";
-    ndsp-presets.flake = false;
-
     eggs.url = "https://github.com/mrtnvgr/eggs/releases/download/master/built.zip";
     eggs.flake = false;
 
