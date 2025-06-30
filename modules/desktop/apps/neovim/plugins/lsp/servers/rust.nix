@@ -43,6 +43,7 @@ in {
       "-Aclippy::missing_errors_doc"
       "-Aclippy::missing_panics_doc"
       "-Aclippy::must_use_candidate"
+      "-Aclippy::significant_drop_in_scrutinee"
     ];
   };
 }
