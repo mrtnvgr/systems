@@ -39,6 +39,9 @@
 
     catppuccin-renoise.url = "github:catppuccin/renoise";
     catppuccin-renoise.flake = false;
+
+    renoise-pianoroll.url = "github:ryrun/com.dufte.SimplePianoroll.xrnx";
+    renoise-pianoroll.flake = false;
   };
 
   outputs = { nixpkgs, ... } @ inputs:

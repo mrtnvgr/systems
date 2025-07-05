@@ -2,13 +2,17 @@
 let
   inherit (lib) mkIf mkEnableOption mkOption types;
   inherit (pkgs) writeShellScriptBin;
+
   cfg = config.modules.desktop.apps.renoise;
+
+  version = "V3.4.4";
+  path = ".config/Renoise/${version}";
 
   jackAssertion = let
     jackdCfg = config.services.jack.jackd;
     pipewireCfg = config.services.pipewire;
     isJackEnabled = jackdCfg.enable || (pipewireCfg.enable && pipewireCfg.jack.enable);
-    error = "To have a great audio in Renoise, please enable JACK or its emulation in PipeWire.";
+    error = "Renoise: Please enable JACK or its emulation in PipeWire for low latency audio";
   in { assertion = isJackEnabled; message = error; };
 in {
   options.modules.desktop.apps.renoise = {
@@ -23,7 +27,11 @@ in {
     in [ renoise-jack ];
 
     home-manager.users.${user} = {
-      home.file.".config/Renoise/V3.4.4/Themes/catppuccin".source = "${inputs.catppuccin-renoise}/themes";
+      # Themes
+      home.file."${path}/Themes/catppuccin".source = "${inputs.catppuccin-renoise}/themes";
+
+      # Tools
+      home.file."${path}/Scripts/Tools/com.duftetools.SimplePianoroll.xrnx".source = inputs.renoise-pianoroll;
     };
 
     assertions = [ jackAssertion ];

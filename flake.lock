@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "catppuccin-renoise": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1751194361,
+        "narHash": "sha256-djq0c/gz/tTNJqJwhQgaTDGm12lBAnqMZLUzVjeG2g8=",
+        "owner": "catppuccin",
+        "repo": "renoise",
+        "rev": "9a7eb0a42583423f7f8d693b1bbca52017d62943",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "renoise",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1736032295,
@@ -772,6 +788,7 @@
     },
     "root": {
       "inputs": {
+        "catppuccin-renoise": "catppuccin-renoise",
         "eggs": "eggs",
         "generators": "generators",
         "home-manager": "home-manager",
