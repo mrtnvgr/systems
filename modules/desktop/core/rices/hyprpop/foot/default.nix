@@ -1,4 +1,4 @@
-{ pkgs, lib, config, user, ... }:
+{ lib, config, user, ... }:
 let
   inherit (config.colorScheme) palette;
   inherit (lib) mkIf;
