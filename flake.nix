@@ -45,6 +45,11 @@
 
     renoise-tools.url = "github:renoise/tools";
     renoise-tools.flake = false;
+
+    renoise-rubberbandaid-tool = {
+      url = "github:mrtnvgr/renoise-tools-mirror/com.dlt.RubberBandAid";
+      flake = false;
+    };
   };
 
   outputs = { nixpkgs, ... } @ inputs:

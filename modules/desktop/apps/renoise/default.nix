@@ -5,7 +5,7 @@ let
 
   cfg = config.modules.desktop.apps.renoise;
 
-  # TODO: alsa is completely broken for renoise :/
+  # TODO: alsa is completely broken in renoise :/
   jackAssertion = let
     jackdCfg = config.services.jack.jackd;
     pipewireCfg = config.services.pipewire;
@@ -26,7 +26,7 @@ in {
     environment.systemPackages = let
       renoise = if (cfg.releasePath != null) then pkgs.renoise.override { releasePath = cfg.releasePath; } else pkgs.renoise;
       renoise-jack = writeShellScriptBin "renoise" "exec ${pkgs.pipewire.jack}/bin/pw-jack ${renoise}/bin/renoise";
-    in [ renoise-jack ];
+    in [ renoise-jack pkgs.rubberband ];
 
     # TODO: https://github.com/nix-community/home-manager/issues/3090
     # with that feature, this logic can be immensely simplified (onChange -> symlink=false)
@@ -41,6 +41,9 @@ in {
 
             { name = "com.duftetools.SimplePianoroll.xrnx";
               source = inputs.renoise-pianoroll; }
+
+            { name = "com.dlt.RubberBandAid";
+              source = inputs.renoise-rubberbandaid-tool; }
       ];
 
       mkTool = tool: {
