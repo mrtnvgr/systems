@@ -20,10 +20,6 @@
       };
     };
 
-    feats = {
-      midi.enable = true;
-    };
-
     apps = {
       neovim.enable = true;
       firefox.enable = true;
