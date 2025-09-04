@@ -16,6 +16,28 @@
         "type": "github"
       }
     },
+    "bitwig52": {
+      "inputs": {
+        "nix-buildproxy": "nix-buildproxy",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727617481,
+        "narHash": "sha256-s58MehjzEizWaeoY8xRcLq7ek40fLnm4aXCm1Fvgw7w=",
+        "owner": "polygon",
+        "repo": "audio.nix",
+        "rev": "45a553ce828126aefd4cb7cad3af75d93577342b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "polygon",
+        "repo": "audio.nix",
+        "rev": "45a553ce828126aefd4cb7cad3af75d93577342b",
+        "type": "github"
+      }
+    },
     "catppuccin-renoise": {
       "flake": false,
       "locked": {
@@ -437,11 +459,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1753896841,
-        "narHash": "sha256-wm6aPLT34HlCJhrzFEPx79KWjq4KzYxjz+5FgBOytj8=",
+        "lastModified": 1754841659,
+        "narHash": "sha256-yZPbC4CdPGtf581uWQM6YXNdkGprsIBot6Cp73m5Bbs=",
         "owner": "mrtnvgr",
         "repo": "nurpkgs",
-        "rev": "fbfa8ecd6d4016316190fcbc20b025e582361efb",
+        "rev": "ab6839119d9535fda7cb1ae9f04c50614ab2087f",
         "type": "github"
       },
       "original": {
@@ -452,7 +474,7 @@
     },
     "musnix": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1741303672,
@@ -475,7 +497,7 @@
         "git-hooks": "git-hooks",
         "hercules-ci-effects": "hercules-ci-effects",
         "neovim-src": "neovim-src",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -508,6 +530,25 @@
         "type": "github"
       }
     },
+    "nix-buildproxy": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1708455753,
+        "narHash": "sha256-qP79WfPiTl92KrZkmvacba9Xas4WwSFln5DjkP2Q/Lg=",
+        "owner": "polygon",
+        "repo": "nix-buildproxy",
+        "rev": "77d486cb4b0458cb4c4a296c3140f7a6c36ab3e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "polygon",
+        "ref": "v0.1.0",
+        "repo": "nix-buildproxy",
+        "type": "github"
+      }
+    },
     "nix-colors": {
       "inputs": {
         "base16-schemes": "base16-schemes",
@@ -530,7 +571,7 @@
     "nix-gaming": {
       "inputs": {
         "flake-parts": "flake-parts_3",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1753409309,
@@ -589,11 +630,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1740695751,
-        "narHash": "sha256-D+R+kFxy1KsheiIzkkx/6L63wEHBYX21OIwlFV8JvDs=",
+        "lastModified": 1708118438,
+        "narHash": "sha256-kk9/0nuVgA220FcqH/D2xaN6uGyHp/zoxPNUmPCMmEE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6313551cd05425cd5b3e63fe47dbc324eabb15e4",
+        "rev": "5863c27340ba4de8f83e7e3c023b9599c3cb3c80",
         "type": "github"
       },
       "original": {
@@ -663,6 +704,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1740695751,
+        "narHash": "sha256-D+R+kFxy1KsheiIzkkx/6L63wEHBYX21OIwlFV8JvDs=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6313551cd05425cd5b3e63fe47dbc324eabb15e4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1753151930,
         "narHash": "sha256-XSQy6wRKHhRe//iVY5lS/ZpI/Jn6crWI8fQzl647wCg=",
         "owner": "NixOS",
@@ -677,7 +734,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1752900028,
         "narHash": "sha256-dPALCtmik9Wr14MGqVXm+OQcv7vhPBXcWNIOThGnB/Q=",
@@ -693,7 +750,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1753250450,
         "narHash": "sha256-i+CQV2rPmP8wHxj0aq4siYyohHwVlsh40kV89f3nw1s=",
@@ -709,7 +766,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1736429638,
         "narHash": "sha256-dDWqQqSgMQXw5eFtcyoVijv7HbYJZOIo+jWQdJtsxn4=",
@@ -803,6 +860,23 @@
         "type": "github"
       }
     },
+    "renoise-rubberbandaid-tool": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1753898940,
+        "narHash": "sha256-GT+BSecGsMo9tyRoDKdVY1hAIrxtCfv+JM9PKTMsxYE=",
+        "owner": "mrtnvgr",
+        "repo": "renoise-tools-mirror",
+        "rev": "3d77b674e84f6015da49d9b803f93d2261704609",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrtnvgr",
+        "ref": "com.dlt.RubberBandAid",
+        "repo": "renoise-tools-mirror",
+        "type": "github"
+      }
+    },
     "renoise-tools": {
       "flake": false,
       "locked": {
@@ -821,6 +895,7 @@
     },
     "root": {
       "inputs": {
+        "bitwig52": "bitwig52",
         "catppuccin-renoise": "catppuccin-renoise",
         "eggs": "eggs",
         "generators": "generators",
@@ -830,11 +905,12 @@
         "neovim-nightly": "neovim-nightly",
         "nix-colors": "nix-colors",
         "nix-gaming": "nix-gaming",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "nixpkgs-wine": "nixpkgs-wine",
         "nixvim": "nixvim",
         "reascripts": "reascripts",
         "renoise-pianoroll": "renoise-pianoroll",
+        "renoise-rubberbandaid-tool": "renoise-rubberbandaid-tool",
         "renoise-tools": "renoise-tools",
         "schizofox": "schizofox"
       }
@@ -845,7 +921,7 @@
         "flake-parts": "flake-parts_5",
         "home-manager": "home-manager_2",
         "nixpak": "nixpak",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "searx-randomizer": "searx-randomizer",
         "systems": "systems_3"
       },
