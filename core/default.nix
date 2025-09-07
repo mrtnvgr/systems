@@ -24,6 +24,7 @@
     ./kernel.nix
     ./gc-whitelist.nix
     ./logs.nix
+    ./temp.nix
   ];
 
   networking.hostName = hostname;
