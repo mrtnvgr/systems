@@ -48,7 +48,7 @@ in {
 
       programs.nixvim.plugins.lspkind = {
         enable = true;
-        mode = "symbol";
+        settings.mode = "symbol";
         cmp.after = ''
           function(_, _, kind)
             kind.kind = " " .. kind.kind .. " "

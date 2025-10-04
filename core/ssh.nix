@@ -1,7 +1,7 @@
 { user, ... }: {
   # Avoid session freeze
   home-manager.users."${user}" = {
-    programs.ssh.serverAliveInterval = 100;
+    programs.ssh.matchBlocks."*".serverAliveInterval = 100;
   };
   services.openssh.extraConfig = ''
     ClientAliveInterval 100

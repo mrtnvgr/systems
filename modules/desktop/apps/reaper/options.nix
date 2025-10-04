@@ -15,19 +15,6 @@ in {
           hash = "sha256-tJWPP3QTmwWxOTuMvwi4OxM3lArGN8GoqU0/3G+cnYY=";
           stripRoot = false;
         } + "/pitchproof${if arch == "x86_64" then "-x64" else ""}.dll")
-
-        (pkgs.fetchzip {
-          name = "TSE808";
-          url = "https://www.tseaudio.com/files/TSE808_win64.zip";
-          hash = "sha256-gHpC71bkoNUcALxyLOpGFVHJlTe01hYAnfnpLcXMsOY=";
-          stripRoot = false;
-        } + "/TSE_808_2.0_x64.dll")
-
-        (pkgs.fetchurl {
-          name = "NeuralAmpModeler";
-          url = "https://cdn.unixis.fun/NeuralAmpModeler.vst3";
-          hash = "sha256-j8Cuh6djfnaK8doWyGHOc6LlyHgFkcf9Plwc0C8B9/g=";
-        })
       ];
     };
 
@@ -41,32 +28,7 @@ in {
         };
       });
 
-      default = [
-
-        # Neural DSP: Archetype Gojira (User presets)
-        {
-          src = "${files}/presets/gojira";
-          dest = "ProgramData/Neural DSP/Archetype Gojira/User";
-        }
-
-        # Neural DSP: Archetype Nolly (User presets)
-        {
-          src = "${files}/presets/nolly";
-          dest = "ProgramData/Neural DSP/Archetype Nolly/User";
-        }
-
-        # Neural DSP: OMEGA Ampworks Granophyre (User presets)
-        {
-          src = "${files}/presets/granophyre";
-          dest = "ProgramData/Neural DSP/OMEGA Ampworks Granophyre/User";
-        }
-
-        # Neural DSP: Archetype Plini (User presets)
-        {
-          src = "${files}/presets/plini";
-          dest = "ProgramData/Neural DSP/Archetype Plini/User";
-        }
-      ];
+      default = [];
     };
 
     regFiles = mkOption {
