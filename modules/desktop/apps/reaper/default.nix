@@ -174,7 +174,6 @@ in {
     ./packages.nix
     ./theme.nix
     ./reascripts.nix
-    ./sws.nix
     ./avoid-gc.nix
   ];
 
