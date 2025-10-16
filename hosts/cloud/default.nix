@@ -26,13 +26,13 @@
     };
 
     telegram.api = {
-      enable = true;
+      enable = false;
       api_id = import ./secrets/tg_api_id;
       api_hash = import ./secrets/tg_api_hash;
     };
 
     telegram.yt = {
-      enable = true;
+      enable = false;
       token = import ./secrets/tg_yt_token;
       adminId = 793346819;
     };
