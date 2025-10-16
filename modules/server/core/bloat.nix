@@ -1,21 +1,21 @@
-# Credits: https://github.com/nix-community/srvos/blob/main/nixos/server/default.nix
+# Based on https://github.com/nix-community/srvos/blob/main/nixos/server/default.nix
 
-{ lib, config, user, ... }: {
+{ lib, config, ... }: {
   config = lib.mkIf config.modules.server.enable {
-    # Notice this also disables --help for some commands such es nixos-rebuild
-    documentation.enable = lib.mkDefault false;
-    documentation.info.enable = lib.mkDefault false;
-    documentation.man.enable = lib.mkDefault false;
-    documentation.nixos.enable = lib.mkDefault false;
+    documentation.enable = false;
+    documentation.info.enable = false;
+    documentation.man.enable = false;
+    documentation.nixos.enable = false;
 
     # No need for fonts on a server
-    fonts.fontconfig.enable = lib.mkDefault false;
-
-    systemd.enableEmergencyMode = false;
+    fonts.fontconfig.enable = false;
 
     # Anti-freeze
+    systemd.enableEmergencyMode = false;
     systemd.watchdog.runtimeTime = "20s";
     systemd.watchdog.rebootTime = "30s";
+
+    # Disable sleep mode
     systemd.sleep.extraConfig = ''
       AllowSuspend=no
       AllowHibernation=no
