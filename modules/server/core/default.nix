@@ -7,7 +7,6 @@ in {
   };
 
   imports = [
-    ./network.nix
     ./bloat.nix
 	./fail2ban.nix
   ];
