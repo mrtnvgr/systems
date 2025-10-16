@@ -1,16 +1,10 @@
 { lib, config, ... }:
 let
   inherit (builtins) concatStringsSep;
-  inherit (lib) mkIf mkOption types;
+  inherit (lib) mkIf;
 
   cfg = config.modules.server;
-  notificationsEnabled = cfg.ntfyChannel != null;
 in {
-  options.modules.server.ntfyChannel = mkOption {
-    type = with types; nullOr (uniq str);
-    default = null;
-  };
-
   config = mkIf cfg.enable {
     services.fail2ban = {
       enable = true;
