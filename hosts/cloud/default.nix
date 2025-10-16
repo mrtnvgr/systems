@@ -21,7 +21,6 @@
       domain = "unixis.fun";
 
       eggs.enable = true;
-      # TODO(delete): cdn.enable = true;
 
       redirects = {
         "/github" = "https://github.com/mrtnvgr";
