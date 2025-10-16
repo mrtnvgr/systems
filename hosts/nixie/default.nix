@@ -12,6 +12,8 @@
       bluetooth.enable = true;
     };
 
+    dev.flutter.enable = true;
+
     apps = {
       reaper.enable = true;
 
