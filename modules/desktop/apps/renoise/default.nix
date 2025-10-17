@@ -5,14 +5,7 @@ let
 
   cfg = config.modules.desktop.apps.renoise;
 
-  # TODO: alsa is completely broken in renoise :/
-  jackAssertion = let
-    jackdCfg = config.services.jack.jackd;
-    pipewireCfg = config.services.pipewire;
-    isJackEnabled = jackdCfg.enable || (pipewireCfg.enable && pipewireCfg.jack.enable);
-    error = "Renoise: Please enable JACK or its emulation in PipeWire for low latency audio";
-  in { assertion = isJackEnabled; message = error; };
-
+  # TIP: use 48000hz, 2 periods for "default" device if ALSA with Pipewire is used
 in {
   options.modules.desktop.apps.renoise = {
     enable = mkEnableOption "renoise";
@@ -23,6 +16,7 @@ in {
   config = mkIf cfg.enable {
     assertions = [ jackAssertion ];
 
+  config = mkIf cfg.enable {
     environment.systemPackages = let
       renoise = if (cfg.releasePath != null) then pkgs.renoise.override { releasePath = cfg.releasePath; } else pkgs.renoise;
       renoise-jack = writeShellScriptBin "renoise" "exec ${pkgs.pipewire.jack}/bin/pw-jack ${renoise}/bin/renoise";
