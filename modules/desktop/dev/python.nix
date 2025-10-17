@@ -1,27 +1,26 @@
 { pkgs, lib, config, user, ... }:
 let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib) mkIf mkOption mkEnableOption types;
 
-  pypkgs = ps: with ps; [
-    # Essentials
+  defaultPackages = ps: with ps; [
     requests
     datetime
-
-    # Image processing
-    pillow
-
-    # Web scraping
-    beautifulsoup4
-    lxml
   ];
 
   cfg = config.modules.desktop.dev.python;
 in
 {
-  options.modules.desktop.dev.python.enable = mkEnableOption "python";
+  options.modules.desktop.dev.python = {
+    enable = mkEnableOption "python";
+    packages = mkOption {
+      type = with types; functionTo (listOf package);
+      default = defaultPackages;
+    };
+  };
+
   config = mkIf cfg.enable {
     home-manager.users.${user} = {
-      home.packages = [ (pkgs.python3.withPackages pypkgs) ];
+      home.packages = [ (pkgs.python3.withPackages cfg.packages) ];
     };
   };
 }
