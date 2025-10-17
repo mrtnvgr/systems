@@ -4,6 +4,6 @@ let
   cfg = config.modules.desktop;
 in {
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ feh mpv ffmpeg imagemagick sox ];
+    environment.systemPackages = with pkgs; [ feh mpv ffmpeg imagemagick sox rubberband ];
   };
 }
