@@ -10,7 +10,6 @@
     ./screenshots.nix
     ./adb.nix
     ./wallpaper.nix
-    ./hidraw.nix
     ./kvm.nix
 
     ./rices
