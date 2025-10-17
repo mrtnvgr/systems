@@ -39,17 +39,6 @@
 
     catppuccin-renoise.url = "github:catppuccin/renoise";
     catppuccin-renoise.flake = false;
-
-    renoise-pianoroll.url = "github:ryrun/com.dufte.SimplePianoroll.xrnx";
-    renoise-pianoroll.flake = false;
-
-    renoise-tools.url = "github:renoise/tools";
-    renoise-tools.flake = false;
-
-    renoise-rubberbandaid-tool = {
-      url = "github:mrtnvgr/renoise-tools-mirror/com.dlt.RubberBandAid";
-      flake = false;
-    };
   };
 
   outputs = { nixpkgs, ... } @ inputs:
