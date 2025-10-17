@@ -13,33 +13,6 @@ let
     # Web scraping
     beautifulsoup4
     lxml
-
-    # Notebooks
-    # jupyter
-    # ipython
-
-    # Machine learning
-    # numpy
-    # matplotlib
-    # pandas
-    # nltk
-    # natasha
-    # pytorch
-    # transformers
-    # scikit-learn
-
-    # pygame
-    # pyppeteer
-
-    gunicorn
-    django
-    django-tables2
-    django-filter
-    pandas
-    openpyxl
-    pymorphy3 num2words
-
-    pydub
   ];
 
   cfg = config.modules.desktop.dev.python;
