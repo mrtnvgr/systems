@@ -13,14 +13,22 @@ in {
     version = mkOption { type = types.str; default = "V3.5.1"; };
   };
 
-  config = mkIf cfg.enable {
-    assertions = [ jackAssertion ];
 
   config = mkIf cfg.enable {
     environment.systemPackages = let
       renoise = if (cfg.releasePath != null) then pkgs.renoise.override { releasePath = cfg.releasePath; } else pkgs.renoise;
-      renoise-jack = writeShellScriptBin "renoise" "exec ${pkgs.pipewire.jack}/bin/pw-jack ${renoise}/bin/renoise";
-    in [ renoise-jack pkgs.rubberband ];
+
+      jackdCfg = config.services.jack.jackd;
+      pipewireCfg = config.services.pipewire;
+      isJackEnabled = jackdCfg.enable || (pipewireCfg.enable && pipewireCfg.jack.enable);
+
+      wrapWithPWJack = { name, executable }:
+        writeShellScriptBin name "exec ${pkgs.pipewire.jack}/bin/pw-jack ${executable}";
+
+      renoiseWrapped = if isJackEnabled then wrapWithPWJack "renoise" "${renoise}/bin/renoise" else renoise;
+    in [ renoiseWrapped ];
+
+
 
     # TODO: wait for https://github.com/nix-community/home-manager/issues/3090
     # look into commit history, revert tool support removal
