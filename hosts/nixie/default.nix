@@ -21,7 +21,7 @@
 
       renoise.enable = true;
       # Remove this line to use a demo version.
-      renoise.releasePath = /home/${user}/.local/share/rns.tar.gz;
+      renoise.releasePath = /home/${user}/.local/share/rns351.tar.gz;
     };
   };
 }
