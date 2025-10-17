@@ -1,5 +1,9 @@
-{ files }:
-{ inputs, pkgs, lib, ... }: let
+# ---------------- NOTE: ------------------
+# Don't forget to update avoid-gc.nix file,
+# when adding new options here
+# -----------------------------------------
+
+{ pkgs, lib, ... }: let
   inherit (lib) mkEnableOption mkOption types;
   arch = pkgs.stdenv.targetPlatform.linuxArch;
 in {

@@ -168,8 +168,7 @@ in {
     inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.nix-gaming.nixosModules.platformOptimizations
 
-    (import ./options.nix { inherit files; })
-
+    ./options.nix
     ./rt.nix
     ./packages.nix
     ./theme.nix
