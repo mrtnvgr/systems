@@ -22,7 +22,7 @@ in {
       pipewireCfg = config.services.pipewire;
       isJackEnabled = jackdCfg.enable || (pipewireCfg.enable && pipewireCfg.jack.enable);
 
-      wrapWithPWJack = { name, executable }:
+      wrapWithPWJack = name: executable:
         writeShellScriptBin name "exec ${pkgs.pipewire.jack}/bin/pw-jack ${executable}";
 
       renoiseWrapped = if isJackEnabled then wrapWithPWJack "renoise" "${renoise}/bin/renoise" else renoise;
