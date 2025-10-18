@@ -769,55 +769,6 @@
         "type": "github"
       }
     },
-    "renoise-pianoroll": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1757350256,
-        "narHash": "sha256-GIWlxHvIn+RqcPW4IfkSUbA8FRp7ycydhTEPXpssz+A=",
-        "owner": "ryrun",
-        "repo": "com.dufte.SimplePianoroll.xrnx",
-        "rev": "1291ad8d0fc01910e48ff7fdfb4cbf1a39b33335",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ryrun",
-        "repo": "com.dufte.SimplePianoroll.xrnx",
-        "type": "github"
-      }
-    },
-    "renoise-rubberbandaid-tool": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1753898940,
-        "narHash": "sha256-GT+BSecGsMo9tyRoDKdVY1hAIrxtCfv+JM9PKTMsxYE=",
-        "owner": "mrtnvgr",
-        "repo": "renoise-tools-mirror",
-        "rev": "3d77b674e84f6015da49d9b803f93d2261704609",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mrtnvgr",
-        "ref": "com.dlt.RubberBandAid",
-        "repo": "renoise-tools-mirror",
-        "type": "github"
-      }
-    },
-    "renoise-tools": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1758956220,
-        "narHash": "sha256-qcb/sXwsa1wN3wgiJ+duQCfPLnIvi73RHtKKuGXWdEk=",
-        "owner": "renoise",
-        "repo": "tools",
-        "rev": "9afa2b608b6e772124ac9cf3f24ca6db87f69dfb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "renoise",
-        "repo": "tools",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "catppuccin-renoise": "catppuccin-renoise",
@@ -833,9 +784,6 @@
         "nixpkgs-wine": "nixpkgs-wine",
         "nixvim": "nixvim",
         "reascripts": "reascripts",
-        "renoise-pianoroll": "renoise-pianoroll",
-        "renoise-rubberbandaid-tool": "renoise-rubberbandaid-tool",
-        "renoise-tools": "renoise-tools",
         "schizofox": "schizofox"
       }
     },
