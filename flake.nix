@@ -3,11 +3,13 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-wine.url = "github:nixos/nixpkgs/b73c2221a46c13557b1b3be9c2070cc42cf01eb3";
 
-    generators.url = "github:nix-community/nixos-generators";
-    generators.inputs.nixpkgs.follows = "nixpkgs";
-
     mrtnvgr = {
       url = "github:mrtnvgr/nurpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    margesimpson = {
+      url = "github:mrtnvgr/margesimpson";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -16,7 +18,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    generators.url = "github:nix-community/nixos-generators";
+    generators.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-colors.url = "github:Misterio77/nix-colors";
 
@@ -29,6 +32,7 @@
 
     schizofox.url = "github:schizofox/schizofox";
 
+    nix-gaming.url = "github:fufexan/nix-gaming";
     musnix.url = "github:musnix/musnix";
 
     eggs.url = "https://github.com/mrtnvgr/eggs/releases/download/master/built.zip";
