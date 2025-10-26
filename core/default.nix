@@ -1,4 +1,4 @@
-{ hostname, ... }: {
+{ ... }: {
   imports = [
     ./bootloader.nix
     ./nix.nix
@@ -24,7 +24,6 @@
     ./gc-whitelist.nix
     ./logs.nix
     ./temp.nix
+    ./hostname.nix
   ];
-
-  networking.hostName = hostname;
 }
