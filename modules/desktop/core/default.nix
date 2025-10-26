@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    ./hardware.nix
+    ./graphics.nix
     ./sound.nix
     ./multimedia.nix
     ./fonts.nix
