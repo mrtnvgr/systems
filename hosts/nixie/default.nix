@@ -10,12 +10,6 @@
   ];
 
   modules.desktop = {
-    feats = {
-      bluetooth.enable = true;
-    };
-
-    dev.flutter.enable = true;
-
     apps = {
       reaper.enable = true;
 
@@ -23,5 +17,7 @@
       # Remove this line to use a demo version.
       renoise.releasePath = /home/${user}/.local/share/rns351.tar.gz;
     };
+
+    games.xonotic.enable = true;
   };
 }

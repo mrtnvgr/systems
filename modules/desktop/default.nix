@@ -6,5 +6,6 @@
     ./feats
     ./apps
     ./dev
+    ./games
   ];
 }

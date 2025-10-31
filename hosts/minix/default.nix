@@ -29,6 +29,10 @@
       rust.enable = true;
       python.enable = true;
     };
+
+    feats = {
+      bluetooth.enable = true;
+    };
   };
 
   system.stateVersion = "23.05";
