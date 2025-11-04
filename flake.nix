@@ -8,11 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    margesimpson = {
-      url = "github:mrtnvgr/margesimpson";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +26,11 @@
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
     schizofox.url = "github:schizofox/schizofox";
+
+    margesimpson = {
+      url = "github:mrtnvgr/margesimpson";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
     musnix.url = "github:musnix/musnix";
