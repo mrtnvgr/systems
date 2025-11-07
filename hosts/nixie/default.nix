@@ -22,7 +22,9 @@
 
     audio = {
       rt.enable = true;
+
       plugins.enable = true;
+      plugins.wine.enable = true;
     };
   };
 }
