@@ -24,7 +24,7 @@
 
         mkData = x: /* bash */ ''
           DSTPATH="$HOME/.wine-nix/reaper/drive_c/${x.dest}"
-          mkdir --mode=755 -pv "`dirname "$DSTPATH"`"
+          mkdir -pv "$(dirname "$DSTPATH")"
           ${getCopyMethod x} -vf "${x.src}" "$DSTPATH"
 
           # https://superuser.com/a/91938
