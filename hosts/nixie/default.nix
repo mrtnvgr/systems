@@ -19,5 +19,10 @@
     };
 
     games.xonotic.enable = true;
+
+    audio = {
+      rt.enable = true;
+      plugins.enable = true;
+    };
   };
 }

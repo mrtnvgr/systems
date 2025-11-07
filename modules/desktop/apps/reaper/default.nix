@@ -72,14 +72,7 @@ let
   };
 in {
   imports = [
-    inputs.musnix.nixosModules.musnix
-
-    inputs.nix-gaming.nixosModules.pipewireLowLatency
-    inputs.nix-gaming.nixosModules.platformOptimizations
-
     ./options.nix
-    ./rt.nix
-    ./packages.nix
     ./theme.nix
     ./reascripts.nix
     ./avoid-gc.nix

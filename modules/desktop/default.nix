@@ -7,5 +7,6 @@
     ./apps
     ./dev
     ./games
+    ./audio
   ];
 }
