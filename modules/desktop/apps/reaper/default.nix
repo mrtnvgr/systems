@@ -1,6 +1,6 @@
 { pkgs, lib, config, user, ... }:
 let
-  inherit (lib) mkEnableOption mkOption types;
+  inherit (lib) mkEnableOption;
 
   # inherit (inputs.margesimpson.${pkgs.system}) margesimpson;
   # TODO: modular config via margesimpson
@@ -17,11 +17,6 @@ let
 in {
   options.modules.desktop.apps.reaper = {
     enable = mkEnableOption "reaper";
-
-    extraPreRunScript = mkOption {
-      type = types.str;
-      default = "";
-    };
   };
 
   imports = [
