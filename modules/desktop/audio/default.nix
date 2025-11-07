@@ -1,5 +1,6 @@
 { ... }: {
   imports = [
     ./plugins
+    ./rt.nix
   ];
 }
