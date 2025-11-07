@@ -9,6 +9,8 @@
   env = pkgs.mkWineEnv {
     name = "audio-plugins";
 
+    wine = cfg.package;
+
     # TODO: to fix child window rendering (e.g. kontakt 7), use wine-tkg with patches from proton
     tricks = [ "mfc42" "vcrun2022" "gdiplus" "dxvk" ];
 
