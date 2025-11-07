@@ -51,7 +51,7 @@ in {
 
     package = mkOption {
       type = types.package;
-      default = pkgs.wine-staging;
+      default = inputs.nixpkgs-wine.packages.${pkgs.system}.wineWowPackages.stagingFull;
     };
 
     # TODO: rename to binaries
