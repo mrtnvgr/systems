@@ -7,7 +7,11 @@ let
 
   cfg = config.modules.desktop.apps.reaper;
 
+  wineEnv = config._internals.audioPluginsWineEnv;
+
   reaper-wrapped = pkgs.writeScriptBin "reaper" /* bash */ ''
+    ${lib.optionalString wineEnv "${wineEnv}/bin/audio-plugins"}
+
     echo Running preRun hook...
     ${cfg.extraPreRunScript}
 

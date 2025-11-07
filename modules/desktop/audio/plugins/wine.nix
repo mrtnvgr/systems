@@ -1,4 +1,4 @@
-{ pkgs, config, lib, user, ... }: let
+{ inputs, pkgs, config, lib, user, ... }: let
   inherit (lib) mkEnableOption mkIf mkOption types;
 
   cfg = config.modules.desktop.audio.plugins.wine;
@@ -7,7 +7,7 @@
   yabridgectl = pkgs.yabridgectl.override { wine = cfg.package; };
 
   env = pkgs.mkWineEnv {
-    name = "env_audio-plugins";
+    name = "audio-plugins";
 
     # TODO: to fix child window rendering (e.g. kontakt 7), use wine-tkg with patches from proton
     tricks = [ "mfc42" "vcrun2022" "gdiplus" "dxvk" ];
@@ -86,9 +86,16 @@ in {
     };
   };
 
+  options._internals.audioPluginsWineEnv = mkOption {
+    type = with types; nullOr package;
+    default = null;
+  };
+
   config = mkIf cfg.enable {
+    _internals.audioPluginsWineEnv = env;
+
     home-manager.users.${user} = { lib, ... }: {
-      home.packages = [ yabridge yabridgectl env ];
+      home.packages = [ yabridge yabridgectl ];
 
       home.file.".config/yabridgectl/config.toml".text = let
         plugins = cfg.plugins ++ [ "/home/${user}/.wplugs" ];
