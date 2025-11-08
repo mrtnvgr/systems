@@ -40,7 +40,10 @@
       default = "";
     };
 
-    # TODO: runPreDAWScript = ...
+    postScript = mkOption {
+      type = types.lines;
+      default = "";
+    };
   };
 
   mkEnv = name: bottle: pkgs.mkWineEnv {
@@ -93,6 +96,8 @@
         regScript
       ];
     in script;
+
+    inherit (bottle) postScript;
   };
 
   envs = lib.mapAttrsToList (name: bottle: mkEnv name bottle) cfg.bottles;
