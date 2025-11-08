@@ -15,6 +15,7 @@
       domain = "unixis.fun";
 
       eggs.enable = true;
+      cdn.enable = true;
     };
 
     misc = {

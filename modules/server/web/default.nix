@@ -54,5 +54,6 @@ in {
 
   imports = [
     ./eggs.nix
+    ./cdn.nix
   ];
 }
