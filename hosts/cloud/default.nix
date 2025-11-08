@@ -15,10 +15,6 @@
       domain = "unixis.fun";
 
       eggs.enable = true;
-
-      redirects = {
-        "/github" = "https://github.com/mrtnvgr";
-      };
     };
 
     misc = {

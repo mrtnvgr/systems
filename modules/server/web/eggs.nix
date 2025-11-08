@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, config, ... }:
+{ inputs, lib, config, ... }:
 let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.modules.server.web.eggs;
@@ -7,7 +7,7 @@ in {
   options.modules.server.web.eggs.enable = mkEnableOption "eggs";
   config = mkIf cfg.enable {
     services.nginx.virtualHosts."gg.${domain}" = {
-      root = "${inputs.eggs}";
+      root = inputs.eggs;
 
       enableACME = true;
       forceSSL = true;

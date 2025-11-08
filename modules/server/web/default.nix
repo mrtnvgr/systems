@@ -54,6 +54,5 @@ in {
 
   imports = [
     ./eggs.nix
-    ./redirects.nix
   ];
 }
