@@ -1,22 +1,18 @@
 { pkgs, lib, config, user, ... }:
 let
-  inherit (lib) mkEnableOption;
-
   # inherit (inputs.margesimpson.${pkgs.system}) margesimpson;
   # TODO: modular config via margesimpson
 
-  cfg = config.modules.desktop.apps.reaper;
+  desktopCfg = config.modules.desktop;
+  cfg = desktopCfg.apps.reaper;
 
   reaper-wrapped = pkgs.writeScriptBin "reaper" /* bash */ ''
-    # TODO: universal wrapper for all daws
-    ${config._internals.runAllAudioPluginsWineEnvs}
-    yabridgectl sync -p -n
-
+    ${lib.optionalString desktopCfg.audio.plugins.wine.enable "wine-audio-plugins-activate"}
     ${pkgs.reaper}/bin/reaper $@
   '';
 in {
   options.modules.desktop.apps.reaper = {
-    enable = mkEnableOption "reaper";
+    enable = lib.mkEnableOption "reaper";
   };
 
   imports = [
@@ -28,10 +24,5 @@ in {
     home-manager.users.${user} = {
       home.packages = [ reaper-wrapped ];
     };
-
-    # TODO: gc deletes plugins
-    # TODO: link files via hm
-    # TODO: .wine-nix/reaper/{regs, data, plugins}
-    # TODO: prefix without dxvk?
   };
 }

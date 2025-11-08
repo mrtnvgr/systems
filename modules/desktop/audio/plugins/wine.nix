@@ -96,6 +96,11 @@
   };
 
   envs = lib.mapAttrsToList (name: bottle: mkEnv name bottle) cfg.bottles;
+
+  wine-audio-plugins-activate = pkgs.writeScriptBin "wine-audio-plugins-activate" ''
+    ${lib.concatMapStringsSep "\n" (x: "${x}/bin/*") envs}
+    yabridgectl sync -p -n
+  '';
 in {
   options.modules.desktop.audio.plugins.wine = {
     enable = mkEnableOption "Windows audio plugins through WINE";
@@ -113,17 +118,9 @@ in {
     };
   };
 
-  options._internals.runAllAudioPluginsWineEnvs = mkOption {
-    type = types.lines;
-    default = "";
-  };
-
   config = mkIf cfg.enable {
-    # TODO: nasty :/
-    _internals.runAllAudioPluginsWineEnvs = lib.concatStringsSep "\n" (map (env: "${env}/bin/*") envs);
-
     home-manager.users.${user} = { lib, ... }: {
-      home.packages = [ yabridge yabridgectl ];
+      home.packages = [ yabridge yabridgectl wine-audio-plugins-activate ];
 
       home.file.".config/yabridgectl/config.toml".text = let
         bottlePlugins = map (x: "/home/${user}/.wine-nix/${x.name}/dosdevices/c:/plugins") envs;
