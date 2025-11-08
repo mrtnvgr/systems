@@ -6,67 +6,15 @@
   yabridge = pkgs.yabridge.override { wine = cfg.package; };
   yabridgectl = pkgs.yabridgectl.override { wine = cfg.package; };
 
-  env = pkgs.mkWineEnv {
-    name = "audio-plugins";
-
-    wine = cfg.package;
-
-    # TODO: to fix child window rendering (e.g. kontakt 7), use wine-tkg with patches from proton
-    tricks = [ "mfc42" "vcrun2022" "gdiplus" "dxvk" ];
-
-    # TODO: Migrate to runLocalCommand
-    setupScript = let
-      dataScript = let
-        getCopyMethod = x: if (x.symlink && !x.linkContents) then
-          "ln -s"
-        else if x.linkContents then
-          "cp -rs"
-        else
-          "cp -r";
-
-        mkData = x: /* bash */ ''
-          DSTPATH="$HOME/.wine-nix/reaper/drive_c/${x.dest}"
-          mkdir -pv "$(dirname "$DSTPATH")"
-          ${getCopyMethod x} -vf "${x.src}" "$DSTPATH"
-
-          # https://superuser.com/a/91938
-          find "$DSTPATH" -type d -exec chmod 755 {} +
-          find "$DSTPATH" -type f -exec chmod 644 {} +
-        '';
-      in
-        lib.concatMapStringsSep "\n" mkData cfg.data;
-
-      regScript = lib.concatMapStringsSep "\n" (x: "wine regedit ${x}") cfg.regFiles;
-
-      script = lib.concatStringsSep "\n" [
-        "echo Copying data..."
-        dataScript
-
-        "echo Applying reg files..."
-        regScript
-      ];
-    in script;
-  };
-in {
-  options.modules.desktop.audio.plugins.wine = {
-    enable = mkEnableOption "Windows audio plugins through WINE";
-
-    package = mkOption {
-      type = types.package;
-      default = inputs.nixpkgs-wine.legacyPackages.${pkgs.system}.wineWowPackages.stagingFull;
+  bottleOptions = {
+    tricks = mkOption {
+      type = with types; listOf str;
+      default = [];
     };
 
-    # TODO: rename to binaries
     plugins = mkOption {
       type = with types; listOf path;
-      default = [
-        (pkgs.fetchzip {
-          name = "Pitchproof";
-          url = "https://aegeanmusic.com/sitedownload/pitchproof.zip";
-          hash = "sha256-tJWPP3QTmwWxOTuMvwi4OxM3lArGN8GoqU0/3G+cnYY=";
-          stripRoot = false;
-        } + "/pitchproof-x64.dll")
-      ];
+      default = [];
     };
 
     data = mkOption {
@@ -84,23 +32,102 @@ in {
 
     regFiles = mkOption {
       type = with types; listOf path;
-      default = [ ];
+      default = [];
+    };
+
+    hosts = mkOption {
+      type = types.lines;
+      default = "";
+    };
+
+    # TODO: runPreDAWScript = ...
+  };
+
+  mkEnv = name: bottle: pkgs.mkWineEnv {
+    name = "audio-plugins_${name}";
+
+    wine = cfg.package;
+    inherit (bottle) tricks;
+
+    # TODO: Migrate to runLocalCommand
+    setupScript = let
+      pluginScript = let
+        pluginDirectory = "mkdir -p \"$HOME/.wine-nix/audio-plugins_${name}/dosdevices/c:/plugins\"";
+        plugins = map (plugin: ''
+          # TODO: use actual symlinking after https://github.com/robbert-vdh/yabridge/issues/454 is resolved
+          cp -r "${plugin}" "$HOME/.wine-nix/audio-plugins_${name}/dosdevices/c:/plugins"
+        '') bottle.plugins;
+      in
+        lib.concatStringsSep "\n" ([ pluginDirectory ] ++ plugins);
+
+      dataScript = let
+        getCopyMethod = x: if (x.symlink && !x.linkContents) then
+          "ln -s"
+        else if x.linkContents then
+          "cp -rs"
+        else
+          "cp -r";
+
+        mkData = x: /* bash */ ''
+          DSTPATH="$HOME/.wine-nix/audio-plugins_${name}/drive_c/${x.dest}"
+          mkdir -pv "$(dirname "$DSTPATH")"
+          ${getCopyMethod x} -vf "${x.src}" "$DSTPATH"
+
+          # https://superuser.com/a/91938
+          find "$DSTPATH" -type d -exec chmod 755 {} +
+          find "$DSTPATH" -type f -exec chmod 644 {} +
+        '';
+      in
+        lib.concatMapStringsSep "\n" mkData bottle.data;
+
+      regScript = lib.concatMapStringsSep "\n" (x: "wine regedit ${x}") bottle.regFiles;
+
+      script = lib.concatStringsSep "\n" [
+        "echo Symlinking plugin bins..."
+        pluginScript
+
+        "echo Copying data..."
+        dataScript
+
+        "echo Applying reg files..."
+        regScript
+      ];
+    in script;
+  };
+
+  envs = lib.mapAttrsToList (name: bottle: mkEnv name bottle) cfg.bottles;
+in {
+  options.modules.desktop.audio.plugins.wine = {
+    enable = mkEnableOption "Windows audio plugins through WINE";
+
+    package = mkOption {
+      type = types.package;
+      default = inputs.nixpkgs-wine.legacyPackages.${pkgs.system}.wineWowPackages.stagingFull;
+    };
+
+    bottles = mkOption {
+      type = with types; attrsOf (submodule {
+        options = bottleOptions;
+      });
+      default = { };
     };
   };
 
-  options._internals.audioPluginsWineEnv = mkOption {
-    type = with types; nullOr package;
-    default = null;
+  options._internals.runAllAudioPluginsWineEnvs = mkOption {
+    type = types.lines;
+    default = "";
   };
 
   config = mkIf cfg.enable {
-    _internals.audioPluginsWineEnv = env;
+    # TODO: nasty :/
+    _internals.runAllAudioPluginsWineEnvs = lib.concatStringsSep "\n" (map (env: "${env}/bin/*") envs);
 
     home-manager.users.${user} = { lib, ... }: {
       home.packages = [ yabridge yabridgectl ];
 
       home.file.".config/yabridgectl/config.toml".text = let
-        plugins = cfg.plugins ++ [ "/home/${user}/.wplugs" ];
+        bottlePlugins = map (x: "/home/${user}/.wine-nix/${x.name}/dosdevices/c:/plugins") envs;
+        plugins = bottlePlugins ++ [ "/home/${user}/.wplugs" ];
       in ''
         plugin_dirs = [${lib.concatStringsSep ", " (map (x: "\"${x}\"") plugins)}]
       '';
@@ -110,21 +137,11 @@ in {
         ["*"]
         group = "all"
       '';
-
-      home.activation.yabridge-sync = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        $DRY_RUN_CMD ${yabridgectl}/bin/yabridgectl sync -p -n $VERBOSE_ARG
-      '';
     };
 
-    gc.whitelist = let
-      plugins = cfg.plugins;
-      data = map (x: x.src) cfg.data;
-      regFiles = cfg.regFiles;
-    in lib.filter lib.isStorePath (plugins ++ data ++ regFiles);
+    networking.extraHosts = lib.concatStringsSep "\n" (lib.mapAttrsToList (_: x: x.hosts) cfg.bottles);
 
-    # TODO: gc deletes plugins
     # TODO: link files via hm
     # TODO: .wine-nix/reaper/{regs, data, plugins}
-    # TODO: prefix without dxvk?
   };
 }

@@ -7,10 +7,10 @@ let
 
   cfg = config.modules.desktop.apps.reaper;
 
-  wineEnv = config._internals.audioPluginsWineEnv;
-
   reaper-wrapped = pkgs.writeScriptBin "reaper" /* bash */ ''
-    ${lib.optionalString (wineEnv != null) "${wineEnv}/bin/audio-plugins"}
+    # TODO: universal wrapper for all daws
+    ${config._internals.runAllAudioPluginsWineEnvs}
+    yabridgectl sync -p -n
 
     ${pkgs.reaper}/bin/reaper $@
   '';
