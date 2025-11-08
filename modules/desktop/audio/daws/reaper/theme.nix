@@ -1,8 +1,7 @@
 { pkgs, lib, config, user, ... }: let
-  inherit (lib) mkIf;
-  cfg = config.modules.desktop.apps.reaper;
+  cfg = config.modules.desktop.audio.daws.reaper;
 in {
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home-manager.users.${user} = {
       # Reaper MIDI notes colormap
       home.file.".config/REAPER/Data/color_maps/default.png".source = pkgs.fetchurl {

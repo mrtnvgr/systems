@@ -1,6 +1,6 @@
 { inputs, lib, config, user, ... }: let
   inherit (lib) mkIf;
-  cfg = config.modules.desktop.apps.reaper;
+  cfg = config.modules.desktop.audio.daws.reaper;
 in {
   config = mkIf cfg.enable {
     home-manager.users.${user} = {
