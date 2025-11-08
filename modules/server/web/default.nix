@@ -25,7 +25,6 @@ in {
       recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
-      recommendedZstdSettings = true;
     };
 
 	services.fail2ban.jails.nginx-bruteforce.settings = {
