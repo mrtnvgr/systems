@@ -12,8 +12,8 @@
 
     # Anti-freeze
     systemd.enableEmergencyMode = false;
-    systemd.watchdog.runtimeTime = "20s";
-    systemd.watchdog.rebootTime = "30s";
+    systemd.settings.Manager.RuntimeWatchdogSec = "20s";
+    systemd.settings.Manager.RebootWatchdogSec = "30s";
 
     # Disable sleep mode
     systemd.sleep.extraConfig = ''
