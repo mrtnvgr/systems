@@ -1,18 +1,18 @@
+# TIP: use 48000hz, 2 periods for "default" device if ALSA with PipeWire is used
+
 { inputs, pkgs, lib, config, user, ... }:
 let
   inherit (lib) mkIf mkEnableOption mkOption types;
   inherit (pkgs) writeShellScriptBin;
 
-  cfg = config.modules.desktop.apps.renoise;
-
-  # TIP: use 48000hz, 2 periods for "default" device if ALSA with Pipewire is used
+  cfg = config.modules.desktop.audio.daws.renoise;
 in {
-  options.modules.desktop.apps.renoise = {
-    enable = mkEnableOption "renoise";
-    releasePath = mkOption { type = with types; nullOr path; default = null; };
-    version = mkOption { type = types.str; default = "V3.5.1"; };
-  };
+  options.modules.desktop.audio.daws.renoise = {
+    enable = mkEnableOption "Renoise";
 
+    releasePath = mkOption { type = with types; nullOr path; default = null; };
+    version = mkOption { type = types.str; default = "V3.5.1"; }; # !!!
+  };
 
   config = mkIf cfg.enable {
     environment.systemPackages = let
@@ -28,7 +28,11 @@ in {
       renoiseWrapped = if isJackEnabled then wrapWithPWJack "renoise" "${renoise}/bin/renoise" else renoise;
     in [ renoiseWrapped ];
 
-
+    # Fix sudden Renoise disconnections from JACK
+    # services.pipewire.extraConfig.jack."99-client-timeout" = {
+    #   "jack.properties"
+    # };
+    services.jack.jackd.extraOptions = [ "--timeout 1000" ];
 
     # TODO: wait for https://github.com/nix-community/home-manager/issues/3090
     # look into commit history, revert tool support removal

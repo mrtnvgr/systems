@@ -10,14 +10,8 @@
   ];
 
   modules.desktop = {
-    apps = {
-      reaper.enable = true;
-
-    apps = {
-      renoise.enable = true;
-      # Remove this line to use a demo version.
-      renoise.releasePath = /home/${user}/.local/share/rns351.tar.gz;
-    };
+    # TODO: delete?
+    dev.flutter.enable = false;
 
     games.xonotic.enable = true;
 
@@ -28,6 +22,9 @@
       plugins.wine.enable = true;
 
       daws.reaper.enable = true;
+      daws.renoise.enable = true;
+      # Remove this line to use a demo version.
+      daws.renoise.releasePath = /home/${user}/.local/share/rns351.tar.gz;
     };
   };
 }

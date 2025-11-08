@@ -2,6 +2,5 @@
   imports = [
     ./neovim
     ./firefox
-    ./renoise
   ];
 }
