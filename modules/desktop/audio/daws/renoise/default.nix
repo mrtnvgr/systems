@@ -3,9 +3,10 @@
 { inputs, pkgs, lib, config, user, ... }:
 let
   inherit (lib) mkIf mkEnableOption mkOption types;
-  inherit (pkgs) writeShellScriptBin;
 
-  cfg = config.modules.desktop.audio.daws.renoise;
+  desktopCfg = config.modules.desktop;
+  cfg = desktopCfg.audio.daws.renoise;
+
 in {
   options.modules.desktop.audio.daws.renoise = {
     enable = mkEnableOption "Renoise";
@@ -22,10 +23,10 @@ in {
       pipewireCfg = config.services.pipewire;
       isJackEnabled = jackdCfg.enable || (pipewireCfg.enable && pipewireCfg.jack.enable);
 
-      wrapWithPWJack = name: executable:
-        writeShellScriptBin name "exec ${pkgs.pipewire.jack}/bin/pw-jack ${executable}";
-
-      renoiseWrapped = if isJackEnabled then wrapWithPWJack "renoise" "${renoise}/bin/renoise" else renoise;
+      renoiseWrapped = pkgs.writeScriptBin "renoise" /* bash */ ''
+        ${lib.optionalString desktopCfg.audio.plugins.wine.enable "wine-audio-plugins-activate"}
+        ${lib.optionalString isJackEnabled "${pkgs.pipewire.jack}/bin/pw-jack"} ${renoise}/bin/renoise $@
+      '';
     in [ renoiseWrapped ];
 
     # Fix sudden Renoise disconnections from JACK
