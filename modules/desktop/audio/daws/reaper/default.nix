@@ -1,6 +1,6 @@
 { pkgs, lib, config, user, ... }:
 let
-  # inherit (inputs.margesimpson.${pkgs.system}) margesimpson;
+  # inherit (inputs.margesimpson.${pkgs.stdenv.hostPlatform.system}) margesimpson;
   # TODO: modular config via margesimpson
 
   desktopCfg = config.modules.desktop;

@@ -112,7 +112,7 @@ in {
 
     package = mkOption {
       type = types.package;
-      default = inputs.nixpkgs-wine.legacyPackages.${pkgs.system}.wineWowPackages.stagingFull;
+      default = inputs.nixpkgs-wine.legacyPackages.${pkgs.stdenv.hostPlatform.system}.wineWowPackages.stagingFull;
     };
 
     bottles = mkOption {
