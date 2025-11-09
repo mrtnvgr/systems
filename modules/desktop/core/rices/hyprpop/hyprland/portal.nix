@@ -7,10 +7,6 @@ in {
       systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
     };
 
-    xdg.portal = {
-      enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-      config.common.default = "*";
-    };
+    xdg.portal.extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 }
