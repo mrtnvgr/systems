@@ -1,27 +1,18 @@
 { pkgs, config, lib, ... }: let
   inherit (lib) mkEnableOption mkIf;
 
-  # TODO: vitalium-vst3 to nurpkgs
-  vitalium = pkgs.distrho-ports.override {
-    plugins = [ "vitalium" ];
-    # TODO: buildLV2 = false;
-    # TODO: buildVST2 = false;
-  };
-
-  # TODO: create override packages in nurpkgs:
-  # - surge-XT-vst3
-  # - airwindows-vst3
-  # - lsp-plugins-vst3
-
   synths = with pkgs; [
-    surge-XT
-    vitalium
+    surge-XT-vst3
+    vitalium-vst3
   ];
 
   fx = with pkgs; [
+    TAL-plugins-vst3
     lsp-plugins
-    # FIXME: neuralnote
+    airwindows
     neural-amp-modeler-lv2
+    luftikus-vst3
+    LUFSMeter-vst3
   ];
 
   cfg = config.modules.desktop.audio.plugins;
