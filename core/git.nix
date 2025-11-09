@@ -1,7 +1,6 @@
 { pkgs, user, ... }: {
-  environment.systemPackages = with pkgs; [ github-cli git-lfs git-crypt ];
-
   home-manager.users.${user} = {
+    home.packages = with pkgs; [ github-cli git-lfs git-crypt ];
     programs.git = {
       enable = true;
       settings = {
