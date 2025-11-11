@@ -21,6 +21,8 @@ in {
   ];
 
   config = lib.mkIf cfg.enable {
+    _internals.isAnyDawInstalled = true;
+
     home-manager.users.${user} = {
       home.packages = [ reaper-wrapped ];
     };

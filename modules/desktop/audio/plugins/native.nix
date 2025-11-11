@@ -16,13 +16,16 @@
   ];
 
   cfg = config.modules.desktop.audio.plugins;
+  isAnyDawInstalled = config._internals.isAnyDawInstalled;
 in {
   options.modules.desktop.audio.plugins = {
-    # TODO: migrate to mkOption, enable if daws are enabled
-    enable = mkEnableOption "audio plugins";
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = isAnyDawInstalled;
+    };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = synths ++ fx;
   };
 }

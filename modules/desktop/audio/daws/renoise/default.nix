@@ -16,6 +16,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    _internals.isAnyDawInstalled = true;
+
     environment.systemPackages = let
       renoise = if (cfg.releasePath != null) then pkgs.renoise.override { releasePath = cfg.releasePath; } else pkgs.renoise;
 
