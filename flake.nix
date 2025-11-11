@@ -18,10 +18,7 @@
 
     nix-colors.url = "github:Misterio77/nix-colors";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim";
 
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
