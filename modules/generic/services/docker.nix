@@ -3,7 +3,7 @@
     enable = lib.mkEnableOption "Docker";
   };
 
-  config = lib.mkIf config.modules.generic.services.docker {
+  config = lib.mkIf config.modules.generic.services.docker.enable {
     virtualisation.docker.enable = true;
     environment.systemPackages = [ pkgs.docker ];
     users.users.${user}.extraGroups = [ "docker" ];
