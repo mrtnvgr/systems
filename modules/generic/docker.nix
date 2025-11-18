@@ -1,0 +1,15 @@
+{ config, pkgs, lib, user, ... }: {
+  options.modules.generic.docker = {
+    enable = lib.mkEnableOption "Docker";
+  };
+
+  config = lib.mkIf config.modules.generic.docker {
+    virtualisation.docker.enable = true;
+    environment.systemPackages = [ pkgs.docker ];
+    users.users.${user}.extraGroups = [ "docker" ];
+  };
+
+  # cross-compilation for arm handhelds
+  # environment.systemPackages = [ pkgs.qemu ];
+  # boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+}
