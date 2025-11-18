@@ -27,4 +27,6 @@
       daws.renoise.releasePath = /home/${user}/.local/share/rns351.tar.gz;
     };
   };
+
+  modules.generic.services.docker.enable = true;
 }

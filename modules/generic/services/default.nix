@@ -1,5 +1,6 @@
 { ... }: {
   imports = [
-    ./services
+    ./sshd.nix
+    ./docker.nix
   ];
 }
