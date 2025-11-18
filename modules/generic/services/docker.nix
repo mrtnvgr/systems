@@ -1,9 +1,9 @@
 { config, pkgs, lib, user, ... }: {
-  options.modules.generic.docker = {
+  options.modules.generic.services.docker = {
     enable = lib.mkEnableOption "Docker";
   };
 
-  config = lib.mkIf config.modules.generic.docker {
+  config = lib.mkIf config.modules.generic.services.docker {
     virtualisation.docker.enable = true;
     environment.systemPackages = [ pkgs.docker ];
     users.users.${user}.extraGroups = [ "docker" ];
