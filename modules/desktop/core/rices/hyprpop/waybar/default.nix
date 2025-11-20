@@ -14,26 +14,10 @@ let
       min-height: 0;
       margin: 0;
       padding: 0;
+      background-color: transparent;
 
       font-family: "${theme.font.name}", sans-serif;
       font-size: 13px;
-    }
-
-    @keyframes blink_red {
-      to { background-color: #${palette.red}; }
-    }
-
-    /* TODO: hide if the laptop is connected to a charger */
-    .warning, .critical, .urgent {
-      animation-name: blink_red;
-      animation-duration: 1s;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-    }
-
-    * {
-      background-color: transparent;
     }
 
     window>box, tooltip {
@@ -135,6 +119,20 @@ let
 
     #clock {
       color: #${palette.violet};
+    }
+
+    @keyframes blink_red {
+      to { background-color: #${palette.red}; }
+    }
+
+    .discharging .warning,
+    .discharging .critical,
+    .discharging .urgent {
+      animation-name: blink_red;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
     }
   '';
 
