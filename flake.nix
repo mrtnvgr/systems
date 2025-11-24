@@ -30,7 +30,6 @@
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
-    musnix.url = "github:musnix/musnix";
 
     eggs.url = "https://github.com/mrtnvgr/eggs/releases/download/master/built.zip";
     eggs.flake = false;
