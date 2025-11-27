@@ -34,8 +34,8 @@ in {
 
   imports = [
     ./extensions
+    ./scripts
     ./theme.nix
-    ./reascripts.nix
     ./config.nix
   ];
 
