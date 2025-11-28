@@ -1,5 +1,16 @@
 { lib, config, user, ... }: let
   cfg = config.modules.desktop.audio.daws.reaper;
+
+  scriptOptions = {
+    source = lib.mkOption {
+      type = lib.types.path;
+    };
+
+    key = lib.mkOption {
+      type = with lib.types; nullOr str;
+      default = null;
+    };
+  };
 in {
   imports = [
     ./MKSlicer.nix
@@ -7,18 +18,11 @@ in {
     ./ColorPalette.nix
   ];
 
-  # TODO: migrate to this:
-    # cfg.scripts.Test1.source = <path>; (type = path)
-    # cfg.scripts.Test1.key = "47"; (type = nullOr str)
-
   options.modules.desktop.audio.daws.reaper = {
     scripts = lib.mkOption {
-      type = with lib.types; attrsOf path;
-      default = {};
-    };
-
-    scriptMappings = lib.mkOption {
-      type = with lib.types; attrsOf str;
+      type = with lib.types; attrsOf (submodule {
+        options = scriptOptions;
+      });
       default = {};
     };
   };
@@ -28,7 +32,7 @@ in {
       home.file = lib.mapAttrs' (name: value:
         lib.nameValuePair
           ".config/REAPER/Scripts/nix/${name}.lua"
-          { source = value; }
+          { inherit (value) source; }
       ) cfg.scripts;
     };
 
@@ -39,9 +43,11 @@ in {
         SCR 4 0 RS${toHash name} "Script: ${name} (from nix)" nix/${name}.lua
       '') cfg.scripts;
 
+      mappedScripts = lib.filterAttrs (name: value: value.key != null) cfg.scripts;
+
       mappingRegistry = lib.mapAttrsToList (name: value: ''
-        KEY 0 ${value} _RS${toHash name} 0
-      '') cfg.scriptMappings;
+        KEY 0 ${value.key} _RS${toHash name} 0
+      '') mappedScripts;
     in
       lib.concatLines (scriptRegistry ++ mappingRegistry);
   };
