@@ -27,5 +27,21 @@ in {
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = synths ++ fx;
+
+    environment.sessionVariables =
+      let
+        makePluginPath = format: (lib.concatStringsSep ":" [
+          "/home/${user}/.${format}"
+          "/etc/profiles/per-user/${user}/lib/${format}"
+          "/run/current-system/sw/lib/${format}"
+        ]) + ":";
+      in
+      {
+        VST3_PATH = makePluginPath "vst3";
+        VST_PATH = makePluginPath "vst";
+        CLAP_PATH = makePluginPath "clap";
+        LV2_PATH = makePluginPath "lv2";
+        LADSPA_PATH = makePluginPath "ladspa";
+      };
   };
 }
