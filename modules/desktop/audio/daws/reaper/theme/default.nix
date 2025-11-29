@@ -17,7 +17,7 @@
     "#ABCDFF"
     "#D1E4FF"
   ];
-  bgrColors = map mrtnvgr-lib.colors.hex.flip colors;
+  bgrColors = map (x: lib.removePrefix "#" x) (map mrtnvgr-lib.colors.hex.flip colors);
   custColors = lib.concatStrings (map (x: "${x}00") bgrColors);
 in {
   config = lib.mkIf cfg.enable {
