@@ -35,7 +35,7 @@ in {
   imports = [
     ./extensions
     ./scripts
-    ./theme.nix
+    ./theme
     ./config.nix
   ];
 
