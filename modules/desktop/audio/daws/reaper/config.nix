@@ -68,6 +68,10 @@ in {
         [reaper]
         griddot=0
 
+        ; Continious scrolling
+        [reaper]
+        viewadvance=19
+
         ; Show only VST3 plugin if other formats were found
         [reaper]
         dupefilter=1
