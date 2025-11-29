@@ -1,23 +1,18 @@
 { pkgs, lib, config, ... }:
 let
-  inherit (lib) mkIf mkOption types;
-
   cfg = config.modules.desktop;
-  font = cfg.theme.font;
 in {
   options.modules.desktop.theme.font = {
-    name = mkOption { type = types.str; };
-    package = mkOption { type = types.package; };
+    name = lib.mkOption { type = lib.types.str; };
+    package = lib.mkOption { type = lib.types.package; };
   };
 
-  config = mkIf cfg.enable {
-    fonts = {
-      enableDefaultPackages = true;
-      packages = [
-        pkgs.corefonts
-        pkgs.dejavu_fonts
-        font.package
-      ];
-    };
+  config = lib.mkIf cfg.enable {
+    fonts.enableDefaultPackages = true;
+
+    fonts.packages = [
+      cfg.theme.font.package
+      pkgs.corefonts
+    ];
   };
 }
