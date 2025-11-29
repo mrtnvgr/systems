@@ -2,6 +2,13 @@
 let
   inherit (lib) mkIf;
   cfg = config.modules.desktop.audio.daws.reaper;
+
+  vars = config.environment.sessionVariables;
+  mkPluginPath = path: lib.replaceString ":" ";" path;
+
+  vst_path = mkPluginPath (vars.VST3_PATH + vars.VST_PATH);
+  clap_path = mkPluginPath vars.CLAP_PATH;
+  lv2_path = mkPluginPath vars.LV2_PATH;
 in {
   config = mkIf cfg.enable {
     modules.desktop.audio.daws.reaper.config = {
@@ -96,6 +103,12 @@ in {
         ; Hide deletion prompt on record stop
         [reaper]
         promptendrec=0
+
+        ; Plugin paths
+        [reaper]
+        vstpath=${vst_path}
+        clap_path_linux-x86_64=${clap_path}
+        lv2path_linux=${lv2_path}
       '';
 
       "reaper-kb.ini" = /* dosini */ ''
