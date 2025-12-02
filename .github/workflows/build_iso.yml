@@ -30,10 +30,10 @@ jobs:
       env:
         NIXPKGS_ALLOW_UNFREE: 1
       run: |
-        nix run nixpkgs#nixos-generators -- --flake .#minix --format-path genfmts/isoplus.nix -o minix.iso
+        nix run nixpkgs#nixos-generators -- --flake .#minix --format-path genfmts/isoplus.nix -o minix
 
     - name: Archive ISO
       uses: actions/upload-artifact@v4
       with:
         name: minix.iso
-        path: minix.iso
+        path: minix/iso/*.iso
