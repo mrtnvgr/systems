@@ -9,8 +9,16 @@ let
   vst_path = mkPluginPath (vars.VST3_PATH + vars.VST_PATH);
   clap_path = mkPluginPath vars.CLAP_PATH;
   lv2_path = mkPluginPath vars.LV2_PATH;
+
+  media_path = "/home/${user}/.local/REAPER/Media";
+  peaks_path = "/home/${user}/.local/REAPER/Peaks";
 in {
   config = mkIf cfg.enable {
+    systemd.tmpfiles.settings.reaper = {
+      "${media_path}".d = { user = "${user}"; };
+      "${peaks_path}".d = { user = "${user}"; };
+    };
+
     modules.desktop.audio.daws.reaper.config = {
       "reaper.ini" = /* dosini */ ''
         ; Set a theme
@@ -28,13 +36,17 @@ in {
         ; Save reapeaks in a cache directory
         [reaper]
         altpeaks=5
-        altpeakspath=/home/${user}/.local/REAPER/Peaks
+        altpeakspath=${peaks_path}
+
+        ; Default media directory for unsaved projects
+        [reaper]
+        defrecpath=${media_path}
 
         ; Load a new project on startup
         [reaper]
         loadlastproj=19
 
-        ; Never stop playback, replay the project
+        ; Never stop playback, never replay the project
         [reaper]
         stopprojlen=0
 
