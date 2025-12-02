@@ -5,7 +5,6 @@
   environment.systemPackages = with pkgs; [
     wget
     htop
-    neofetch
     file
     dos2unix
     progress
