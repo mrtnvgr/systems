@@ -3,22 +3,24 @@
 [![Automatic ISO builds](https://github.com/mrtnvgr/systems/actions/workflows/build_iso.yml/badge.svg)](https://github.com/mrtnvgr/systems/actions/workflows/build_iso.yml)
 [![Grawler checks](https://github.com/mrtnvgr/systems/actions/workflows/grawler.yml/badge.svg)](https://github.com/mrtnvgr/systems/actions/workflows/grawler.yml)
 
-This repository contains my [NixOS](https://nixos.org/) configurations
-
-> [!WARNING]
-> Work in progress, expect bugs and regressions
+This repository contains declarative configurations of my machines.
 
 ## Hosts
 
 ### Desktops
 
+**Real machines:**
+
 - **nixie** - daily driver laptop
-- _**thlix** - minimal personal desktop_
-- _**minix** - base of all desktops (ISO builds)_
+
+**Build targets:**
+
+- **thlix** - minimal personal desktop
+- **minix** - base of all desktops and ISO builds
 
 ### Servers
 
-- **cloud** - main server
+- **cloud**
 
 ## Usage
 
@@ -39,11 +41,10 @@ This repository contains my [NixOS](https://nixos.org/) configurations
 - **isoplus** - LiveISO, heavily compressed, loaded into the RAM for performance
   - For **persistence** support, specify `--special-arg persistence 1` while creating the image
 - **rawplus** - full mutability, image of a *regular* installation
-  - Expect a *horrible* experience on USB sticks
-  - Consider **only** for external SSD/HDD drives
+  - Will be slow on regular USB sticks, made for external SSD drives
   - Specify `--disk-size <MEGABYTES>` while creating the image
 
-#### Steps
+#### Flashing
 
 - Bring `nixos-generators` into the scope: `nix shell github:nix-community/nixos-generators`
 - Use the `minix` host or create your own
