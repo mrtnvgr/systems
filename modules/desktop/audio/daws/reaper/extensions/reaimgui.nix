@@ -13,7 +13,11 @@ let
 
   scripts = "Scripts/ReaTeam Extensions/API";
 in {
-  config = mkIf cfg.enable {
+  options.modules.desktop.audio.daws.reaper = {
+    extensions.reaimgui.enable = lib.mkEnableOption "REAPER ReaImGui extension";
+  };
+
+  config = mkIf cfg.extensions.reaimgui.enable {
     home-manager.users.${user} = {
       home.file.".config/REAPER/UserPlugins/reaper_imgui-x86_64.so".source = "${reaimgui}/UserPlugins/reaper_imgui-x86_64.so";
 

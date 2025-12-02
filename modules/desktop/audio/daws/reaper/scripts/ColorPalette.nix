@@ -29,5 +29,11 @@ in {
       user_y=0
       background=false
     '';
+
+    extensions = {
+      reaimgui.enable = true;
+      js_ReaScriptAPI.enable = true;
+      sws.enable = true;
+    };
   };
 }

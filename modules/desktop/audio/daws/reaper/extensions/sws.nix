@@ -1,6 +1,5 @@
 { lib, config, user, pkgs, ... }:
 let
-  inherit (lib) mkIf;
   cfg = config.modules.desktop.audio.daws.reaper;
 
   sws-version = pkgs.reaper-sws-extension.version;
@@ -10,7 +9,11 @@ let
     hash = "sha256-tSFWc1sh5SOnVVNbHm8ZiHyHAcvo+pb7+Qtue0dJ1fg=";
   };
 in {
-  config = mkIf cfg.enable {
+  options.modules.desktop.audio.daws.reaper = {
+    extensions.sws.enable = lib.mkEnableOption "REAPER SWS extension";
+  };
+
+  config = lib.mkIf cfg.extensions.sws.enable {
     home-manager.users.${user} = {
       home.file.".config/REAPER/UserPlugins/reaper_sws-x86_64.so".source = "${pkgs.reaper-sws-extension}/UserPlugins/reaper_sws-x86_64.so";
       home.file.".config/REAPER/UserPlugins/reaper_sws-x64.dll".source = sws-win;
