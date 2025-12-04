@@ -9,10 +9,6 @@ in {
         [reaper]
         lastthemefn5=/home/${user}/.config/REAPER/ColorThemes/Reapertips.ReaperTheme
 
-        ; Disable version checking
-        [reaper]
-        verchk=0
-
         ; Disable boot animation
         [reaper]
         splashfast=1

@@ -731,11 +731,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764852176,
-        "narHash": "sha256-uQ7mRLslIQCn6s1HAdgawMxloSD1Oon5DMQ2leComK4=",
+        "lastModified": 1764852457,
+        "narHash": "sha256-JplrLrgQQ5hRsaLy62k0UB3Hb73F+6PxBII6hMMa/tI=",
         "owner": "mrtnvgr",
         "repo": "reanix",
-        "rev": "134b61c2607a0f037f63d63060c248a85037eb08",
+        "rev": "a8e9e52e165beeebe17aacea4e74a3602e1c188e",
         "type": "github"
       },
       "original": {
