@@ -26,6 +26,11 @@ let
         default = false;
       };
     };
+
+    key = lib.mkOption {
+      type = with lib.types; nullOr singleLineStr;
+      default = null;
+    };
   };
   track = lib.types.submodule { options = trackOptions; };
 
@@ -59,7 +64,7 @@ let
   scripts = lib.mapAttrs' (name: value:
     lib.nameValuePair
       "Load \"${name}\" track template"
-      { source = mkScript name; }
+      { source = mkScript name; inherit (value) key; }
   ) cfg.templates.tracks;
 in {
   options.modules.desktop.audio.daws.reaper = {

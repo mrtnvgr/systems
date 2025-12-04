@@ -124,14 +124,6 @@ in {
       '';
 
       "reaper-kb.ini" = /* dosini */ ''
-        ; Action: Create new auto record-armed MIDI track
-        ; Mapped to: Ctrl + Shift + T
-        ; - Track: Insert new track
-        ; - SWS/S&M: Set selected tracks MIDI input to all channels
-        ; - Track: Set automatic record-arm when track selected
-        ACT 0 0 "0ab211ac849521218f581e3d86c66438" "Custom: Create new auto record-armed MIDI track" 40001 _S&M_MIDI_INPUT_ALL_CH 40737
-        KEY 13 84 _0ab211ac849521218f581e3d86c66438 0 # Ctrl+Shift+T : Custom: Create new auto record-armed MIDI track
-
         ; Recording shortcuts
         KEY 1 69 1013 0  # E : Transport: Record
         KEY 1 81 40668 0 # Q : Transport: Stop (DELETE all recorded media)

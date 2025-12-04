@@ -28,6 +28,7 @@
           record.enable = true;
           record.input = "<all_midi>";
           record.armOnSelect = true;
+          key = "13 84"; # Ctrl + Shift + T
         };
       };
 
