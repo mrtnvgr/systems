@@ -23,6 +23,9 @@ let
     ${pkgs.reaper}/bin/reaper $@
   '';
 in {
+  # TODO: move reaper to separate nix flake
+  # TODO: keep all scripts, theme, config setup here
+
   options.modules.desktop.audio.daws.reaper = {
     enable = lib.mkEnableOption "REAPER";
 
@@ -35,6 +38,7 @@ in {
   imports = [
     ./extensions
     ./scripts
+    ./templates
     ./theme
     ./config.nix
   ];

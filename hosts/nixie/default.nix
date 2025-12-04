@@ -21,7 +21,16 @@
       plugins.enable = true;
       plugins.wine.enable = true;
 
-      daws.reaper.enable = true;
+      daws.reaper = {
+        enable = true;
+
+        templates.tracks."MIDI Track" = {
+          record.enable = true;
+          record.input = "<all_midi>";
+          record.armOnSelect = true;
+        };
+      };
+
       daws.renoise.enable = true;
       # Remove this line to use a demo version.
       daws.renoise.releasePath = /home/${user}/.local/share/rns351.tar.gz;
