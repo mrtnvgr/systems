@@ -21,16 +21,7 @@
       plugins.enable = true;
       plugins.wine.enable = true;
 
-      daws.reaper = {
-        enable = true;
-
-        templates.tracks."MIDI Track" = {
-          record.enable = true;
-          record.input = "<all_midi>";
-          record.armOnSelect = true;
-          key = "13 84"; # Ctrl + Shift + T
-        };
-      };
+      daws.reaper.enable = true;
 
       daws.renoise.enable = true;
       # Remove this line to use a demo version.

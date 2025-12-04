@@ -1,5 +1,6 @@
-{ pkgs, config, lib, user, ... }:
+{ inputs, pkgs, config, lib, user, ... }:
 let
+  mrtnvgr-lib = inputs.mrtnvgr.lib { inherit pkgs; };
   # TODO: create vst3 variants for most of these plugins
   # TODO: auburn-sounds-*
 
@@ -44,20 +45,14 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = synths ++ fx;
 
-    environment.sessionVariables =
-      let
-        makePluginPath = format: (lib.concatStringsSep ":" [
-          "/home/${user}/.${format}"
-          "/etc/profiles/per-user/${user}/lib/${format}"
-          "/run/current-system/sw/lib/${format}"
-        ]) + ":";
-      in
-      {
-        VST3_PATH = makePluginPath "vst3";
-        VST_PATH = makePluginPath "vst";
-        CLAP_PATH = makePluginPath "clap";
-        LV2_PATH = makePluginPath "lv2";
-        LADSPA_PATH = makePluginPath "ladspa";
-      };
+    environment.sessionVariables = let
+      make = format: mrtnvgr-lib.mkAudioPluginsPaths user format;
+    in {
+      VST3_PATH = make "vst3";
+      VST_PATH = make "vst";
+      CLAP_PATH = make "clap";
+      LV2_PATH = make "lv2";
+      LADSPA_PATH = make "ladspa";
+    };
   };
 }

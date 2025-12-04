@@ -1,5 +1,5 @@
 { ... }: {
   imports = [
-    ./tracks
+    ./tracks.nix
   ];
 }

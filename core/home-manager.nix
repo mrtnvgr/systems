@@ -4,6 +4,8 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+
     users.${user} = {
       # Nicely reload system units when changing configs
       systemd.user.startServices = "sd-switch";

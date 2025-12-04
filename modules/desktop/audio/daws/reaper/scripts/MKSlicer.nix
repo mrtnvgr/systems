@@ -1,12 +1,14 @@
-{ inputs, lib, config, ... }: let
+{ inputs, lib, config, user, ... }: let
   cfg = config.modules.desktop.audio.daws.reaper;
 in {
-  modules.desktop.audio.daws.reaper = lib.mkIf cfg.enable {
-    scripts.MKSlicer.source = "${inputs.reascripts}/Items Editing/cool_MK Slicer.lua";
+  home-manager.users.${user} = lib.mkIf cfg.enable {
+    programs.reanix = {
+      scripts.MKSlicer.source = "${inputs.reascripts}/Items Editing/cool_MK Slicer.lua";
 
-    extensions = {
-      sws.enable = true;
-      reaimgui.enable = true;
+      extensions = {
+        sws.enable = true;
+        reaimgui.enable = true;
+      };
     };
   };
 }

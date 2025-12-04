@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }: let
+{ inputs, lib, config, pkgs, user, ... }: let
   cfg = config.modules.desktop.audio.daws.reaper;
 
   script = pkgs.stdenvNoCC.mkDerivation {
@@ -16,24 +16,26 @@
     '';
   };
 in {
-  modules.desktop.audio.daws.reaper = lib.mkIf cfg.enable {
-    scripts.ColorPalette = {
-      source = script;
-      key = "1 67"; # C
-    };
+  home-manager.users.${user} = lib.mkIf cfg.enable {
+    programs.reanix = {
+      scripts.ColorPalette = {
+        source = script;
+        key = "1 67"; # C
+      };
 
-    config."reaper-extstate.ini" = /* dosini */ ''
-      [RODILAB_Color_palette]
-      number_x=12
-      palette_y=1
-      user_y=0
-      background=false
-    '';
+      config."reaper-extstate.ini" = /* dosini */ ''
+        [RODILAB_Color_palette]
+        number_x=12
+        palette_y=1
+        user_y=0
+        background=false
+      '';
 
-    extensions = {
-      reaimgui.enable = true;
-      js_ReaScriptAPI.enable = true;
-      sws.enable = true;
+      extensions = {
+        reaimgui.enable = true;
+        js_ReaScriptAPI.enable = true;
+        sws.enable = true;
+      };
     };
   };
 }

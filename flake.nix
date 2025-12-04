@@ -20,14 +20,15 @@
 
     nixvim.url = "github:nix-community/nixvim";
 
+    reanix = {
+      url = "github:mrtnvgr/reanix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.mrtnvgr.follows = "mrtnvgr";
+    };
+
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
     schizofox.url = "github:schizofox/schizofox";
-
-    margesimpson = {
-      url = "github:mrtnvgr/margesimpson";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 

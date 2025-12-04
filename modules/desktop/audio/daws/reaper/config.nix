@@ -1,25 +1,9 @@
-{ lib, config, user, ... }:
+{ config, user, lib, ... }:
 let
-  inherit (lib) mkIf;
   cfg = config.modules.desktop.audio.daws.reaper;
-
-  vars = config.environment.sessionVariables;
-  mkPluginPath = path: lib.replaceString ":" ";" path;
-
-  vst_path = mkPluginPath (vars.VST3_PATH + vars.VST_PATH);
-  clap_path = mkPluginPath vars.CLAP_PATH;
-  lv2_path = mkPluginPath vars.LV2_PATH;
-
-  media_path = "/home/${user}/.local/REAPER/Media";
-  peaks_path = "/home/${user}/.local/REAPER/Peaks";
 in {
-  config = mkIf cfg.enable {
-    systemd.tmpfiles.settings.reaper = {
-      "${media_path}".d = { user = "${user}"; };
-      "${peaks_path}".d = { user = "${user}"; };
-    };
-
-    modules.desktop.audio.daws.reaper.config = {
+  home-manager.users.${user} = lib.mkIf cfg.enable {
+    programs.reanix.config = {
       "reaper.ini" = /* dosini */ ''
         ; Set a theme
         [reaper]
@@ -32,15 +16,6 @@ in {
         ; Disable boot animation
         [reaper]
         splashfast=1
-
-        ; Save reapeaks in a cache directory
-        [reaper]
-        altpeaks=5
-        altpeakspath=${peaks_path}
-
-        ; Default media directory for unsaved projects
-        [reaper]
-        defrecpath=${media_path}
 
         ; Load a new project on startup
         [reaper]
@@ -119,12 +94,6 @@ in {
         ; Hide deletion prompt on record stop
         [reaper]
         promptendrec=0
-
-        ; Plugin paths
-        [reaper]
-        vstpath=${vst_path}
-        clap_path_linux-x86_64=${clap_path}
-        lv2path_linux=${lv2_path}
       '';
 
       "reaper-kb.ini" = /* dosini */ ''
