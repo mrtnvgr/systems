@@ -46,9 +46,22 @@ let
       ${lib.optionalString value.record.armOnSelect "AUTO_RECARM 1"}
     >
   '';
-in {
-  # TODO: generate a script (action?) for each template that adds it
+  trackTemplates = lib.mapAttrs' (name: value:
+    lib.nameValuePair
+      ".config/REAPER/TrackTemplates/${name}.RTrackTemplate"
+      { source = mkTrackTemplate name value; }
+  ) cfg.templates.tracks;
 
+  mkScript = x: pkgs.writeText "Load ${x}.lua" ''
+    local path = reaper.GetResourcePath() .. "TrackTemplates/${x}.RTrackTemplate"
+    reaper.Main_openProject(path)
+  '';
+  scripts = lib.mapAttrs' (name: value:
+    lib.nameValuePair
+      "Load \"${name}\" track template"
+      { source = mkScript name; }
+  ) cfg.templates.tracks;
+in {
   options.modules.desktop.audio.daws.reaper = {
     templates.tracks = lib.mkOption {
       type = with lib.types; attrsOf track;
@@ -58,11 +71,9 @@ in {
 
   config = lib.mkIf cfg.enable {
     home-manager.users.${user} = {
-      home.file = lib.mapAttrs' (name: value:
-        lib.nameValuePair
-          ".config/REAPER/TrackTemplates/${name}.RTrackTemplate"
-          { source = mkTrackTemplate name value; }
-      ) cfg.templates.tracks;
+      home.file = trackTemplates;
     };
+
+    modules.desktop.audio.daws.reaper.scripts = scripts;
   };
 }
