@@ -130,9 +130,6 @@ in {
 
         ; Slice at cursor position
         KEY 1 83 42577 0		 # Main : S : OVERRIDE DEFAULT : Item: Split item under mouse cursor (select right)
-
-        ; C -> open a color picker
-        KEY 1 67 _RS0d28c2303f1d9580d2d9243a756c2c4fa0588e05 0
       '';
 
       "reaper-mouse.ini" = /* dosini */ ''
