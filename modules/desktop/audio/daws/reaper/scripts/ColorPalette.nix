@@ -19,7 +19,7 @@ in {
   modules.desktop.audio.daws.reaper = lib.mkIf cfg.enable {
     scripts.ColorPalette = {
       source = script;
-      key = "47";
+      key = "0 67"; # C
     };
 
     config."reaper-extstate.ini" = /* dosini */ ''

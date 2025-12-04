@@ -46,7 +46,7 @@ in {
       mappedScripts = lib.filterAttrs (name: value: value.key != null) cfg.scripts;
 
       mappingRegistry = lib.mapAttrsToList (name: value: ''
-        KEY 0 ${value.key} _RS${toHash name} 0
+        KEY ${value.key} _RS${toHash name} 0
       '') mappedScripts;
     in
       lib.concatLines (scriptRegistry ++ mappingRegistry);
