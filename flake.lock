@@ -357,11 +357,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764816417,
-        "narHash": "sha256-vY/bgVmvk+iWaGqu/6pKQCh/l7RW1TdiZlhVMDIVnOA=",
+        "lastModified": 1764826897,
+        "narHash": "sha256-QQS457q+ppJT6p0pOwtPC5RQ7rTxceN/wpsDSKqWpc4=",
         "owner": "mrtnvgr",
         "repo": "nurpkgs",
-        "rev": "ac785543980ae9013501fcd5bc8d5e03a1179f25",
+        "rev": "3e169750ca05f2e69196fedcc092eed5a7bd3a54",
         "type": "github"
       },
       "original": {
