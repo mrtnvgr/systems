@@ -1,5 +1,6 @@
 { inputs, pkgs, lib, config, user, ... }: let
   mrtnvgr-lib = inputs.mrtnvgr.lib { inherit pkgs; };
+  inherit (mrtnvgr-lib.strings) quote;
 
   cfg = config.modules.desktop.audio.daws.reaper;
 
