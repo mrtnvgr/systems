@@ -1,6 +1,7 @@
 { lib, config, inputs, user, ... }:
 let
-  cfg = config.modules.desktop.audio.daws.reaper;
+  desktopCfg = config.modules.desktop;
+  cfg = desktopCfg.audio.daws.reaper;
 in {
   options.modules.desktop.audio.daws.reaper = {
     enable = lib.mkEnableOption "REAPER";
@@ -11,8 +12,14 @@ in {
 
     home-manager.users.${user} = {
       imports = [ inputs.reanix.homeModules.default ];
-      programs.reanix.enable = true;
-      # TODO: programs.reanix.preRunHook = ''${lib.optionalString desktopCfg.audio.plugins.wine.enable "wine-audio-plugins-activate"}'';
+
+      programs.reanix = {
+        enable = true;
+
+        hooks.preRun = ''
+          ${lib.optionalString desktopCfg.audio.plugins.wine.enable "wine-audio-plugins-activate"}
+        '';
+      };
     };
   };
 
