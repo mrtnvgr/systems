@@ -1,4 +1,6 @@
-{ lib, config, user, ... }: let
+{ inputs, pkgs, lib, config, user, ... }: let
+  mrtnvgr-lib = inputs.mrtnvgr.lib { inherit pkgs; };
+
   cfg = config.modules.desktop.audio.daws.reaper;
 
   scriptOptions = {
@@ -40,7 +42,7 @@ in {
       toHash = x: builtins.hashString "sha1" x;
 
       scriptRegistry = lib.mapAttrsToList (name: value: ''
-        SCR 4 0 RS${toHash name} "Script: ${name} (from nix)" nix/${name}.lua
+        SCR 4 0 RS${toHash name} ${quote "Script: ${name} (from nix)"} ${quote "nix/${name}.lua"}
       '') cfg.scripts;
 
       mappedScripts = lib.filterAttrs (name: value: value.key != null) cfg.scripts;

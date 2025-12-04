@@ -58,7 +58,7 @@ let
   ) cfg.templates.tracks;
 
   mkScript = x: pkgs.writeText "Load ${x}.lua" ''
-    local path = reaper.GetResourcePath() .. "TrackTemplates/${x}.RTrackTemplate"
+    local path = reaper.GetResourcePath() .. "/TrackTemplates/${x}.RTrackTemplate"
     reaper.Main_openProject(path)
   '';
   scripts = lib.mapAttrs' (name: value:
