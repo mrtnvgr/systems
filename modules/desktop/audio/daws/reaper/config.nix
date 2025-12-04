@@ -62,6 +62,10 @@ in {
         [reaper]
         loopnewitems=32
 
+        ; Default track height => small
+        [reaper]
+        defvzoom=2
+
         ; Zoom in/out on mouse cursor
         [reaper]
         zoommode=3
