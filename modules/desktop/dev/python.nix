@@ -5,6 +5,8 @@ let
   defaultPackages = ps: with ps; [
     requests
     datetime
+    beautifulsoup4
+    gitpython
   ];
 
   cfg = config.modules.desktop.dev.python;
