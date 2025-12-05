@@ -1,4 +1,5 @@
-{ pkgs, config, user, ... }: let
+{ pkgs, config, lib, user, ... }: let
+  cfg = config.programs.reanix;
   inherit (config.colorScheme) palette;
 
   colors = with palette; [
@@ -15,7 +16,7 @@
     teal
   ];
 in {
-  home-manager.users.${user} = {
+  home-manager.users.${user} = lib.mkIf cfg.enable {
     programs.reanix.colors = colors;
 
     programs.reanix.config."reaper.ini" = /* dosini */ ''
