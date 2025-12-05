@@ -28,7 +28,7 @@ in
     powerManagement.cpuFreqGovernor = "performance";
     boot.kernel.sysctl."vm.swappiness" = 10;
 
-    boot.kernelPackages = pkgs.linux-rt_latest; # TODO: try linux_xanmod_latest
+    boot.kernelPackages = pkgs.linuxPackages-rt_latest; # TODO: try linux_xanmod_latest
     boot.kernelParams = [ "threadirqs" ];
 
     security.pam.loginLimits = [
