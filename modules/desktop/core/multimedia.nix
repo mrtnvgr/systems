@@ -10,8 +10,11 @@ in {
       # Viewers
       feh mpv
 
-      # Converters / Editors / FX
-      ffmpeg imagemagick sox rubberband
+      # Modifiers: video / image
+      ffmpeg imagemagick
+
+      # Modifiers: audio
+      sox flac lame rubberband
 
       # Screenshot / Video capturing
       screenshot-select screenshot-full
