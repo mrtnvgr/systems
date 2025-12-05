@@ -1,8 +1,7 @@
-{ inputs, pkgs, lib, config, user, ... }: let
-  mrtnvgr-lib = inputs.mrtnvgr.lib { inherit pkgs; };
-
+{ pkgs, config, user, ... }: let
   inherit (config.colorScheme) palette;
-  userDefinedColors = with palette; [
+
+  colors = with palette; [
     red
     green
     yellow
@@ -15,22 +14,14 @@
     sky
     teal
   ];
-
-  colors = mrtnvgr-lib.lists.crampPad 16 "#000000" userDefinedColors;
-
-  bgrColors = map mrtnvgr-lib.colors.hex.flip colors;
-  pureColors = map (x: lib.removePrefix "#" x) bgrColors;
-  custColors = (lib.concatStrings (map (x: "${x}00") pureColors)) + "FF";
 in {
   home-manager.users.${user} = {
+    programs.reanix.colors = colors;
+
     programs.reanix.config."reaper.ini" = /* dosini */ ''
       ; Selected theme
       [reaper]
       lastthemefn5=/home/${user}/.config/REAPER/ColorThemes/Reapertips.ReaperTheme
-
-      ; Custom colors
-      [reaper]
-      custcolors=${custColors}
     '';
 
     home.file.".config/REAPER/ColorThemes/Reapertips.ReaperThemeZip".source = pkgs.fetchurl {
