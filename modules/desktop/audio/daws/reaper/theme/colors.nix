@@ -1,5 +1,5 @@
 { config, lib, user, ... }: let
-  cfg = config.programs.reanix;
+  cfg = config.modules.desktop.audio.daws.reaper;
   inherit (config.colorScheme) palette;
 
   colors = with palette; [

@@ -1,5 +1,5 @@
 { pkgs, config, lib, user, ... }: let
-  cfg = config.programs.reanix;
+  cfg = config.modules.desktop.audio.daws.reaper;
 in {
   imports = [
     ./colors.nix
