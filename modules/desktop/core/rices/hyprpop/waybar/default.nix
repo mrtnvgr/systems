@@ -125,12 +125,12 @@ let
       to { background-color: #${palette.red}; }
     }
 
-    .discharging .warning,
-    .discharging .critical,
-    .discharging .urgent {
+    .discharging.warning,
+    .discharging.critical,
+    .discharging.urgent {
       animation-name: blink_red;
       animation-duration: 1s;
-      animation-timing-function: steps(2);
+      animation-timing-function: linear;
       animation-iteration-count: infinite;
       animation-direction: alternate;
     }
