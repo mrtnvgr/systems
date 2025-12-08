@@ -4,9 +4,15 @@ in {
   home-manager.users.${user} = lib.mkIf cfg.enable {
     programs.reanix.templates.tracks = {
       "MIDI Track" = {
-        record.enable = true;
-        record.input = "<all_midi>";
-        record.armOnSelect = true;
+        record = {
+          enable = true;
+
+          input = "<all_midi>";
+          armOnSelect = true;
+
+          mode = "<midi_overdub>";
+        };
+
         key = "13 84"; # Ctrl + Shift + T
       };
     };
