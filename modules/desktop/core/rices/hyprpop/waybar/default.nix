@@ -145,48 +145,47 @@ let
 
     "custom/flake" = {
         "format" = " ";
-		"tooltip" = false;
-        "on-click" = "pkill rofi || rofi -show drun";
+        "tooltip" = false;
     };
 
-	"hyprland/workspaces" = {
-		"persistent-workspaces" = { "*" = 4; };
-	};
+    "hyprland/workspaces" = {
+        "persistent-workspaces" = { "*" = 4; };
+    };
 
-	"tray" = {
-		"icon-size" = 12;
-		"spacing" = 5;
-	};
+    "tray" = {
+        "icon-size" = 12;
+        "spacing" = 5;
+    };
 
-	"wireplumber" = {
-		"format" = "{icon} {volume}%";
-		"format-muted" = "󰝟 {volume}%";
-		"on-click" = "amixer -q sset Master toggle";
-		"format-icons" = [ "" "" "" ];
-	};
+    "wireplumber" = {
+        "format" = "{icon} {volume}%";
+        "format-muted" = "󰝟 {volume}%";
+        "on-click" = "amixer -q sset Master toggle";
+        "format-icons" = [ "" "" "" ];
+    };
 
-	"backlight" = {
-		"format" = "{icon} {percent}%";
-		"format-icons" = [ "" "" ];
-	};
+    "backlight" = {
+        "format" = "{icon} {percent}%";
+        "format-icons" = [ "" "" ];
+    };
 
-	"battery" = {
-		"interval" = 10;
-		"states" = {
-			"warning" = 30;
-			"critical" = 15;
-		};
-		"format" = "󰂄 {capacity}%";
-		"format-discharging" = "{icon} {capacity}%";
-		"format-icons" = [ "󰂎" "󰁻" "󰁾" "󰂀" "󰁹" ];
-	};
+    "battery" = {
+        "interval" = 10;
+        "states" = {
+            "warning" = 30;
+            "critical" = 15;
+        };
+        "format" = "󰂄 {capacity}%";
+        "format-discharging" = "{icon} {capacity}%";
+        "format-icons" = [ "󰂎" "󰁻" "󰁾" "󰂀" "󰁹" ];
+    };
 
-	"clock" = {
-		"interval" = 1;
-		"format" = " {:%H:%M}";
-		"format-alt" = " {:%e %B %Y}";
-		"tooltip" = false;
-	};
+    "clock" = {
+        "interval" = 1;
+        "format" = " {:%H:%M}";
+        "format-alt" = " {:%e %B %Y}";
+        "tooltip" = false;
+    };
   }];
 in {
   config = mkIf (theme.rice == "hyprpop") {
