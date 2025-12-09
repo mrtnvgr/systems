@@ -376,11 +376,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764846719,
-        "narHash": "sha256-Gpla3lIQsNp9t9+H0ySRbJLJSzdv74nw2AfzeIGm+iM=",
+        "lastModified": 1765247298,
+        "narHash": "sha256-YA/35nTRA87QanShK73xF4FR0i4Xu6p5m96DM5xi870=",
         "owner": "mrtnvgr",
         "repo": "nurpkgs",
-        "rev": "4ead7896338e82dc50c28b183a57b3bc2f47b14b",
+        "rev": "17bd038a2c42f29b2d739b0b2a13c65fe44e597c",
         "type": "github"
       },
       "original": {
@@ -731,11 +731,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765197035,
-        "narHash": "sha256-UyiBgUcuaR66j+SZL5uC0e6T4H5Ik+Jd/T9/xXAOb4k=",
+        "lastModified": 1765247339,
+        "narHash": "sha256-eeXVNQ7xWf0HLttbRriQYTshiL8VTD9e6ToleFSGtYM=",
         "owner": "mrtnvgr",
         "repo": "reanix",
-        "rev": "8df500dc58ad733f0cfc2cdb85b863bd62bcc639",
+        "rev": "ddbd0c5002924ddfa5c2581eba155c6c94dccc16",
         "type": "github"
       },
       "original": {
