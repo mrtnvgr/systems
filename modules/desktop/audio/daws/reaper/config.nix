@@ -45,10 +45,9 @@ in {
         [reaper]
         renderbsnew=1024
 
-        ; Hide mixer and transport by default
+        ; Hide mixer by default
         [reaper]
         mixwnd_vis=0
-        transport_vis=0
 
         ; 8th notes grid by default
         [reaper]
