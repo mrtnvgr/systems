@@ -21,29 +21,9 @@ in {
         [reaper]
         stopprojlen=0
 
-        ; Disable fade-in on playback start
-        [reaper]
-        hwfadex=1
-
         ; Disable media item extending
         [reaper]
         mousemovemod=16
-
-        ; Disable item looping
-        [reaper]
-        loopnewitems=32
-
-        ; Default track height => small
-        [reaper]
-        defvzoom=2
-
-        ; Zoom in/out on mouse cursor
-        [reaper]
-        zoommode=3
-
-        ; Render with high buffer block size
-        [reaper]
-        renderbsnew=1024
 
         ; Hide mixer by default
         [reaper]
@@ -52,6 +32,26 @@ in {
         ; 8th notes grid by default
         [reaper]
         projgriddiv=0.5
+
+        ; Default track height => small
+        [reaper]
+        defvzoom=2
+
+        ; Disable item looping
+        [reaper]
+        loopnewitems=32
+
+        ; Zoom in/out on mouse cursor
+        [reaper]
+        zoommode=3
+
+        ; Disable fade-in on playback start
+        [reaper]
+        hwfadex=1
+
+        ; Render with high buffer block size
+        [reaper]
+        renderbsnew=1024
 
         ; Midi editor: note color = track color
         [reaper]
@@ -65,14 +65,14 @@ in {
         [reaper]
         viewadvance=19
 
-        ; Show only VST3 plugin if other formats were found
-        [reaper]
-        dupefilter=1
-
         ; 1ms item fades
         [reaper]
         deffadelen=0.001
         defsplitxfadelen=0.001
+
+        ; Show only VST3 plugin if other formats were found
+        [reaper]
+        dupefilter=1
 
         ; Turn off dots on items
         [reaper]
@@ -89,6 +89,43 @@ in {
         ; Hide deletion prompt on record stop
         [reaper]
         promptendrec=0
+
+        ; Hide velocity handles
+        [midiedit]
+        lastvelhand=0
+
+        ; Bigger track spacers
+        [reaper]
+        trackgapmax=24
+
+        ; Faster waveforms
+        [reaper]
+        recupdatems=33
+
+        ; Faster meters
+        [reaper]
+        vudecay=40
+
+        ; Lower media buffer size
+        [reaper]
+        workbufmsex=600
+        prebufperb=50
+
+        ; Middle mouse -> hand scroll navigation
+        [midiedit]
+        scnotes=128
+
+        ; Media explorer: samples path
+        [reaper_sexplorer]
+        lastdir=/home/${user}/Samples
+
+        ; Media explorer: un-dock
+        [reaper_sexplorer]
+        docked=0
+
+        ; Media explorer: no repeats for media previews
+        [reaper_sexplorer]
+        repeat=0
       '';
 
       "reaper-kb.ini" = /* dosini */ ''
@@ -109,6 +146,11 @@ in {
         ; Adjust fades when multiple clips are selected
         [MM_CTX_ITEMFADE]
         mm_0=9 m
+      '';
+
+      "reaper-themeconfig.ini" = /* dosini */ ''
+        [Reapertips]
+        __coloradjust=1.00000000 -25 -25 51 256 192
       '';
     };
   };
