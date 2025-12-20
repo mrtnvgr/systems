@@ -35,9 +35,6 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    eggs.url = "https://github.com/mrtnvgr/eggs/releases/download/master/built.zip";
-    eggs.flake = false;
-
     reascripts.url = "github:ReaTeam/ReaScripts";
     reascripts.flake = false;
 
