@@ -3,6 +3,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-wine.url = "github:nixos/nixpkgs/b73c2221a46c13557b1b3be9c2070cc42cf01eb3";
 
+    # Handy thing to use unmerged PRs
+    nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
+
     mrtnvgr = {
       url = "github:mrtnvgr/nurpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,12 +45,12 @@
     catppuccin-renoise.flake = false;
   };
 
-  outputs = { nixpkgs, ... } @ inputs:
+  outputs = { nixpkgs-patcher, ... } @ inputs:
     let
       colorschemes = import ./colorschemes;
 
       mkSystem = user: hostname:
-        nixpkgs.lib.nixosSystem {
+        nixpkgs-patcher.lib.nixosSystem {
           specialArgs = { inherit inputs colorschemes user hostname; };
           modules = [
             ./core
