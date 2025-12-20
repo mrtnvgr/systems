@@ -2,7 +2,6 @@
 let
   mrtnvgr-lib = inputs.mrtnvgr.lib { inherit pkgs; };
   # TODO: create vst3 variants for most of these plugins
-  # TODO: auburn-sounds-*
 
   synths = with pkgs; [
     surge-XT-vst3
@@ -12,7 +11,25 @@ let
     # cardinal # fun, but too heavy
     chow-kick
     # oxefmsynth
-    # time12, gate12... # TODO: wait for upstream merge # TODO: make -vst3 nurpkgs
+    hamburger
+    nils-k1v
+    spectralsuite
+    cstop
+    socalabs-loser-ports
+    socalabs-voc
+    socalabs-mverb
+    socalabs-wavetable
+    socalabs-papu
+    socalabs-piano
+    socalabs-rp2a03
+    socalabs-organ
+    auburn-sounds-inner-pitch
+    wildergarden-maim
+    reevr
+    filtr
+    gate12
+    time12
+    sfizz-ui
   ];
 
   fx = with pkgs; [

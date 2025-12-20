@@ -47,19 +47,6 @@
         "type": "github"
       }
     },
-    "eggs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1713369943,
-        "narHash": "sha256-agg//mf+EzblSKWLrrPMGiCv/lbNRXf6Vp6SP9z46Ww=",
-        "type": "tarball",
-        "url": "https://github.com/mrtnvgr/eggs/releases/download/master/built.zip"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/mrtnvgr/eggs/releases/download/master/built.zip"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -549,6 +536,285 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-auburn-sounds-inner-pitch": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-TX/En6qselsPNc9nLgGX9yR2eOMeLhq7wG3S0PLiGLQ=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461472.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461472.patch"
+      }
+    },
+    "nixpkgs-patch-convertwithmoss": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-EvEE9+ihhu6ShOX/wg1wMkwn6xjb7tcLw7BHMEBzxik=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/470158.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/470158.patch"
+      }
+    },
+    "nixpkgs-patch-cstop": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-4fhqZVN57dqo3a6246nN9XlKTPhnXayiI+YUOIXKpDY=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/463428.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/463428.patch"
+      }
+    },
+    "nixpkgs-patch-filtr": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-qxO91pd1vOlzW/q7a8JVnuk5aPpc7j3JhhTAWVXYBEc=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/460273.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/460273.patch"
+      }
+    },
+    "nixpkgs-patch-gate12": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-ipfBDs+pmDvchSJSYfqfCi31L0a49oCAO0n3d72NSMM=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/460260.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/460260.patch"
+      }
+    },
+    "nixpkgs-patch-hamburger": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-YVEyoYzuG71g1yadYUfYd5vgMXujpwYk1TT5FZu02ms=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/468672.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/468672.patch"
+      }
+    },
+    "nixpkgs-patch-nils-k1v": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-LMTUMi66NXsE1cgp9/Ozly4qhbiVMjlWjcLD2XpFtVg=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/468448.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/468448.patch"
+      }
+    },
+    "nixpkgs-patch-reevr": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-ZOqj3ghLEMSNt8g5YuHCw+OxLGCGcpqUej+k3TUO8WQ=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/460283.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/460283.patch"
+      }
+    },
+    "nixpkgs-patch-sfizz-ui": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Ad3DhC1hEPcVaaNn53DYslhHuwPLg3kFOub9XJlTtOs=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/457744.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/457744.patch"
+      }
+    },
+    "nixpkgs-patch-socalabs-loser-ports": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Nmjkx/v3fMok/pDRq392zs0yxUAB8/rKiIMazVUpeiU=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/462546.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/462546.patch"
+      }
+    },
+    "nixpkgs-patch-socalabs-mverb": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-3eEEJwGQ4Wgi0Bxucu4tu/rbDj02zldpkr6ddfH9rAQ=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/462464.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/462464.patch"
+      }
+    },
+    "nixpkgs-patch-socalabs-organ": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-3dOEF16FVUhnk8Uw/oVs/WKzda5VTvZo6+XFInabWbE=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461829.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461829.patch"
+      }
+    },
+    "nixpkgs-patch-socalabs-other-bundle": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-oReJf9fKGwQswExLD2C2t85wHP2+1oxJ3DZv8FrKBvo=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/462236.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/462236.patch"
+      }
+    },
+    "nixpkgs-patch-socalabs-papu": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-rSlsoO+RBq4Aqj3ZunB/WBh7ry0hV6mZuC9CORiY9vw=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461897.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461897.patch"
+      }
+    },
+    "nixpkgs-patch-socalabs-piano": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-mIVH91tcuxCoEdZfr1GfZjyN18W/Rr92NaSbY3F/DmA=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461894.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461894.patch"
+      }
+    },
+    "nixpkgs-patch-socalabs-rp2a03": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-C9vsvJAJU4KlQixsca8GtJUni99E0NlCA1cr46z/fX0=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461837.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461837.patch"
+      }
+    },
+    "nixpkgs-patch-socalabs-sn76489": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-UY6k0EJSY89dvbW0rf4kMgKKC78XjliWF1AYm2U6cgw=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461853.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461853.patch"
+      }
+    },
+    "nixpkgs-patch-socalabs-voc": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Z2lny2+2Wt/MtAnTwTfLvxjvgZ2XcuSmUu6uZ2AUCE0=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/462475.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/462475.patch"
+      }
+    },
+    "nixpkgs-patch-socalabs-wavetable": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Ww3M/mgPOr53UMVTdRnkqZvp9LtWNf5DA8uYdWiOTuY=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/462243.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/462243.patch"
+      }
+    },
+    "nixpkgs-patch-spectralsuite": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-1bstWMgIou4Q6bU0HD/GwHG/LdpjeZcgUOt+VZW17bc=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/463653.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/463653.patch"
+      }
+    },
+    "nixpkgs-patch-time12": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-eVMu9N9AHzut+lCfjZN/Zb2ifeP972HuQjXO0usZbho=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/460099.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/460099.patch"
+      }
+    },
+    "nixpkgs-patch-wildergarden-maim": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Q2vni24mI/2xYQqKJ48dQgBWA4xgD4aGo8eFEYsayMg=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461467.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/461467.patch"
+      }
+    },
+    "nixpkgs-patcher": {
+      "locked": {
+        "lastModified": 1765447685,
+        "narHash": "sha256-H2C5UgIo3nkB2aHnvePZxOMn1GeWM3RTXLjBUT1z/I0=",
+        "owner": "gepbird",
+        "repo": "nixpkgs-patcher",
+        "rev": "fd95467b7f4452b95a0eb610fc96af572149c7d9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gepbird",
+        "repo": "nixpkgs-patcher",
+        "type": "github"
+      }
+    },
     "nixpkgs-wine": {
       "locked": {
         "lastModified": 1722062969,
@@ -693,7 +959,6 @@
     "root": {
       "inputs": {
         "catppuccin-renoise": "catppuccin-renoise",
-        "eggs": "eggs",
         "generators": "generators",
         "home-manager": "home-manager",
         "mrtnvgr": "mrtnvgr",
@@ -701,6 +966,29 @@
         "nix-colors": "nix-colors",
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-patch-auburn-sounds-inner-pitch": "nixpkgs-patch-auburn-sounds-inner-pitch",
+        "nixpkgs-patch-convertwithmoss": "nixpkgs-patch-convertwithmoss",
+        "nixpkgs-patch-cstop": "nixpkgs-patch-cstop",
+        "nixpkgs-patch-filtr": "nixpkgs-patch-filtr",
+        "nixpkgs-patch-gate12": "nixpkgs-patch-gate12",
+        "nixpkgs-patch-hamburger": "nixpkgs-patch-hamburger",
+        "nixpkgs-patch-nils-k1v": "nixpkgs-patch-nils-k1v",
+        "nixpkgs-patch-reevr": "nixpkgs-patch-reevr",
+        "nixpkgs-patch-sfizz-ui": "nixpkgs-patch-sfizz-ui",
+        "nixpkgs-patch-socalabs-loser-ports": "nixpkgs-patch-socalabs-loser-ports",
+        "nixpkgs-patch-socalabs-mverb": "nixpkgs-patch-socalabs-mverb",
+        "nixpkgs-patch-socalabs-organ": "nixpkgs-patch-socalabs-organ",
+        "nixpkgs-patch-socalabs-other-bundle": "nixpkgs-patch-socalabs-other-bundle",
+        "nixpkgs-patch-socalabs-papu": "nixpkgs-patch-socalabs-papu",
+        "nixpkgs-patch-socalabs-piano": "nixpkgs-patch-socalabs-piano",
+        "nixpkgs-patch-socalabs-rp2a03": "nixpkgs-patch-socalabs-rp2a03",
+        "nixpkgs-patch-socalabs-sn76489": "nixpkgs-patch-socalabs-sn76489",
+        "nixpkgs-patch-socalabs-voc": "nixpkgs-patch-socalabs-voc",
+        "nixpkgs-patch-socalabs-wavetable": "nixpkgs-patch-socalabs-wavetable",
+        "nixpkgs-patch-spectralsuite": "nixpkgs-patch-spectralsuite",
+        "nixpkgs-patch-time12": "nixpkgs-patch-time12",
+        "nixpkgs-patch-wildergarden-maim": "nixpkgs-patch-wildergarden-maim",
+        "nixpkgs-patcher": "nixpkgs-patcher",
         "nixpkgs-wine": "nixpkgs-wine",
         "nixvim": "nixvim",
         "reanix": "reanix",
