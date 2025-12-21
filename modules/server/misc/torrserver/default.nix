@@ -27,7 +27,7 @@ let
 
   hasUsers = cfg.users != {};
 
-  flags = "--port ${toString cfg.port}";
+  flags = "--port ${toString cfg.port} --httpauth";
 in {
   options.modules.server.misc.torrserver = {
     enable = mkEnableOption "torrserver";
