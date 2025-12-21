@@ -3,16 +3,16 @@ let
   inherit (lib) mkIf mkEnableOption mkOption types;
   cfg = config.modules.server.misc.torrserver;
 
-  pkg = pkgs.stdenv.mkDerivation rec {
+  torrserver = pkgs.stdenv.mkDerivation (finalAttrs: {
     pname = "torrserver";
     version = "134";
 
     src = pkgs.fetchurl {
-      url = "https://github.com/YouROK/TorrServer/releases/download/MatriX.${version}/TorrServer-linux-amd64";
+      url = "https://github.com/YouROK/TorrServer/releases/download/MatriX.${finalAttrs.version}/TorrServer-linux-amd64";
       hash = "sha256-WDygG9aGnD20nGxtG0t+T2KEwbJ+fZ0uRaCndirrsXI=";
     };
 
-    nativeBuildInputs = with pkgs; [ autoPatchelfHook ];
+    nativeBuildInputs = [ pkgs.autoPatchelfHook ];
 
     phases = "installPhase";
     installPhase = ''
@@ -20,13 +20,12 @@ let
       install -Dm755 $src $out/bin/torrserver
       runHook postInstall
     '';
-  };
+  });
 
   webIsSupported = config.modules.server.web.enable;
   domain = config.modules.server.web.domain;
 
   hasUsers = cfg.users != {};
-  hasWebUsers = cfg.webUsers != {};
 
   flags = "--port ${toString cfg.port}";
 in {
@@ -50,18 +49,13 @@ in {
       type = types.attrsOf types.str;
       default = {};
     };
-
-    webUsers = mkOption {
-      type = types.attrsOf types.str;
-      default = {};
-    };
   };
 
   config = mkIf cfg.enable {
     systemd.services.torrserver = {
       enable = true;
 
-      path = with pkgs; [ ffmpeg-full ];
+      path = [ pkgs.ffmpeg-full ];
 
       after = [ "network.target" ];
       wants = [ "network-online.target" ];
@@ -72,7 +66,7 @@ in {
         Type = "simple";
         NonBlocking = true;
         WorkingDirectory = "/etc/torrserver";
-        ExecStart = "${pkg}/bin/torrserver ${flags}";
+        ExecStart = "${torrserver}/bin/torrserver ${flags}";
         ExecReload = "/bin/sh kill -HUP \${MAINPID}";
         ExecStop = "/bin/sh kill -INT \${MAINPID}";
         TimeoutSec = 30;
@@ -102,11 +96,7 @@ in {
 
     services.nginx.virtualHosts."ts.${domain}" = mkIf (webIsSupported && cfg.exposeWeb) {
       locations = {
-        "/" = {
-          proxyPass = "http://localhost:${toString cfg.port}";
-        };
-
-        "= /".basicAuth = mkIf hasWebUsers cfg.webUsers;
+        "/".proxyPass = "http://localhost:${toString cfg.port}";
       };
 
       enableACME = true;
