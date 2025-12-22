@@ -96,7 +96,14 @@ in {
 
     services.nginx.virtualHosts."ts.${domain}" = mkIf (webIsSupported && cfg.exposeWeb) {
       locations = {
-        "/".proxyPass = "http://127.0.0.1:${toString cfg.port}";
+        "/" = {
+          proxyPass = "http://127.0.0.1:${toString cfg.port}";
+
+          # No CORS
+          extraConfig = ''
+            add_header 'Access-Control-Allow-Origin' '*';
+          '';
+        };
       };
 
       enableACME = true;
