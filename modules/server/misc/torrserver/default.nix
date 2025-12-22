@@ -101,7 +101,7 @@ in {
 
           # No CORS
           extraConfig = ''
-            add_header 'Access-Control-Allow-Origin' '*';
+            add_header 'Access-Control-Allow-Origin' ''';
           '';
         };
       };
