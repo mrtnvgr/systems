@@ -96,10 +96,7 @@ in {
 
     services.nginx.virtualHosts."ts.${domain}" = mkIf (webIsSupported && cfg.exposeWeb) {
       locations = {
-        "/" = {
-          proxyPass = "http://localhost:${toString cfg.port}";
-          proxyWebsockets = true;
-        };
+        "/".proxyPass = "http://127.0.0.1:${toString cfg.port}";
       };
 
       enableACME = true;
