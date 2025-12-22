@@ -91,8 +91,8 @@ in {
       text = builtins.toJSON cfg.users;
     };
 
-    networking.firewall.allowedTCPPorts = mkIf cfg.exposePort [ cfg.port ];
-    networking.firewall.allowedUDPPorts = mkIf cfg.exposePort [ cfg.port ];
+    networking.firewall.allowedTCPPorts = [ cfg.port ];
+    networking.firewall.allowedUDPPorts = [ cfg.port ];
 
     services.nginx.virtualHosts."ts.${domain}" = mkIf (webIsSupported && cfg.exposeWeb) {
       locations = {
