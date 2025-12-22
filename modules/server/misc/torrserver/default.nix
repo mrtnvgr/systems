@@ -99,9 +99,8 @@ in {
         "/" = {
           proxyPass = "http://127.0.0.1:${toString cfg.port}";
 
-          # No CORS
           extraConfig = ''
-            add_header 'Access-Control-Allow-Origin' ''';
+            add_header 'Access-Control-Allow-Origin' 'http://lampa.mx';
           '';
         };
       };
