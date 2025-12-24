@@ -6,7 +6,6 @@ let
   theme = config.modules.desktop.theme;
 in {
   imports = [
-    ./portal.nix
     ./polkit.nix
     ./wallpaper.nix
   ];
