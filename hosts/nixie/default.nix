@@ -29,5 +29,6 @@
     };
   };
 
-  modules.generic.services.docker.enable = true;
+  services.getty.greetingLine = builtins.readFile ./castle;
+
 }
