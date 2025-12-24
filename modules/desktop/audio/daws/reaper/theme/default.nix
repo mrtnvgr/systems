@@ -12,9 +12,9 @@ in {
       lastthemefn5=/home/${user}/.config/REAPER/ColorThemes/Reapertips.ReaperTheme
     '';
 
-    home.file.".config/REAPER/ColorThemes/Reapertips.ReaperThemeZip".source = pkgs.fetchurl {
-      url = "https://github.com/mrtnvgr/reapertips-theme/raw/refs/heads/v1.90/02_Theme/Reapertips%20Theme.ReaperThemeZip";
-      hash = "sha256-GHH9fufbzeKUUxoEvk3tbLgk2YHlias5/dmSX2sf6MY=";
+    home.file.".config/REAPER/ColorThemes/Reapertips.ReaperThemeZip".source = pkgs.reapertips-dark.override {
+      undimmed = true;
+      colored_track_names = true;
     };
 
     # Required fonts for Reapertips theme
