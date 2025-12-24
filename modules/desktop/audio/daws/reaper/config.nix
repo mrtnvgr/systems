@@ -5,10 +5,6 @@ in {
   home-manager.users.${user} = lib.mkIf cfg.enable {
     programs.reanix.config = {
       "reaper.ini" = /* dosini */ ''
-        ; Set a theme
-        [reaper]
-        lastthemefn5=/home/${user}/.config/REAPER/ColorThemes/Reapertips.ReaperTheme
-
         ; Disable boot animation
         [reaper]
         splashfast=1
@@ -130,8 +126,8 @@ in {
 
       "reaper-kb.ini" = /* dosini */ ''
         ; Recording shortcuts
-        KEY 1 69 1013 0  # E : Transport: Record
-        KEY 1 81 40668 0 # Q : Transport: Stop (DELETE all recorded media)
+        KEY 1 69 1013 0          # E : Transport: Record
+        KEY 1 81 40668 0         # Q : Transport: Stop (DELETE all recorded media)
 
         ; Slice at cursor position
         KEY 1 83 42577 0		 # Main : S : OVERRIDE DEFAULT : Item: Split item under mouse cursor (select right)
