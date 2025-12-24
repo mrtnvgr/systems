@@ -126,11 +126,16 @@ in {
 
       "reaper-kb.ini" = /* dosini */ ''
         ; Recording shortcuts
-        KEY 1 69 1013 0          # E : Transport: Record
-        KEY 1 81 40668 0         # Q : Transport: Stop (DELETE all recorded media)
+        KEY 1 69 1013 0          # Main : E : Transport: Record
+        KEY 1 81 40668 0         # Main : Q : Transport: Stop (DELETE all recorded media)
 
         ; Slice at cursor position
         KEY 1 83 42577 0		 # Main : S : OVERRIDE DEFAULT : Item: Split item under mouse cursor (select right)
+
+        ; Item editing shortcuts
+        KEY 0 42 40205 0		 # Main : * (Ctrl + 8) : Item properties: Pitch item down one semitone
+        KEY 0 40 40204 0		 # Main : ( (Ctrl + 9) : Item properties: Pitch item up one semitone
+        KEY 0 41 41051 0		 # Main : ) (Ctrl + 0) : Item properties: Toggle take reverse
       '';
 
       "reaper-mouse.ini" = /* dosini */ ''
