@@ -4,7 +4,7 @@
 in {
   home-manager.users.${user} = lib.mkIf cfg.enable {
     programs.reanix = {
-      scripts.ColorPalette = {
+      scripts.smartzoom = {
         source = script;
         key = "0 96"; # `
       };
