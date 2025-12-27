@@ -31,5 +31,6 @@ in {
     ./config.nix
     ./scripts
     ./templates
+    ./jsfx.nix
   ];
 }

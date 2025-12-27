@@ -36,6 +36,9 @@
     reascripts.url = "github:ReaTeam/ReaScripts";
     reascripts.flake = false;
 
+    mrtnvgr-jsfx.url = "github:mrtnvgr/jsfx";
+    mrtnvgr-jsfx.flake = false;
+
     catppuccin-renoise.url = "github:catppuccin/renoise";
     catppuccin-renoise.flake = false;
   };

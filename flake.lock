@@ -253,11 +253,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766387499,
-        "narHash": "sha256-AjK3/UKDzeXFeYNLVBaJ3+HLE9he1g5UrlNd4/BM3eA=",
+        "lastModified": 1766553851,
+        "narHash": "sha256-hHKQhHkXxuPJwLkI8wdu826GLV5AcuW9/HVdc9eBnTU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "527ad07e6625302b648ed3b28c34b62a79bd103e",
+        "rev": "7eca7f7081036a7b740090994c9ec543927f89a7",
         "type": "github"
       },
       "original": {
@@ -330,6 +330,22 @@
         "type": "github"
       }
     },
+    "mrtnvgr-jsfx": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766841186,
+        "narHash": "sha256-S6Ro3YT+tx9tZzOrjv3EDfxmfCMvyZIndUzGYjdv3zE=",
+        "owner": "mrtnvgr",
+        "repo": "jsfx",
+        "rev": "ae93edf0ce9837978fc6ea74b44f6ec65743397b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrtnvgr",
+        "repo": "jsfx",
+        "type": "github"
+      }
+    },
     "neovim-nightly": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -337,11 +353,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1766361902,
-        "narHash": "sha256-UvMyRzpHluglPn7b4wLBCA8DRSiUwzcS9PKhk0bCcmY=",
+        "lastModified": 1766621101,
+        "narHash": "sha256-5pj5jTGKFJ2xYHYVzDMh3MGufqX4R56QRZ5yQZyWfGQ=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "8d66aa1836d522d7cbfdf7a1f40046010f7cf558",
+        "rev": "ef3ea2815883500f982a84af81e61a13fb601bb4",
         "type": "github"
       },
       "original": {
@@ -353,11 +369,11 @@
     "neovim-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1766349065,
-        "narHash": "sha256-FjrwOMqBASOb0lBItQy3HyGPMcLBokzNQ/0oTiI05YA=",
+        "lastModified": 1766558520,
+        "narHash": "sha256-hlpyP59PTtQmyCDRX+XCYReXOBtfUSkX88A5nlfmu6g=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "d1189ea508c888ebf7468be3872c975e4ea264bb",
+        "rev": "ce7ed53fbae3ebc643bce5ad8aa94c20ebc19b25",
         "type": "github"
       },
       "original": {
@@ -391,11 +407,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1766282607,
-        "narHash": "sha256-of50IQ6LrC2RICFL0TOb2LoOtky0W44DxYGbKq83v8E=",
+        "lastModified": 1766541727,
+        "narHash": "sha256-fvzdJMWM3Nisav0AYbCO9yQ0LbM2Od8Ulp6YBw2r3Ac=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "788b74af6830cd2fefc6fc0f576ce556e0744211",
+        "rev": "4e3926b98be61b018915ded9f8f8706a4ce1a267",
         "type": "github"
       },
       "original": {
@@ -447,11 +463,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1766125104,
-        "narHash": "sha256-l/YGrEpLromL4viUo5GmFH3K5M1j0Mb9O+LiaeCPWEM=",
+        "lastModified": 1766532406,
+        "narHash": "sha256-acLU/ag9VEoKkzOD202QASX25nG1eArXg5A0mHjKgxM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7d853e518814cca2a657b72eeba67ae20ebf7059",
+        "rev": "8142186f001295e5a3239f485c8a49bf2de2695a",
         "type": "github"
       },
       "original": {
@@ -570,11 +586,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1766459778,
-        "narHash": "sha256-9KN0wlqdDqroMMtN5DTE84PB5LpVrLqBHpdc/6sCgfo=",
+        "lastModified": 1766656438,
+        "narHash": "sha256-7cKj38SHkosSCEsdm2tmukrDCxD4+QCReNx61RmSmgo=",
         "owner": "mrtnvgr",
         "repo": "nixpkgs-fork",
-        "rev": "1cfb724818f61e3c155759a4c07c925b69baf45a",
+        "rev": "fd1def94b22ece0093066c0b9b5fa287a9db71bf",
         "type": "github"
       },
       "original": {
@@ -623,11 +639,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1766359807,
-        "narHash": "sha256-8V3DSc2lz1UqvxOEZLsHyeFYxsM4Z8fnc0PiHS10Zm0=",
+        "lastModified": 1766604046,
+        "narHash": "sha256-9Wvp2G/z0YYMn7oeN/E90pRtXJxQCo7EZrKKkNpwru4=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "a99d8389c9ec6ca9cf757bd27b6a8c155879696e",
+        "rev": "48b23bdae0770d86e1d0cb8ed830a0cb58810333",
         "type": "github"
       },
       "original": {
@@ -683,6 +699,7 @@
         "generators": "generators",
         "home-manager": "home-manager",
         "mrtnvgr": "mrtnvgr",
+        "mrtnvgr-jsfx": "mrtnvgr-jsfx",
         "neovim-nightly": "neovim-nightly",
         "nix-colors": "nix-colors",
         "nix-gaming": "nix-gaming",
