@@ -32,6 +32,22 @@
         "type": "github"
       }
     },
+    "chkhld-jsfx": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752236308,
+        "narHash": "sha256-9If5CkvBATVUMgNCZQWULq+HNguZnMqMKSf+Q0bd+hM=",
+        "owner": "chkhld",
+        "repo": "jsfx",
+        "rev": "f6d175d8253375a51832fd52aa86482c191caadc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chkhld",
+        "repo": "jsfx",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1762189950,
@@ -696,6 +712,7 @@
     "root": {
       "inputs": {
         "catppuccin-renoise": "catppuccin-renoise",
+        "chkhld-jsfx": "chkhld-jsfx",
         "generators": "generators",
         "home-manager": "home-manager",
         "mrtnvgr": "mrtnvgr",

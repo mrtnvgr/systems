@@ -36,8 +36,13 @@
     reascripts.url = "github:ReaTeam/ReaScripts";
     reascripts.flake = false;
 
+    # === REAPER JSFX repos ===
     mrtnvgr-jsfx.url = "github:mrtnvgr/jsfx";
     mrtnvgr-jsfx.flake = false;
+
+    chkhld-jsfx.url = "github:chkhld/jsfx";
+    chkhld-jsfx.flake = false;
+    # =========================
 
     catppuccin-renoise.url = "github:catppuccin/renoise";
     catppuccin-renoise.flake = false;
