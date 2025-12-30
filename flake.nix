@@ -46,6 +46,9 @@
 
     catppuccin-renoise.url = "github:catppuccin/renoise";
     catppuccin-renoise.flake = false;
+
+    bandithedoge-pkgs.url = "github:bandithedoge:nur-packages";
+    bandithedoge-pkgs.url = "github:bandithedoge/nur-packages";
   };
 
   outputs = { nixpkgs, ... } @ inputs:

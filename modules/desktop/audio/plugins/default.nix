@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    ./native.nix
+    ./native
     ./wine.nix
   ];
 }

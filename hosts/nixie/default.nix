@@ -7,6 +7,7 @@
 
     ./secrets/reaper.nix
     ./secrets/celeste.nix
+    ./secrets/u-he.nix
   ];
 
   modules.desktop = {
@@ -18,7 +19,7 @@
     audio = {
       rt.enable = true;
 
-      plugins.enable = true;
+      plugins.native.enable = true;
       plugins.wine.enable = true;
 
       daws.reaper.enable = true;

@@ -1,35 +1,20 @@
 { inputs, pkgs, config, lib, user, ... }:
 let
+  inherit (lib) mkOption types;
+
   mrtnvgr-lib = inputs.mrtnvgr.lib { inherit pkgs; };
   # TODO: create vst3 variants for most of these plugins
 
   synths = with pkgs; [
     surge-XT-vst3
     vitalium-vst3
-    zynaddsubfx
     ripplerx
-    # cardinal # fun, but too heavy
+    cardinal
     chow-kick
-    # oxefmsynth
-    hamburger
-    nils-k1v
-    spectralsuite
-    cstop
-    socalabs-loser-ports
-    socalabs-voc
-    socalabs-mverb
-    socalabs-wavetable
-    socalabs-papu
-    socalabs-piano
-    socalabs-rp2a03
-    socalabs-organ
-    auburn-sounds-inner-pitch
-    wildergarden-maim
-    reevr
-    filtr
-    gate12
-    time12
+    oxefmsynth
     sfizz-ui
+    ob-xf
+    odin2
   ];
 
   fx = with pkgs; [
@@ -46,15 +31,28 @@ let
     chow-tape-model
     chow-centaur
     chow-phaser
+    auburn-sounds-inner-pitch
+    wildergarden-maim
+    reevr
+    filtr
+    gate12
+    time12
+    spectralsuite
+    cstop
+    hamburger
   ];
 
-  cfg = config.modules.desktop.audio.plugins;
+  cfg = config.modules.desktop.audio.plugins.native;
   isAnyDawInstalled = config._internals.isAnyDawInstalled;
 in
 {
-  options.modules.desktop.audio.plugins = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
+  imports = [
+    ./u-he.nix
+  ];
+
+  options.modules.desktop.audio.plugins.native = {
+    enable = mkOption {
+      type = types.bool;
       default = isAnyDawInstalled;
     };
   };
