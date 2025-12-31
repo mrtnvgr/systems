@@ -10,7 +10,7 @@
     ./adb.nix
     ./wallpaper.nix
     ./kvm.nix
-    ./xdg-portal.nix
+    ./xdg.nix
 
     ./rices
     ./guiServers
