@@ -9,18 +9,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Supercharged dotfiles :)
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    generators.url = "github:nix-community/nixos-generators";
-    generators.inputs.nixpkgs.follows = "nixpkgs";
-
+    # Useful module for color management
     nix-colors.url = "github:Misterio77/nix-colors";
 
+    # Nix-friendly neovim
     nixvim.url = "github:nix-community/nixvim";
 
+    # Somewhat-deterministic REAPER configs
     reanix = {
       url = "github:mrtnvgr/reanix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,7 +48,10 @@
     catppuccin-renoise.url = "github:catppuccin/renoise";
     catppuccin-renoise.flake = false;
 
-    bandithedoge-pkgs.url = "github:bandithedoge:nur-packages";
+    # Automatic ISOs CI
+    generators.url = "github:nix-community/nixos-generators";
+    generators.inputs.nixpkgs.follows = "nixpkgs";
+
     bandithedoge-pkgs.url = "github:bandithedoge/nur-packages";
   };
 
