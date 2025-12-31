@@ -5,7 +5,6 @@
     ./packages.nix
     ./fat.nix
     ./overlays.nix
-    ./bcache.nix
     ./home-manager.nix
     ./time-zone.nix
     ./physlock.nix
