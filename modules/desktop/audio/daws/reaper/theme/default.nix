@@ -6,11 +6,19 @@ in {
   ];
 
   home-manager.users.${user} = lib.mkIf cfg.enable {
-    programs.reanix.config."reaper.ini" = /* dosini */ ''
-      ; Selected theme
-      [reaper]
-      lastthemefn5=/home/${user}/.config/REAPER/ColorThemes/Reapertips.ReaperTheme
-    '';
+    programs.reanix.extraConfig = {
+      "reaper.ini" = /* dosini */ ''
+        ; Selected theme
+        [reaper]
+        lastthemefn5=/home/${user}/.config/REAPER/ColorThemes/Reapertips.ReaperTheme
+      '';
+
+      "reaper-themeconfig.ini" = /* dosini */ ''
+        ; Darken the theme
+        [Reapertips]
+        __coloradjust=1.00000000 -25 -25 51 256 192
+      '';
+    };
 
     home.file.".config/REAPER/ColorThemes/Reapertips.ReaperThemeZip".source = pkgs.reapertips-dark.override {
       undimmed = true;

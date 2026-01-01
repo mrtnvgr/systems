@@ -23,7 +23,7 @@ in {
         key = "1 67"; # C
       };
 
-      config."reaper-extstate.ini" = /* dosini */ ''
+      extraConfig."reaper-extstate.ini" = /* dosini */ ''
         [RODILAB_Color_palette]
         number_x=12
         palette_y=1

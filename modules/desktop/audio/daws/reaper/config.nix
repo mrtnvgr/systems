@@ -3,7 +3,12 @@ let
   cfg = config.modules.desktop.audio.daws.reaper;
 in {
   home-manager.users.${user} = lib.mkIf cfg.enable {
-    programs.reanix.config = {
+    programs.reanix.options = {
+      default_track_height = "small";
+      continuous_scrolling = true;
+    };
+
+    programs.reanix.extraConfig = {
       "reaper.ini" = /* dosini */ ''
         ; Disable boot animation
         [reaper]
@@ -29,10 +34,6 @@ in {
         [reaper]
         projgriddiv=0.5
 
-        ; Default track height => small
-        [reaper]
-        defvzoom=2
-
         ; Disable item looping
         [reaper]
         loopnewitems=32
@@ -42,6 +43,7 @@ in {
         zoommode=3
 
         ; Disable fade-in on playback start
+        ; TODO: remove? clicks are quite annoying actually
         [reaper]
         hwfadex=1
 
@@ -56,10 +58,6 @@ in {
         ; Solid grid lines
         [reaper]
         griddot=0
-
-        ; Continious scrolling
-        [reaper]
-        viewadvance=19
 
         ; 1ms item fades
         [reaper]
@@ -147,11 +145,10 @@ in {
         ; Adjust fades when multiple clips are selected
         [MM_CTX_ITEMFADE]
         mm_0=9 m
-      '';
 
-      "reaper-themeconfig.ini" = /* dosini */ ''
-        [Reapertips]
-        __coloradjust=1.00000000 -25 -25 51 256 192
+        ; Select items without cursor moving
+        [MM_CTX_ITEM_CLK]
+        mm_0=3 m
       '';
     };
   };
