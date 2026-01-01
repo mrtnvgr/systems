@@ -1,10 +1,12 @@
 { lib, config, ... }:
 let
-  inherit (lib) mkIf;
   theme = config.modules.desktop.theme;
 in {
-  config = mkIf (theme.rice == "hyprpop") {
-    _internals.guiServer = "wayland";
+  config = lib.mkIf (theme.rice == "hyprpop") {
+    _internals = {
+      guiServer = "wayland";
+      DELauncher = "start-hyprland";
+    };
   };
 
   imports = [

@@ -8,5 +8,7 @@
       mouse.accelProfile = "flat";
       # touchpad.accelProfile = "flat";
     };
+
+    _internals.DELauncher = "startx";
   };
 }

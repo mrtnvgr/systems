@@ -9,5 +9,7 @@ in {
   imports = [
     ./xorg
     ./wayland
+
+    ./autostart.nix
   ];
 }
