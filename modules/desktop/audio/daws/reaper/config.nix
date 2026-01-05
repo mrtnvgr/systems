@@ -5,6 +5,12 @@ in {
   home-manager.users.${user} = lib.mkIf cfg.enable {
     programs.reanix.options = {
       default_track_height = "small";
+
+      # Clean items
+      display_media_item_take_name = false;
+      draw_labels_above_the_item.enable = false;
+      item_icons.min_height = 90;
+
       continuous_scrolling = true;
     };
 
@@ -67,10 +73,6 @@ in {
         ; Show only VST3 plugin if other formats were found
         [reaper]
         dupefilter=1
-
-        ; Turn off dots on items
-        [reaper]
-        labelitems2=1039
 
         ; Track folder collapsing: normal, hidden
         [reaper]
