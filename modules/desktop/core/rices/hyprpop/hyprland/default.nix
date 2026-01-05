@@ -1,4 +1,4 @@
-{ lib, config, user, ... }:
+{ pkgs, lib, config, user, ... }:
 let
   inherit (lib) mkIf fileContents;
   inherit (config.colorScheme) palette;
@@ -25,6 +25,11 @@ in {
         };
 
         extraConfig = fileContents ./hyprland.conf;
+      };
+
+      xdg.portal = {
+        extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+        configPackages = [ pkgs.hyprland ];
       };
     };
   };
