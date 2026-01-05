@@ -32,5 +32,6 @@ in {
     ./scripts
     ./templates
     ./jsfx.nix
+    ./hyprland.nix
   ];
 }
