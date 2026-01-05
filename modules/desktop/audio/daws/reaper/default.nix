@@ -3,9 +3,6 @@ let
   desktopCfg = config.modules.desktop;
   cfg = desktopCfg.audio.daws.reaper;
 in {
-  # TODO: use nixpkgs reaimgui when its merged upstream
-  # TODO: https://github.com/NixOS/nixpkgs/pull/464016
-
   options.modules.desktop.audio.daws.reaper = {
     enable = lib.mkEnableOption "REAPER";
   };
