@@ -5,7 +5,6 @@
 
       xdg.userDirs = rec {
         enable = true;
-        createDirectories = true;
 
         desktop = "/home/${user}";
         documents = "${desktop}/.local/documents";
