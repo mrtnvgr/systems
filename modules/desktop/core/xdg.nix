@@ -3,14 +3,18 @@
     home-manager.users.${user} = {
       xdg.enable = true;
 
+      xdg.userDirs = rec {
+        enable = true;
+        createDirectories = true;
+
+        desktop = "/home/${user}";
+        documents = "${desktop}/.local/documents";
+      };
+
       xdg.portal = {
         enable = true;
         extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
       };
-    };
-
-    environment.sessionVariables = {
-      "XDG_DOCUMENTS_DIR" = "/home/${user}/.local/documents";
     };
   };
 }
