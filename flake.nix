@@ -52,7 +52,7 @@
     generators.url = "github:nix-community/nixos-generators";
     generators.inputs.nixpkgs.follows = "nixpkgs";
 
-    bandithedoge-pkgs.url = "github:bandithedoge/nur-packages/staging";
+    bandithedoge-pkgs.url = "github:bandithedoge/nur-packages";
   };
 
   outputs = { nixpkgs, ... } @ inputs:
