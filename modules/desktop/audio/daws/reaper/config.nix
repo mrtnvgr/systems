@@ -40,6 +40,10 @@ in {
         [reaper]
         projgriddiv=0.5
 
+        ; Draw grid UNDER items :)
+        [reaper]
+        gridinbg=2
+
         ; Disable item looping
         [reaper]
         loopnewitems=32
@@ -151,6 +155,10 @@ in {
         ; Select items without cursor moving
         [MM_CTX_ITEM_CLK]
         mm_0=3 m
+
+        ; Ctrl + drag: draw selected midi item => draw empty item
+        [MM_CTX_TRACK]
+        mm_2=5 m
       '';
     };
   };
