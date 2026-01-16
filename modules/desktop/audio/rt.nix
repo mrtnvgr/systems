@@ -26,10 +26,10 @@ in
     programs.steam.platformOptimizations.enable = true;
 
     powerManagement.cpuFreqGovernor = "performance";
-    boot.kernel.sysctl."vm.swappiness" = 10;
+    # boot.kernel.sysctl."vm.swappiness" = 10;
 
-    boot.kernelPackages = pkgs.linuxPackages-rt_latest; # TODO: try linux_xanmod_latest
-    boot.kernelParams = [ "threadirqs" ];
+    boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    # boot.kernelParams = [ "threadirqs" ];
 
     security.pam.loginLimits = [
       {
