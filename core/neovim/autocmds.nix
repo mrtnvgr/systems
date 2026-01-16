@@ -6,13 +6,6 @@
 
     autoCmd = [
       {
-        # Auto format on save
-        group = "USER";
-        event = [ "BufWritePre" ];
-        command = "lua vim.lsp.buf.format()";
-      }
-
-      {
         # Disable auto-commenting
         group = "USER";
         event = [ "BufWinEnter" "FileType" ];
