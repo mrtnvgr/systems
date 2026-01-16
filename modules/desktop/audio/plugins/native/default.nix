@@ -7,10 +7,10 @@ let
 
   synths = with pkgs; [
     surge-XT-vst3
-    vitalium-vst3
+    vital # vitalium-vst3
     ripplerx
     cardinal
-    chow-kick
+    # chow-kick
     oxefmsynth
     sfizz-ui
     ob-xf
@@ -25,7 +25,6 @@ let
     dragonfly-reverb
     fire
     wolf-shaper
-    molot-lite
     luftikus-vst2
     LUFSMeter-vst2
     chow-tape-model
