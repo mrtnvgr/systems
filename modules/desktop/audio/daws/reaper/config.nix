@@ -12,6 +12,11 @@ in {
       item_icons.min_height = 90;
 
       continuous_scrolling = true;
+
+      # Save renders in the project directory
+      paths = {
+        renders = "Renders";
+      };
     };
 
     programs.reanix.extraConfig = {

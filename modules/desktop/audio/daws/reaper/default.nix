@@ -16,6 +16,8 @@ in {
       programs.reanix = {
         enable = true;
 
+        extensions.realearn.enable = true;
+
         hooks.preRun = ''
           ${lib.optionalString desktopCfg.audio.plugins.wine.enable "wine-audio-plugins-activate"}
         '';
