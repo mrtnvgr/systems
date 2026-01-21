@@ -145,6 +145,9 @@ in {
         KEY 0 42 40205 0		 # Main : * (Ctrl + 8) : Item properties: Pitch item down one semitone
         KEY 0 40 40204 0		 # Main : ( (Ctrl + 9) : Item properties: Pitch item up one semitone
         KEY 0 41 41051 0		 # Main : ) (Ctrl + 0) : Item properties: Toggle take reverse
+
+        ; Fast track coloring
+        KEY 1 67 _SWS_TRACKRANDCOL 0		 # Main : C : OVERRIDE DEFAULT : SWS: Set selected track(s) to one random custom color
       '';
 
       "reaper-mouse.ini" = /* dosini */ ''
