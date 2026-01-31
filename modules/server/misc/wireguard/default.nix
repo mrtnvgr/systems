@@ -6,6 +6,10 @@ let
 
   userOption = lib.types.submodule {
     options = {
+      id = lib.mkOption {
+        type = lib.types.ints.u8;
+      };
+
       keys.public = keyOption;
       keys.private = keyOption;
     };
@@ -46,19 +50,21 @@ in {
     networking.wg-quick.interfaces.wg0 = {
       listenPort = cfg.port;
 
-      address = [ "100.0.0.1/24" ];
+      address = [ "10.0.0.1/24" ];
       privateKey = cfg.serverKeys.private;
+
+      table = "off";
 
       # TODO: for file generation
       # lib.mapAttrsToList (name: x: x // { inherit name; }) cfg.users;
 
       peers = map (x: {
         publicKey = x.keys.public;
-        allowedIPs = [ "0.0.0.0/0" ];
+        allowedIPs = [ "10.0.0.${toString x.id}/32" ];
       }) (builtins.attrValues cfg.users);
     };
 
-    networking.firewall.allowedUDPPorts = lib.optional cfg.openFirewall wgPort;
+    networking.firewall.allowedTCPPorts = lib.optional cfg.openFirewall wgPort;
 
     # https://wiki.nixos.org/wiki/WireGuard#wg-quick_issues_with_NetworkManager
     # services.resolved.enable = true;
