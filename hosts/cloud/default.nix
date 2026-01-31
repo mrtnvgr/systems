@@ -1,6 +1,7 @@
 { ... }: {
   imports = [
     ./secrets/torrserver.nix
+    ./secrets/wg.nix
   ];
 
   modules.generic.services.sshd = {
