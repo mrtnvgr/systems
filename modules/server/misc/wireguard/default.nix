@@ -6,10 +6,6 @@ let
 
   userOption = lib.types.submodule {
     options = {
-      id = lib.mkOption {
-        type = lib.types.ints.u8;
-      };
-
       keys.public = keyOption;
       keys.private = keyOption;
     };
@@ -53,14 +49,12 @@ in {
       address = [ "10.0.0.1/24" ];
       privateKey = cfg.serverKeys.private;
 
-      table = "off";
-
       # TODO: for file generation
       # lib.mapAttrsToList (name: x: x // { inherit name; }) cfg.users;
 
-      peers = map (x: {
+      peers = lib.imap1 (i: x: {
         publicKey = x.keys.public;
-        allowedIPs = [ "10.0.0.${toString x.id}/32" ];
+        allowedIPs = [ "10.0.0.${toString (i+1)}/32" ];
       }) (builtins.attrValues cfg.users);
     };
 
