@@ -53,7 +53,7 @@ in {
     networking.wg-quick.interfaces.wg0 = {
       listenPort = cfg.port;
 
-      address = [ "10.0.0.1/24" ];
+      address = [ "10.1.2.1/24" ];
       privateKey = cfg.serverKeys.private;
 
       # TODO: for file generation
@@ -61,7 +61,7 @@ in {
 
       # [Interface]
       # PrivateKey = <client private key>
-      # Address = 100.0.0.${toString (i+1)}/24
+      # Address = 10.1.2.${toString (i+1)}/24
       # DNS = {PUBLIC_IP}
       #
       # [Peer]
@@ -71,7 +71,7 @@ in {
 
       peers = lib.imap1 (i: x: {
         publicKey = x.keys.public;
-        allowedIPs = [ "10.0.0.${toString (i+1)}/32" ];
+        allowedIPs = [ "10.1.2.${toString (i+1)}/32" ];
       }) (builtins.attrValues cfg.users);
     };
 

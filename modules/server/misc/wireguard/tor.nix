@@ -19,9 +19,9 @@ in {
         UseBridges = true;
         ClientTransportPlugin = "webtunnel exec ${pkgs.webtunnel}/bin/client";
 
-        TransPort = [ { addr = "100.0.0.1"; port = 9040; } ];
+        TransPort = [ { addr = "10.1.2.1"; port = 9040; } ];
 
-        DNSPort = [ { addr = "100.0.0.1"; port = 9053; } ];
+        DNSPort = [ { addr = "10.1.2.1"; port = 9053; } ];
         AutomapHostsOnResolve = true;
 
         Bridge = cfg.tor.bridges;
