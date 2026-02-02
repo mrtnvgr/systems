@@ -1,3 +1,6 @@
+# A lot was taken from https://bogomolov.work/blog/posts/howto-wireguard
+# Thank you!
+
 { lib, config, ... }:
 let
   cfg = config.modules.server.misc.wireguard;
@@ -16,11 +19,6 @@ in {
   options.modules.server.misc.wireguard = {
     enable = lib.mkEnableOption "WireGuard";
 
-    port = lib.mkOption {
-      type = lib.types.port;
-      default = 51820;
-    };
-
     serverKeys = {
       public = keyOption;
       private = keyOption;
@@ -31,10 +29,19 @@ in {
       default = {};
     };
 
+    port = lib.mkOption {
+      type = lib.types.port;
+      default = 51820;
+    };
+
     openFirewall = lib.mkOption {
       type = lib.types.bool;
       default = cfg.enable;
       description = "expose port in firewall";
+    };
+
+    publicInterface = lib.mkOption {
+      type = lib.types.singleLineStr;
     };
   };
 
@@ -52,13 +59,28 @@ in {
       # TODO: for file generation
       # lib.mapAttrsToList (name: x: x // { inherit name; }) cfg.users;
 
+      # [Interface]
+      # PrivateKey = <client private key>
+      # Address = 100.0.0.${toString (i+1)}/24
+      # DNS = {PUBLIC_IP}
+      #
+      # [Peer]
+      # PublicKey = {SERVER_PUBLIC_KEY}
+      # Endpoint = {PUBLIC_IP}:{PORT}
+      # AllowedIPs = 0.0.0.0/0
+
       peers = lib.imap1 (i: x: {
         publicKey = x.keys.public;
         allowedIPs = [ "10.0.0.${toString (i+1)}/32" ];
       }) (builtins.attrValues cfg.users);
     };
 
-    networking.firewall.allowedTCPPorts = lib.optional cfg.openFirewall wgPort;
+    boot.kernel.sysctl = {
+      "net.ipv4.ip_forward" = 1;
+      "net.ipv6.conf.all.forwarding" = 1;
+    };
+
+    networking.firewall.allowedUDPPorts = lib.optional cfg.openFirewall wgPort;
 
     # https://wiki.nixos.org/wiki/WireGuard#wg-quick_issues_with_NetworkManager
     # services.resolved.enable = true;

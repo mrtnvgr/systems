@@ -1,6 +1,7 @@
 { pkgs, lib, config, ... }:
 let
   cfg = config.modules.server.misc.wireguard;
+  iptables = "${pkgs.iptables}/bin/iptables";
 in {
   options.modules.server.misc.wireguard.tor = {
     enable = lib.mkEnableOption "Route all traffic through Tor";
@@ -20,55 +21,37 @@ in {
         UseBridges = true;
         ClientTransportPlugin = "webtunnel exec ${pkgs.webtunnel}/bin/client";
 
-        TransPort = [ { addr = "127.0.0.1"; port = 9040; } ];
+        AvoidDiskWrites = true;
 
-        DNSPort = [ { addr = "127.0.0.1"; port = 9053; } ];
+        TransPort = [ { addr = "100.0.0.1"; port = 9040; } ];
+
+        DNSPort = [ { addr = "100.0.0.1"; port = 9053; } ];
         AutomapHostsOnResolve = true;
 
         Bridge = cfg.tor.bridges;
       };
     };
 
-    boot.kernel.sysctl = {
-      "net.ipv4.ip_forward" = 1;
-      "net.ipv6.conf.all.forwarding" = 1;
-    };
+    networking.wg-quick.interfaces.wg0 = {
+      postUp = ''
+        ${iptables} -t nat -A PREROUTING -i %i -p tcp --syn -j REDIRECT --to-ports 9040
+        ${iptables} -t nat -A PREROUTING -i %i -p udp --dport 53 -j REDIRECT --to-ports 9053
+        ${iptables} -A INPUT -i %i -p tcp --dport 9040 -j ACCEPT
+        ${iptables} -A INPUT -i %i -p udp --dport 9053 -j ACCEPT
+        ${iptables} -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+        ${iptables} -A FORWARD -i %i -p udp -j DROP
+        ${iptables} -t nat -A POSTROUTING -o ${cfg.publicInterface} -j MASQUERADE
+      '';
 
-    networking.nftables = {
-      enable = true;
-
-      tables.torredir4 = {
-        family = "ip";
-
-        content = let
-          getPort = x: toString ((builtins.elemAt config.services.tor.settings."${x}" 0).port);
-        in ''
-          chain prerouting {
-            type nat hook prerouting priority dstnat; policy accept;
-            iifname "wg0" meta l4proto tcp redirect to :${getPort "TransPort"}
-            iifname "wg0" meta l4proto udp redirect to :${getPort "TransPort"}
-
-            iifname wg0 udp dport 53 redirect to :${getPort "DNSPort"}
-            iifname wg0 tcp dport 53 redirect to :${getPort "DNSPort"}
-          }
-        '';
-      };
-
-      tables.torredir6 = {
-        family = "ip6";
-
-        content = let
-          getPort = x: toString ((builtins.elemAt config.services.tor.settings."${x}" 0).port);
-        in ''
-          chain prerouting {
-            type nat hook prerouting priority dstnat; policy accept;
-            iifname "wg0" meta l4proto tcp redirect to :${getPort "TransPort"}
-
-            iifname wg0 udp dport 53 redirect to :${getPort "DNSPort"}
-            iifname wg0 tcp dport 53 redirect to :${getPort "DNSPort"}
-          }
-        '';
-      };
+      postDown = ''
+        ${iptables} -t nat -D POSTROUTING -o ${cfg.publicInterface} -j MASQUERADE
+        ${iptables} -D FORWARD -i %i -p udp -j DROP
+        ${iptables} -D FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+        ${iptables} -D INPUT -i %i -p udp --dport 9053 -j ACCEPT
+        ${iptables} -D INPUT -i %i -p tcp --dport 9040 -j ACCEPT
+        ${iptables} -t nat -D PREROUTING -i %i -p udp --dport 53 -j REDIRECT --to-ports 9053
+        ${iptables} -t nat -D PREROUTING -i %i -p tcp --syn -j REDIRECT --to-ports 9040
+      '';
     };
   };
 }
