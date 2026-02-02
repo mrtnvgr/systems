@@ -15,13 +15,9 @@ in {
       enable = true;
       enableGeoIP = false;
 
-      client.enable = true;
-
       settings = {
         UseBridges = true;
         ClientTransportPlugin = "webtunnel exec ${pkgs.webtunnel}/bin/client";
-
-        AvoidDiskWrites = true;
 
         TransPort = [ { addr = "100.0.0.1"; port = 9040; } ];
 
