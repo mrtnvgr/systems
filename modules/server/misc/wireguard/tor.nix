@@ -7,6 +7,7 @@ in {
     enable = lib.mkEnableOption "Route all traffic through Tor";
     bridges = lib.mkOption {
       type = with lib.types; listOf singleLineStr;
+      default = [];
     };
   };
 
@@ -16,15 +17,14 @@ in {
       enableGeoIP = false;
 
       settings = {
-        UseBridges = true;
+        UseBridges = cfg.tor.bridges != [];
+        Bridge = cfg.tor.bridges;
         ClientTransportPlugin = "webtunnel exec ${pkgs.webtunnel}/bin/client";
 
         TransPort = [ { addr = "10.1.2.1"; port = 9040; } ];
 
         DNSPort = [ { addr = "10.1.2.1"; port = 9053; } ];
         AutomapHostsOnResolve = true;
-
-        Bridge = cfg.tor.bridges;
       };
     };
 
