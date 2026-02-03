@@ -1,16 +1,20 @@
-{ pkgs, user, ... }: let
+{ pkgs, user, config, ... }: let
   fixperms = pkgs.writeShellScriptBin "fixperms" ''
     find "$1" -type d -exec chmod 755 {} +
     find "$1" -type f -exec chmod 644 {} +
   '';
+
+  # Colorful for desktops, monochrome for servers
+  ps1 = if config.modules.desktop.enable then
+    ''\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]''
+  else
+    ''\[$(tput bold)\]\[$(tput setaf 245)\][\[$(tput setaf 255)\]\u\[$(tput setaf 245)\]@\[$(tput setaf 250)\]\h \[$(tput setaf 250)\]\W\[$(tput setaf 245)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]'';
 in {
   home-manager.users.${user} = {
     programs.bash = {
       enable = true;
 
-      initExtra = ''
-        PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
-      '';
+      initExtra = ''PS1="${ps1}"'';
 
       shellAliases = {
         perm = "stat -c \"%a %n\"";
