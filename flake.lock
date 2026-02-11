@@ -482,11 +482,11 @@
     "mrtnvgr-jsfx": {
       "flake": false,
       "locked": {
-        "lastModified": 1770468632,
-        "narHash": "sha256-YRmC0pWGjBjgKsyd/h/+BqWpsDsquEY1jkZybjQH0UM=",
+        "lastModified": 1770772365,
+        "narHash": "sha256-IQLzmdVNJt+uZlencQLf8dRD6P0r5XFoGV2j07MT3RE=",
         "owner": "mrtnvgr",
         "repo": "jsfx",
-        "rev": "3ede7ec4a987651c94f0e9643cb51af676bc115c",
+        "rev": "e9bcbf6a410a371946bca53e1d4f0edddd97d006",
         "type": "github"
       },
       "original": {
