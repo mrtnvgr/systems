@@ -43,6 +43,9 @@
 
     chkhld-jsfx.url = "github:chkhld/jsfx";
     chkhld-jsfx.flake = false;
+
+    tiagolr-jsfx.url = "github:tiagolr/tilr_jsfx";
+    tiagolr-jsfx.flake = false;
     # =========================
 
     catppuccin-renoise.url = "github:catppuccin/renoise";
