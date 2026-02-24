@@ -17,6 +17,11 @@ in {
       paths = {
         renders = "Renders";
       };
+
+      draw_faint_peaks_in_folders = false;
+      draw_faint_peaks_in_automation_lanes = false;
+
+      filled_automation_envelopes = false;
     };
 
     programs.reanix.extraConfig = {
@@ -148,6 +153,8 @@ in {
 
         ; Fast track coloring
         KEY 1 67 _SWS_TRACKRANDCOL 0		 # Main : C : OVERRIDE DEFAULT : SWS: Set selected track(s) to one random custom color
+
+        KEY 13 82 _SWS_AWCONSOLSEL 0		 # Main : Ctrl+Shift+R : SWS/AW: Consolidate Selection
       '';
 
       "reaper-mouse.ini" = /* dosini */ ''
@@ -164,9 +171,13 @@ in {
         [MM_CTX_ITEM_CLK]
         mm_0=3 m
 
-        ; Ctrl + drag: draw selected midi item => draw empty item
+        ; Ctrl + drag: draw selected midi item (default) => draw empty item
         [MM_CTX_TRACK]
         mm_2=5 m
+
+        ; Ctrl + draw: adjust item volume
+        [MM_CTX_ITEM]
+        mm_2=20 m
       '';
     };
   };
