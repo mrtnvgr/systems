@@ -8,7 +8,5 @@ in {
 
     home.file."${jsfx}/chkhld/signal_crusher.jsfx".source = "${inputs.chkhld-jsfx}/Lo-Fi/signal_crusher.jsfx";
     home.file."${jsfx}/chkhld/telephone.jsfx".source = "${inputs.chkhld-jsfx}/Lo-Fi/telephone.jsfx";
-
-    home.file."${jsfx}/tiagolr".source = inputs.tiagolr-jsfx;
   };
 }

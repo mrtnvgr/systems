@@ -900,11 +900,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768744260,
-        "narHash": "sha256-w8Y6cRg6n65JPECniVXqffBrCDXNDLKBhlIF4Mf+2BE=",
+        "lastModified": 1771946957,
+        "narHash": "sha256-myEDjaZUrmvCRauRuKqIllNb7JCxJPObaRaXzKuM30s=",
         "owner": "mrtnvgr",
         "repo": "reanix",
-        "rev": "59e99617380d2708a007382325cb41ddd7736b9c",
+        "rev": "b425fa3944b9740c59f8cb43354e6b55b8e30282",
         "type": "github"
       },
       "original": {
@@ -946,8 +946,7 @@
         "nixvim": "nixvim",
         "reanix": "reanix",
         "reascripts": "reascripts",
-        "schizofox": "schizofox",
-        "tiagolr-jsfx": "tiagolr-jsfx"
+        "schizofox": "schizofox"
       }
     },
     "schizofox": {
@@ -1038,22 +1037,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
-        "type": "github"
-      }
-    },
-    "tiagolr-jsfx": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1768764937,
-        "narHash": "sha256-/LgmfaEW7+86ZHJ08we508dI1Uw/Jzm/FpAlN2QoUiw=",
-        "owner": "tiagolr",
-        "repo": "tilr_jsfx",
-        "rev": "68fe86904f9ad489680cea024e0cce3510c16d25",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tiagolr",
-        "repo": "tilr_jsfx",
         "type": "github"
       }
     },
