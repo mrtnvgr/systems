@@ -417,6 +417,22 @@
         "type": "github"
       }
     },
+    "jsfx-clones": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750864590,
+        "narHash": "sha256-yyM2aut+ppGZLAfNRRTMiPzihuG5N/HlA9o61EJns8U=",
+        "owner": "JClones",
+        "repo": "JSFXClones",
+        "rev": "5dac5df48e4d077987f5a9b07dcca7983b193a33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JClones",
+        "repo": "JSFXClones",
+        "type": "github"
+      }
+    },
     "margesimpson": {
       "inputs": {
         "flake-parts": "flake-parts_7",
@@ -482,11 +498,11 @@
     "mrtnvgr-jsfx": {
       "flake": false,
       "locked": {
-        "lastModified": 1770772365,
-        "narHash": "sha256-IQLzmdVNJt+uZlencQLf8dRD6P0r5XFoGV2j07MT3RE=",
+        "lastModified": 1771986774,
+        "narHash": "sha256-cawuMIOE19a9v2X9CkLFS+DJZRF1N4CPXtB9JE3MtZo=",
         "owner": "mrtnvgr",
         "repo": "jsfx",
-        "rev": "e9bcbf6a410a371946bca53e1d4f0edddd97d006",
+        "rev": "6eeb421b503eb7c658dd5bcb590010899b90ae68",
         "type": "github"
       },
       "original": {
@@ -936,6 +952,7 @@
         "chkhld-jsfx": "chkhld-jsfx",
         "generators": "generators",
         "home-manager": "home-manager",
+        "jsfx-clones": "jsfx-clones",
         "mrtnvgr": "mrtnvgr",
         "mrtnvgr-jsfx": "mrtnvgr-jsfx",
         "neovim-nightly": "neovim-nightly",
