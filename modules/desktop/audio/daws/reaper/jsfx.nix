@@ -1,6 +1,5 @@
 { inputs, lib, config, user, ... }: let
   cfg = config.modules.desktop.audio.daws.reaper;
-
   jsfx = ".config/REAPER/Effects/nix";
 in {
   home-manager.users.${user} = lib.mkIf cfg.enable {
@@ -14,5 +13,7 @@ in {
     home.file."${jsfx}/jclones/Classic_Master_Limiter.jsfx".source = "${inputs.jsfx-clones}/jsfx/JClones_Classic_Master_Limiter.jsfx";
 
     home.file."${jsfx}/saike/seqs".source = "${inputs.saike-jsfx}/SequencedFX";
+
+    home.file."${jsfx}/tukan".source = inputs.tukan-jsfx;
   };
 }
