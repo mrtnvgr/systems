@@ -46,6 +46,9 @@
 
     jsfx-clones.url = "github:JClones/JSFXClones";
     jsfx-clones.flake = false;
+
+    saike-jsfx.url = "github:JoepVanlier/JSFX";
+    saike-jsfx.flake = false;
     # =========================
 
     catppuccin-renoise.url = "github:catppuccin/renoise";

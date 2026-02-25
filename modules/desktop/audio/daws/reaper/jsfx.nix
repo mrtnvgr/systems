@@ -12,5 +12,7 @@ in {
     home.file."${jsfx}/jclones/Fattener.jsfx".source = "${inputs.jsfx-clones}/jsfx/JClones_Fattener.jsfx";
     home.file."${jsfx}/jclones/O3_Maximizer.jsfx".source = "${inputs.jsfx-clones}/jsfx/JClones_O3_Maximizer.jsfx";
     home.file."${jsfx}/jclones/Classic_Master_Limiter.jsfx".source = "${inputs.jsfx-clones}/jsfx/JClones_Classic_Master_Limiter.jsfx";
+
+    home.file."${jsfx}/saike/seqs".source = "${inputs.saike-jsfx}/SequencedFX";
   };
 }

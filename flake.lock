@@ -963,7 +963,24 @@
         "nixvim": "nixvim",
         "reanix": "reanix",
         "reascripts": "reascripts",
+        "saike-jsfx": "saike-jsfx",
         "schizofox": "schizofox"
+      }
+    },
+    "saike-jsfx": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767735376,
+        "narHash": "sha256-rHnTtdeRlgVvOpnvq7Mp50HYZNpFp5MPwjzuSM5EeuE=",
+        "owner": "JoepVanlier",
+        "repo": "JSFX",
+        "rev": "d5f4c8e8c3c08f201504bd0d4044222ae196ff42",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JoepVanlier",
+        "repo": "JSFX",
+        "type": "github"
       }
     },
     "schizofox": {
