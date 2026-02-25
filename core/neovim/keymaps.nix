@@ -15,6 +15,9 @@ in {
       # Easy search clearing
       { mode = "n"; key = "<Esc>"; action = "<CMD>:nohl<CR>"; }
 
+      # Switch between alternate files (useful for returning from `gd`)
+      { mode = "n"; key = "<leader>s"; action = "<CMD>:e #<CR>"; }
+
       # Do not copy contents replaced by paste actions
       { mode = "v"; key = "p"; action = "\"_dp"; }
       { mode = "v"; key = "P"; action = "\"_dP"; }
