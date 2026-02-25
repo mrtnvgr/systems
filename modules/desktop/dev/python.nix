@@ -6,7 +6,9 @@ let
     requests
     datetime
     beautifulsoup4
+    pillow
     gitpython
+    numpy
   ];
 
   cfg = config.modules.desktop.dev.python;

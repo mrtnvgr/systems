@@ -1,50 +1,52 @@
-{ lib, config, user, ... }:
-let
-  cfg = config.modules.desktop.dev.rust;
+{ pkgs, lib, config, user, ... }: let
+  desk = config.modules.desktop;
+  enabled = desk.apps.neovim.enable && desk.dev.rust.enable;
 in {
-  home-manager.users.${user}.programs.nixvim.plugins.lsp.servers.rust_analyzer = lib.mkIf cfg.enable {
-    enable = true;
+  home-manager.users.${user} = lib.mkIf enabled {
+    home.packages = with pkgs; [ clippy ];
 
-    installCargo = true;
-    installRustc = true;
-    installRustfmt = true;
+    programs.nixvim.plugins.lsp.servers.rust_analyzer = {
+      enable = true;
 
-    settings.check.overrideCommand = [
-      "cargo"
-      "clippy"
+      installCargo = false;
+      installRustc = false;
+      installRustfmt = true;
 
-      "--workspace"
-      "--message-format=json"
+      settings.check.overrideCommand = [
+        "cargo"
+        "clippy"
 
-      "--all-targets"
-      "--all-features"
+        "--workspace"
+        "--message-format=json"
 
-      "--"
+        "--all-targets"
+        "--all-features"
 
-      # Warnings
-      "-Wclippy::pedantic"
-      "-Wclippy::nursery"
-      "-Wclippy::create_dir"
-      "-Wclippy::empty_structs_with_brackets"
-      "-Wclippy::filetype_is_file"
-      "-Wclippy::get_unwrap"
-      "-Wclippy::indexing_slicing"
-      "-Wclippy::impl_trait_in_params"
-      "-Wclippy::lossy_float_literal"
-      "-Wclippy::str_to_string"
-      "-Wclippy::string_add"
-      "-Wclippy::string_to_string"
-      "-Wclippy::suspicious_xor_used_as_pow"
-      "-Wclippy::unneeded_field_pattern"
-      "-Wclippy::unnecessary_self_imports"
-      "-Wclippy::unseparated_literal_suffix"
-      "-Wclippy::todo"
+        "--"
 
-      # Allows
-      "-Aclippy::missing_errors_doc"
-      "-Aclippy::missing_panics_doc"
-      "-Aclippy::must_use_candidate"
-      "-Aclippy::significant_drop_in_scrutinee"
-    ];
+        "-Wclippy::pedantic"
+        "-Wclippy::nursery"
+        "-Wclippy::create_dir"
+        "-Wclippy::empty_structs_with_brackets"
+        "-Wclippy::filetype_is_file"
+        "-Wclippy::get_unwrap"
+        "-Wclippy::indexing_slicing"
+        "-Wclippy::impl_trait_in_params"
+        "-Wclippy::lossy_float_literal"
+        "-Wclippy::str_to_string"
+        "-Wclippy::string_add"
+        "-Wclippy::string_to_string"
+        "-Wclippy::suspicious_xor_used_as_pow"
+        "-Wclippy::unneeded_field_pattern"
+        "-Wclippy::unnecessary_self_imports"
+        "-Wclippy::unseparated_literal_suffix"
+        "-Wclippy::todo"
+
+        "-Aclippy::missing_errors_doc"
+        "-Aclippy::missing_panics_doc"
+        "-Aclippy::must_use_candidate"
+        "-Aclippy::significant_drop_in_scrutinee"
+      ];
+    };
   };
 }
