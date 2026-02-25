@@ -6,6 +6,7 @@ in {
 
     highlightOverride.NormalFloat.bg = "NONE";
     highlightOverride.FloatBorder.bg = "NONE";
+    highlightOverride.FloatTitle.bg  = "NONE";
     highlightOverride.Pmenu.bg       = "NONE";
   };
 }
