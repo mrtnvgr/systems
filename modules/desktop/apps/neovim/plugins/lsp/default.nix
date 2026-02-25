@@ -1,10 +1,10 @@
 { config, lib, user, ... }: {
   config = lib.mkIf config.modules.desktop.apps.neovim.enable {
     home-manager.users.${user}.programs.nixvim.plugins = {
-      lsp.enable = true;
+      lsp = {
+        enable = true;
 
-      lsp.keymaps = {
-        lspBuf = {
+        keymaps.lspBuf = {
           K = "hover";
           gD = "references";
           gd = "definition";
@@ -14,15 +14,14 @@
           "<F4>" = "code_action";
         };
 
-        diagnostic.gl = "open_float";
+        keymaps.diagnostic.gl = "open_float";
       };
     };
   };
 
   imports = [
     ./completion.nix
-    ./snippets.nix
-    ./extra.nix
+    ./signs.nix
 
     ./servers/rust.nix
     ./servers/nix.nix

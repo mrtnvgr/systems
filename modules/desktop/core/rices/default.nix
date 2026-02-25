@@ -10,8 +10,8 @@ in {
     };
 
     opacity = mkOption {
-      type = with types; nullOr (numbers.between 0.0 1.0);
-      default = null;
+      type = types.numbers.between 0.0 1.0;
+      default = 1.0;
     };
   };
 

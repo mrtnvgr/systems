@@ -8,7 +8,7 @@ in {
       enable = true;
 
       settings = {
-        transparent_background = !(isNull opacity || opacity == 1.0);
+        transparent_background = opacity != 1.0;
 
         color_overrides.mocha = {
           base = "#${palette.background}";
@@ -48,7 +48,9 @@ in {
       };
     };
 
-    highlight.NormalFloat.bg = "NONE";
+    # TODO: only apply if theme is transparent
+    highlightOverride.NormalFloat.bg = "NONE";
+    highlightOverride.FloatBorder.bg = "NONE";
     highlight.Pmenu.bg = "NONE";
   };
 }

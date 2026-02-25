@@ -5,8 +5,9 @@ in {
   home-manager.users.${user}.programs.nixvim.plugins.lsp.servers.rust_analyzer = lib.mkIf cfg.enable {
     enable = true;
 
-    installCargo = false;
-    installRustc = false;
+    installCargo = true;
+    installRustc = true;
+    installRustfmt = true;
 
     settings.check.overrideCommand = [
       "cargo"

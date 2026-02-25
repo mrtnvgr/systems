@@ -4,7 +4,15 @@ in {
   home-manager.users.${user}.programs.nixvim = lib.mkIf cfg.enable {
     plugins.telescope = {
       enable = true;
-      keymaps."<leader>ff" = "find_files";
+
+      keymaps."<leader>f" = "find_files";
+      keymaps."<leader>g" = "live_grep";
+
+      # It is possible to enter normal mode in telescope.
+      # Since its rarely used, but now prompt closing takes 2 esc presses, let's disable it
+      settings.defaults.mappings.i."<Esc>".__raw = ''require("telescope.actions").close'';
+
+      settings.defaults.selection_caret = ": ";
     };
 
     plugins.web-devicons.enable = true;
