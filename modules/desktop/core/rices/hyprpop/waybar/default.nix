@@ -61,10 +61,10 @@ let
     }
 
     #workspaces button:nth-child(4) {
-      color: #${palette.violet};
+      color: #${palette.purple}
     }
     #workspaces button.active:nth-child(4) {
-      border-color: #${palette.violet};
+      border-color: #${palette.purple}
     }
 
     #workspaces button.empty {
@@ -72,7 +72,7 @@ let
     }
 
     tooltip {
-      border: 2px solid #${palette.lavender};
+      border: 2px solid #${palette.blue}
     }
 
     tooltip label {
@@ -114,11 +114,11 @@ let
     }
 
     #battery {
-      color: #${palette.lavender};
+      color: #${palette.blue};
     }
 
     #clock {
-      color: #${palette.violet};
+      color: #${palette.purple};
     }
 
     @keyframes blink_red {

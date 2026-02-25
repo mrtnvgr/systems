@@ -15,19 +15,13 @@ in {
       # Easy search clearing
       { mode = "n"; key = "<Esc>"; action = "<CMD>:nohl<CR>"; }
 
-      # Increment/Decrement numbers
-      { mode = "n"; key = "<leader>+"; action = "<C-a>"; }
-      { mode = "n"; key = "<leader>-"; action = "<C-x>"; }
-
-      # Turn some cut operations into delete
-      { mode = "n"; key = "c"; action = "\"_c"; }
-      { mode = "n"; key = "C"; action = "\"_C"; }
-      { mode = "n"; key = "x"; action = "\"_x"; }
-      { mode = "n"; key = "X"; action = "\"_X"; }
-
       # Do not copy contents replaced by paste actions
       { mode = "v"; key = "p"; action = "\"_dp"; }
       { mode = "v"; key = "P"; action = "\"_dP"; }
+
+      # Turn some cut operations into delete
+      { mode = "n"; key = "d"; action = "\"_d"; }
+      { mode = "n"; key = "D"; action = "\"_D"; }
 
       # Word counters
       {
@@ -38,6 +32,10 @@ in {
         mode = "v"; key = "<leader>wc";
         action.__raw = ''function() print("Words in visual selection: " .. vim.fn.wordcount().visual_words) end'';
       }
+
+      # Increment/Decrement numbers
+      { mode = "n"; key = "<leader>+"; action = "<C-a>"; }
+      { mode = "n"; key = "<leader>-"; action = "<C-x>"; }
     ];
   };
 }

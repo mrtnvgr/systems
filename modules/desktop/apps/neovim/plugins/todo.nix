@@ -8,8 +8,8 @@ in {
     plugins.todo-comments.enable = true;
 
     highlightOverride = with palette; {
-      "DiagnosticInfo" = mkColor sky;
-      "DiagnosticHint" = mkColor violet;
+      "DiagnosticInfo" = mkColor blue;
+      "DiagnosticHint" = mkColor purple;
       "DiagnosticWarn" = mkColor yellow;
       "DiagnosticError" = mkColor red;
 

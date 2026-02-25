@@ -7,12 +7,8 @@
     green
     yellow
     blue
-    orange
-    violet
-    lavender
+    purple
     pink
-    sapphire
-    sky
     teal
   ];
 in {

@@ -9,12 +9,13 @@ in {
       gtk = {
         enable = true;
 
-        theme = {
-          name = config.colorScheme.slug;
-          package = nix-colors-lib.gtkThemeFromScheme {
-            scheme = config.colorScheme;
-          };
-        };
+        # TODO: supply gtk themes, cursors in colorScheme
+        # theme = {
+        #   name = config.colorScheme.slug;
+        #   package = nix-colors-lib.gtkThemeFromScheme {
+        #     scheme = config.colorScheme;
+        #   };
+        # };
 
         gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
         gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
