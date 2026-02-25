@@ -1,9 +1,9 @@
 { user, ... }: {
   home-manager.users.${user}.programs.nixvim = {
     opts = {
-      # Numbers
-      relativenumber = true;
+      # Line numbers
       number = true;
+      relativenumber = true;
 
       # Search
       ignorecase = true;

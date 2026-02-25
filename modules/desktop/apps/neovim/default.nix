@@ -1,7 +1,5 @@
-{ pkgs, lib, config, user, ... }:
-let
-  inherit (lib) mkEnableOption mkOption types mkIf;
-  cfg = config.modules.desktop.apps.neovim;
+{ lib, ... }: let
+  inherit (lib) mkEnableOption mkOption types;
 in {
   options.modules.desktop.apps.neovim = {
     enable = mkEnableOption "neovim";

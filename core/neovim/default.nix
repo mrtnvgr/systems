@@ -9,7 +9,13 @@
       vimAlias = true;
       defaultEditor = true;
 
-      luaLoader.enable = true;
+      performance.byteCompileLua = {
+        enable = true;
+        initLua = true;
+        luaLib = true;
+        nvimRuntime = true;
+        plugins = true;
+      };
     };
   };
 

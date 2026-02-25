@@ -1,8 +1,6 @@
 { user, ... }: {
   home-manager.users.${user}.programs.nixvim = {
-    autoGroups = {
-      USER.clear = true;
-    };
+    autoGroups.USER.clear = true;
 
     autoCmd = [
       {
@@ -19,14 +17,6 @@
         event = [ "BufWinEnter" ];
         pattern = [ "*.md" "*.txt" ];
         command = "setlocal wrap";
-      }
-
-      {
-        # Extra markdown aliases
-        group = "USER";
-        event = [ "BufEnter" ];
-        pattern = [ "TODO" "todo" ];
-        command = "setfiletype markdown";
       }
 
       # Remove trailing space

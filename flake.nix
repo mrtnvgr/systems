@@ -28,8 +28,6 @@
       inputs.mrtnvgr.follows = "mrtnvgr";
     };
 
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
-
     schizofox.url = "github:schizofox/schizofox";
 
     nix-gaming.url = "github:fufexan/nix-gaming";

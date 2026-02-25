@@ -2,13 +2,6 @@
   cfg = config.modules.desktop.apps.neovim;
 in {
   home-manager.users.${user}.programs.nixvim = lib.mkIf cfg.enable {
-    plugins.treesitter = {
-      enable = true;
-
-      highlight.enable = true;
-      indent.enable = true;
-    };
-
-    plugins.hmts.enable = true;
+    plugins.lualine.enable = true;
   };
 }

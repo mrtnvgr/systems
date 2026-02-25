@@ -25,5 +25,6 @@
     ./extra.nix
 
     ./servers/rust.nix
+    ./servers/nix.nix
   ];
 }

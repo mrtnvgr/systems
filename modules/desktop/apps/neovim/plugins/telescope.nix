@@ -2,13 +2,11 @@
   cfg = config.modules.desktop.apps.neovim;
 in {
   home-manager.users.${user}.programs.nixvim = lib.mkIf cfg.enable {
-    plugins.treesitter = {
+    plugins.telescope = {
       enable = true;
-
-      highlight.enable = true;
-      indent.enable = true;
+      keymaps."<leader>ff" = "find_files";
     };
 
-    plugins.hmts.enable = true;
+    plugins.web-devicons.enable = true;
   };
 }
