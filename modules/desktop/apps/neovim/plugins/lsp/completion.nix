@@ -1,15 +1,14 @@
-{ config, lib, user, ... }: let
-  cfg = config.modules.desktop.apps.neovim;
+{ lib, config, user, ... }: let
+  desk = config.modules.desktop;
+  enabled = desk.apps.neovim.enable && desk.dev.rust.enable;
 in {
-  config = lib.mkIf cfg.enable {
-    home-manager.users.${user}.programs.nixvim = {
-      plugins.blink-cmp = {
-        enable = true;
+  home-manager.users.${user}.programs.nixvim = lib.mkIf enabled {
+    plugins.blink-cmp = {
+      enable = true;
 
-        settings = {
-          keymap.preset = "super-tab";
-          completion.documentation.auto_show = true;
-        };
+      settings = {
+        keymap.preset = "super-tab";
+        completion.documentation.auto_show = true;
       };
     };
   };

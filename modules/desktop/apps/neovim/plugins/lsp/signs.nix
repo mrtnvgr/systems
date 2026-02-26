@@ -1,7 +1,8 @@
-{ config, lib, user, ... }: let
-  cfg = config.modules.desktop.apps.neovim;
+{ lib, config, user, ... }: let
+  desk = config.modules.desktop;
+  enabled = desk.apps.neovim.enable && desk.dev.rust.enable;
 in {
-  home-manager.users.${user}.programs.nixvim = lib.mkIf cfg.enable {
+  home-manager.users.${user}.programs.nixvim = lib.mkIf enabled {
     diagnostic.settings.signs = true;
 
     extraConfigLua = ''
