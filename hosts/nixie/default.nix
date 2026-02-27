@@ -11,6 +11,8 @@
   ];
 
   modules.desktop = {
+    dev.enable = true;
+
     # TODO: delete?
     dev.flutter.enable = false;
 
