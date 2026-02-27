@@ -12,7 +12,8 @@ in {
       # Since its rarely used, but now prompt closing takes 2 esc presses, let's disable it
       settings.defaults.mappings.i."<Esc>".__raw = ''require("telescope.actions").close'';
 
-      settings.defaults.selection_caret = ": ";
+      # Faster search engine
+      extensions.fzy-native.enable = true;
     };
 
     plugins.web-devicons.enable = true;
