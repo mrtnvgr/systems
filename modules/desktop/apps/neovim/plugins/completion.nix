@@ -8,5 +8,24 @@
         completion.documentation.auto_show = true;
       };
     };
+
+    plugins.blink-emoji.enable = true;
+
+    plugins.blink-cmp.settings.sources.providers = {
+      emoji = {
+        module = "blink-emoji";
+        name = "Emoji";
+        score_offset = 15;
+        opts.insert = true;
+      };
+    };
+
+    plugins.blink-cmp.settings.sources.default = [
+      "lsp"
+      "path"
+      # "luasnip" TODO
+      "buffer"
+      "emoji"
+    ];
   };
 }
