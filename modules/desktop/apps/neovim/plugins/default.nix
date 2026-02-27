@@ -13,5 +13,6 @@
     ./oil.nix
     ./todo.nix
     ./colorizer.nix
+    ./arrow.nix
   ];
 }
