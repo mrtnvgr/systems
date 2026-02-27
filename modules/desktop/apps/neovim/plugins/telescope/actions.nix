@@ -1,9 +1,15 @@
 { config, lib, user, pkgs, ... }: let
   cfg = config.modules.desktop.apps.neovim;
 
+  # TODO: package in nixpkgs, make a PR to nixvim
   actions-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "actions.nvim";
-    src = /home/user/actions.nvim;
+    src = pkgs.fetchFromGitHub {
+      owner = "mrtnvgr";
+      repo = "actions.nvim";
+      rev = "64e3fc4c73cf4c67ea52631a61428f53964a9fd2";
+      hash = "sha256-652SmMElnGL8BZ0hP0EyRt59xPoPTf9djva4Lkcygc0=";
+    };
   };
 in {
   home-manager.users.${user}.programs.nixvim = lib.mkIf cfg.enable {
