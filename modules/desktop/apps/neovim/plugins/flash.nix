@@ -7,7 +7,7 @@ in {
     keymaps = [{
       key = "s";
       mode = [ "n" "x" "o" ];
-      action.__raw = ''function() require("flash").jump() end'';
+      action.__raw = ''require("flash").jump'';
     }];
   };
 }
