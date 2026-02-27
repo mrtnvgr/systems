@@ -14,5 +14,10 @@ in {
 
       require("telescope").extensions.actions.action_list()
     '';
+
+    wayland.windowManager.hyprland.extraConfig = ''
+      # Style global actions window
+      windowrule = float on, center on, stay_focused on, dim_around on, no_anim on, match:class ^foot$, match:title ^actions$
+    '';
   };
 }
