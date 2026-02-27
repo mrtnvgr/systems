@@ -3,7 +3,7 @@
     ./lsp
 
     ./treesitter.nix
-    ./telescope.nix
+    ./telescope
     ./flash.nix
     ./lualine.nix
     ./gitsigns.nix
