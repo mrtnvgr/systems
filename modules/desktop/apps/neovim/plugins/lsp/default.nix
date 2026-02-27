@@ -21,7 +21,6 @@ in {
   };
 
   imports = [
-    ./completion.nix
     ./signs.nix
 
     ./servers/rust.nix

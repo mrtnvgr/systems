@@ -7,10 +7,11 @@
     ./flash.nix
     ./lualine.nix
     ./gitsigns.nix
+    ./completion.nix
     ./autopairs.nix
     ./lastplace.nix
-    ./colorizer.nix
     ./oil.nix
     ./todo.nix
+    ./colorizer.nix
   ];
 }
