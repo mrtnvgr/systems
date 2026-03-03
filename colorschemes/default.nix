@@ -27,4 +27,5 @@ let
     file // { inherit palette; };
 in {
   catppuccin = mkColorscheme ./catppuccin.nix;
+  gruvbox = mkColorscheme ./gruvbox.nix;
 }
