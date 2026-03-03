@@ -12,5 +12,6 @@ in {
 
   imports = [
     ./plugins
+    ./theme
   ];
 }

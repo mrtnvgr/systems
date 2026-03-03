@@ -3,6 +3,8 @@
 # Not? => Using catppuccin and overriding its colors, mapping rare ones to fg
 
 { config, user, lib, ... }: let
+  cfg = config.modules.desktop.apps.neovim;
+
   notCatppuccin = config.colorScheme.slug != "catppuccin";
   inherit (config.colorScheme) palette;
 
@@ -37,7 +39,7 @@
 
   overrides = builtins.mapAttrs (_: x: "#${x}") overrideMap;
 in {
-  home-manager.users.${user}.programs.nixvim = lib.mkIf notCatppuccin {
+  home-manager.users.${user}.programs.nixvim = lib.mkIf (cfg.enable && notCatppuccin) {
     colorschemes.catppuccin.settings.color_overrides.all = overrides;
   };
 }

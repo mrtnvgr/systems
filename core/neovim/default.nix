@@ -23,7 +23,6 @@
     ./options.nix
     ./autocmds.nix
     ./keymaps.nix
-    ./theme
     ./plugins.nix
   ];
 }

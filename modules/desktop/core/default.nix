@@ -10,6 +10,7 @@
     ./wallpaper.nix
     ./kvm.nix
     ./xdg.nix
+    ./colors.nix
 
     ./rices
     ./guiServers
