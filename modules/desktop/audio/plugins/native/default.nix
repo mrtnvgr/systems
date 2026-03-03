@@ -47,6 +47,7 @@ in
 {
   imports = [
     ./u-he.nix
+    ./plugdata.nix
   ];
 
   options.modules.desktop.audio.plugins.native = {

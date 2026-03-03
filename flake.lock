@@ -890,7 +890,8 @@
         "reanix": "reanix",
         "reascripts": "reascripts",
         "saike-jsfx": "saike-jsfx",
-        "schizofox": "schizofox"
+        "schizofox": "schizofox",
+        "tukan-jsfx": "tukan-jsfx"
       }
     },
     "saike-jsfx": {
@@ -1015,6 +1016,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "tukan-jsfx": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771757036,
+        "narHash": "sha256-9Bk8FIU0+I2r00wYdPn2AODGUK7X+RzHIfjjoWdut+g=",
+        "owner": "TukanStudios",
+        "repo": "TUKAN_STUDIOS_PLUGINS",
+        "rev": "524de74c06b152b48bb568e3d762fa14cb400611",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TukanStudios",
+        "repo": "TUKAN_STUDIOS_PLUGINS",
         "type": "github"
       }
     }
