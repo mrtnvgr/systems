@@ -1,5 +1,3 @@
-{ inputs, lib, colorschemes, ... }: {
+{ inputs, ... }: {
   imports = [ inputs.nix-colors.homeManagerModules.default ];
-
-  colorScheme = lib.mkDefault colorschemes.catppuccin;
 }
