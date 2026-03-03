@@ -1,7 +1,7 @@
 { pkgs, lib, config, user, ... }: let
   cfg = config.modules.desktop.audio.plugins.native;
 
-  inherit (config.colorScheme) slug palette;
+  inherit (config.modules.desktop.theme.colorscheme) slug palette;
 
   theme = pkgs.writeText "plugdata-theme" ''
     <?xml version="1.0" encoding="UTF-8" ?>

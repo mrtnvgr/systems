@@ -3,8 +3,10 @@ let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.modules.desktop.apps.firefox;
 
-  inherit (config.colorScheme) palette;
-  font = config.modules.desktop.theme.font.name;
+  theme = config.modules.desktop.theme;
+
+  inherit (theme.colorscheme) palette;
+  font = theme.font.name;
 in {
   options.modules.desktop.apps.firefox.enable = mkEnableOption "firefox";
 

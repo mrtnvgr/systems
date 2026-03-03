@@ -1,6 +1,4 @@
 { colorschemes, pkgs, ... }: {
-  colorScheme = colorschemes.catppuccin;
-
   modules.desktop = {
     enable = true;
 
@@ -14,6 +12,7 @@
 
       opacity = 0.8;
 
+      colorscheme = colorschemes.catppuccin;
       wallpaper = pkgs.fetchurl {
         url = "https://w.wallhaven.cc/full/73/wallhaven-73qz6y.png";
         hash = "sha256-CGZqwT976V8odi8lNThbSTIQFbhI9twC4h1jWPG06zM=";

@@ -5,10 +5,10 @@
 { config, user, lib, ... }: let
   cfg = config.modules.desktop.apps.neovim;
 
-  notCatppuccin = config.colorScheme.slug != "catppuccin";
-  inherit (config.colorScheme) palette;
+  colorscheme = config.modules.desktop.theme.colorscheme;
+  notCatppuccin = colorscheme.slug != "catppuccin";
 
-  overrideMap = with palette; {
+  overrideMap = with colorscheme.palette; {
     rosewater = text;
     flamingo  = text;
     pink      = pink;

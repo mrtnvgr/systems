@@ -1,6 +1,6 @@
 { inputs, lib, config, user, ... }:
 let
-  inherit (config.colorScheme) palette;
+  inherit (config.modules.desktop.theme.colorscheme) palette;
   inherit (lib) mkIf;
 
   rgb_background = inputs.nix-colors.lib.conversions.hexToRGBString ", " palette.background;

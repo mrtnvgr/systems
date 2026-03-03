@@ -1,16 +1,13 @@
-{ pkgs, lib, config, user, ... }:
-let
-  inherit (lib) mkIf fileContents;
-  inherit (config.colorScheme) palette;
-
+{ pkgs, lib, config, user, ... }: let
   theme = config.modules.desktop.theme;
+  inherit (theme.colorscheme) palette;
 in {
   imports = [
     ./polkit.nix
     ./wallpaper.nix
   ];
 
-  config = mkIf (theme.rice == "hyprpop") {
+  config = lib.mkIf (theme.rice == "hyprpop") {
     home-manager.users.${user} = {
       wayland.windowManager.hyprland = {
         enable = true;
@@ -24,7 +21,7 @@ in {
           misc."background_color" = "rgb(${background})";
         };
 
-        extraConfig = fileContents ./hyprland.conf;
+        extraConfig = lib.fileContents ./hyprland.conf;
       };
 
       xdg.portal = {

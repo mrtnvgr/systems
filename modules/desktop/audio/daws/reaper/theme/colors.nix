@@ -1,6 +1,6 @@
 { config, lib, user, ... }: let
   cfg = config.modules.desktop.audio.daws.reaper;
-  inherit (config.colorScheme) palette;
+  inherit (config.modules.desktop.theme.colorscheme) palette;
 
   colors = with palette; [
     red
