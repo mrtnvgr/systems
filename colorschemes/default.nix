@@ -28,4 +28,5 @@ let
 in {
   catppuccin = mkColorscheme ./catppuccin.nix;
   gruvbox = mkColorscheme ./gruvbox.nix;
+  solarized = mkColorscheme ./solarized.nix;
 }
