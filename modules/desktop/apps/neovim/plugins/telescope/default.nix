@@ -9,6 +9,7 @@ in {
 
       keymaps."<leader>f" = "find_files";
       keymaps."<leader>g" = "live_grep";
+      keymaps."<leader>r" = "resume";
 
       # TODO: fix: use ":" in prompt char
       # settings.defaults.selection_caret = ": ";
