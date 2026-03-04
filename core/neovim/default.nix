@@ -24,5 +24,6 @@
     ./autocmds.nix
     ./keymaps.nix
     ./plugins.nix
+    ./filetypes.nix
   ];
 }
