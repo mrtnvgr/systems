@@ -12,5 +12,6 @@ in {
     plugins.hmts.enable = true;
 
     plugins.ts-autotag.enable = true;
+    plugins.ts-context-commentstring.enable = true;
   };
 }
