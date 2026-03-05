@@ -11,8 +11,8 @@ in {
       windowrule = workspace 5 silent, match:class ^REAPER$, match:title ^About.+
 
       # Improve actions window styling
-      windowrule = center on, stay_focused on, dim_around on, no_anim on, match:class ^REAPER$, match:title ^Actions$
-      windowrule = center on, stay_focused on, dim_around on, no_anim on, match:class ^REAPER$, match:title ^Add FX to.+$
+      windowrule = tag +popup, match:class ^REAPER$, match:title ^Actions$
+      windowrule = tag +popup, match:class ^REAPER$, match:title ^Add FX to.+$
     '';
   };
 }
