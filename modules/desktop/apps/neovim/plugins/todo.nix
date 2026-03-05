@@ -1,7 +1,7 @@
 { config, user, lib, ... }: let
   cfg = config.modules.desktop.apps.neovim;
 
-  inherit (config.colorScheme) palette;
+  inherit (config.modules.desktop.theme.colorscheme) palette;
   mkColor = color: { fg = "#${color}"; };
 in {
   home-manager.users.${user}.programs.nixvim = lib.mkIf cfg.enable {
