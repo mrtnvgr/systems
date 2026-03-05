@@ -12,6 +12,7 @@ in {
 
       # Improve actions window styling
       windowrule = center on, stay_focused on, dim_around on, no_anim on, match:class ^REAPER$, match:title ^Actions$
+      windowrule = center on, stay_focused on, dim_around on, no_anim on, match:class ^REAPER$, match:title ^Add FX to.+$
     '';
   };
 }
