@@ -4,13 +4,15 @@
     ./sound.nix
     ./multimedia.nix
     ./fonts.nix
-    ./guilibs.nix
+    ./gtk.nix
+    ./qt.nix
     ./packages.nix
     ./network.nix
     ./wallpaper.nix
     ./kvm.nix
     ./xdg.nix
     ./colors.nix
+    ./cursors.nix
 
     ./rices
     ./guiServers
