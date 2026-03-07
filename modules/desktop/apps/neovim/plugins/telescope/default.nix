@@ -14,6 +14,9 @@ in {
       # TODO: fix: use ":" in prompt char
       # settings.defaults.selection_caret = ": ";
 
+      # Ignore lock files
+      settings.defaults.file_ignore_patterns = [ "%.lock" ];
+
       # It is possible to enter normal mode in telescope.
       # Since its rarely used, but now prompt closing takes 2 esc presses, let's disable it
       settings.defaults.mappings.i."<Esc>".__raw = ''require("telescope.actions").close'';
