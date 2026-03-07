@@ -20,6 +20,9 @@ in {
 
       # Faster search engine
       extensions.fzy-native.enable = true;
+
+      # Replace vim.ui.select with telescope (useful for code actions)
+      extensions.ui-select.enable = true;
     };
 
     plugins.web-devicons.enable = true;

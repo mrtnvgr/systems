@@ -22,7 +22,6 @@ in {
 
   imports = [
     ./signs.nix
-    ./fidget.nix
 
     ./servers/rust.nix
     ./servers/nix.nix
