@@ -39,6 +39,22 @@
         "type": "github"
       }
     },
+    "birdbird": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1764150428,
+        "narHash": "sha256-Cux1A9i3ats1KO+x7B1ZxSPbH3QoYb2rqyk24t6qMaw=",
+        "owner": "Bird-Bird",
+        "repo": "ReaScript_Testing",
+        "rev": "ae0c0d71abbfcbd8b49c696dae33639d9949494f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Bird-Bird",
+        "repo": "ReaScript_Testing",
+        "type": "github"
+      }
+    },
     "cache-nix-action": {
       "flake": false,
       "locked": {
@@ -937,6 +953,7 @@
     "root": {
       "inputs": {
         "bandithedoge-pkgs": "bandithedoge-pkgs",
+        "birdbird": "birdbird",
         "catppuccin-renoise": "catppuccin-renoise",
         "chkhld-jsfx": "chkhld-jsfx",
         "generators": "generators",
