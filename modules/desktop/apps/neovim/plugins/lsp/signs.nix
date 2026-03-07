@@ -3,14 +3,18 @@
   neovimEnabled = config.modules.desktop.apps.neovim.enable;
 in {
   home-manager.users.${user}.programs.nixvim = lib.mkIf (neovimEnabled && isDev) {
-    diagnostic.settings.signs = true;
+    diagnostic.settings = {
+      severity_sort = true;
 
-    extraConfigLua = ''
-      local signs = { Error = "😡", Warn = "🤓", Hint = "🤓", Info = "🤓" }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
-    '';
+      signs = {
+        text."ERROR" = "😡";
+        text."WARN" = "🤓";
+        text."HINT" = "🤓";
+        text."INFO" = "🤓";
+      };
+
+      # Update diagnostics in insert mode for instant feedback
+      update_in_insert = true;
+    };
   };
 }
