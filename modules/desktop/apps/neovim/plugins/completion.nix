@@ -23,9 +23,11 @@
     plugins.blink-cmp.settings.sources.default = [
       "lsp"
       "path"
-      # "luasnip" TODO
+      "snippets"
       "buffer"
       "emoji"
     ];
+
+    plugins.friendly-snippets.enable = true;
   };
 }
