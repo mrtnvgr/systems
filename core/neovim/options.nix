@@ -1,4 +1,10 @@
-{ user, ... }: {
+{ user, ... }: let
+  genIndent = count: tabs: {
+    expandtab = !tabs;
+    shiftwidth = count;
+    tabstop = count;
+  };
+in {
   home-manager.users.${user}.programs.nixvim = {
     opts = {
       # Line numbers
@@ -9,13 +15,7 @@
       ignorecase = true;
       smartcase = true;
 
-      # Indentation
-      autoindent = true;
       smartindent = true;
-      expandtab = false; # Use tabs not spaces
-      shiftwidth = 4;
-      tabstop = 4;
-      softtabstop = 0; # Hard tabs
 
       # Temporary files
       backup = false;
@@ -43,10 +43,9 @@
 
       autoread = true;
       confirm = true;
-    };
+    } // (genIndent 4 true);
 
     extraConfigLua = ''
-      -- short mess
       vim.opt.shortmess:append("I") -- hide intro message
       vim.opt.shortmess:append("s") -- hide "search hit BOTTOM ..."
       vim.opt.shortmess:append("c") -- do not pass messages to |ins-completion-menu|
@@ -55,8 +54,10 @@
       vim.opt.fillchars:append("eob: ")
     '';
 
-    globals = {
-      netrw_banner = 0; # Hide the Netrw banner
-    };
+    globals.netrw_banner = 0; # Hide the Netrw banner
+
+    # Use 2 spaces in nix and lua files
+    files."ftplugin/nix.lua".opts = genIndent 2 false;
+    files."ftplugin/lua.lua".opts = genIndent 2 false;
   };
 }
