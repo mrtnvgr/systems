@@ -1,24 +1,30 @@
-{ pkgs, lib, config, ... }:
-let
-  screenshot-select = pkgs.writeScriptBin "screenshot-select" "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\"";
-  screenshot-full = pkgs.writeScriptBin "screenshot-full" "${pkgs.grim}/bin/grim";
+{ pkgs, lib, config, ... }: let
+  grimmy = pkgs.writeScript "grimmy" ''
+    ${pkgs.grim}/bin/grim "$@" - | wl-copy
+    wl-paste > $HOME/$(date +%d.%m.%Y_%H:%M:%S).png
+  '';
+
+  slurp = "${pkgs.slurp}/bin/slurp";
+
+  screenshot-select = pkgs.writeScriptBin "screenshot-select" '' ${grimmy} -g "$(${slurp})" '';
+  screenshot-full = pkgs.writeScriptBin "screenshot-full" grimmy;
 
   cfg = config.modules.desktop;
 in {
-  config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      # Viewers
-      feh mpv
+  environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
+    # Viewers
+    feh mpv
 
-      # Modifiers: video / image
-      ffmpeg imagemagick
+    # Audio codecs
+    flac lame
 
-      # Modifiers: audio
-      sox flac lame rubberband
+    # Video / image / audio modificators
+    ffmpeg imagemagick sox rubberband
 
-      # Screenshot / Video capturing
-      screenshot-select screenshot-full
-      obs-studio-plus
-    ];
-  };
+    # Screenshots
+    screenshot-select screenshot-full
+
+    # Video capturing
+    obs-studio-plus
+  ]);
 }
