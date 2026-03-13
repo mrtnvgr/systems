@@ -20,13 +20,11 @@ in {
       '';
     };
 
-    home.file.".config/REAPER/ColorThemes/Reapertips.ReaperThemeZip".source = pkgs.reapertips-dark.override {
+    programs.reanix.themes.reapertips = {
+      enable = true;
       undimmed = true;
       colored_track_names = true;
     };
-
-    # Required fonts for Reapertips theme
-    home.packages = with pkgs; [ fira-sans roboto ];
 
     # Dark menus
     home.file.".config/REAPER/libSwell-user.colortheme".source = ./libSwell-user.colortheme;

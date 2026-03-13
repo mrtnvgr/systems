@@ -3,7 +3,7 @@ let
   cfg = config.modules.desktop.audio.daws.reaper;
 in {
   home-manager.users.${user} = lib.mkIf cfg.enable {
-    programs.reanix.options = {
+    programs.reanix.config = {
       default_track_height = "small";
 
       # Clean items
