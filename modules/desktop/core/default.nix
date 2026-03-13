@@ -13,6 +13,7 @@
     ./xdg.nix
     ./colors.nix
     ./cursors.nix
+    ./torsocks.nix
 
     ./rices
     ./guiServers
