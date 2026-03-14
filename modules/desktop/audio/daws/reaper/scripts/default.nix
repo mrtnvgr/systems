@@ -4,5 +4,6 @@
     ./MKShaperStutter.nix
     ./GlobalSampler.nix
     ./smartzoom.nix
+    ./mrtnvgr.nix
   ];
 }

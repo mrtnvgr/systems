@@ -13,15 +13,18 @@ in {
 
       continuous_scrolling = true;
 
-      # Save renders in the project directory
-      paths = {
-        renders = "Renders";
-      };
-
       draw_faint_peaks_in_folders = false;
       draw_faint_peaks_in_automation_lanes = false;
 
       filled_automation_envelopes = false;
+
+      mixer.dock = true;
+      # TODO: reanix.config.mixer.docker.position = "down";
+
+      media_explorer.dock = true;
+      # TODO: reanix.config.mixer.docker.position = "down";
+      # dockermode2 ??
+      # [REAPERdockpref] ??
     };
 
     programs.reanix.extraConfig = {
@@ -128,10 +131,6 @@ in {
         ; Media explorer: samples path
         [reaper_sexplorer]
         lastdir=/home/${user}/Samples
-
-        ; Media explorer: un-dock
-        [reaper_sexplorer]
-        docked=0
 
         ; Media explorer: no repeats for media previews
         [reaper_sexplorer]

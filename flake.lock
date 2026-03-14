@@ -551,19 +551,19 @@
         "type": "github"
       }
     },
-    "mrtnvgr-jsfx": {
+    "mrtnvgr-rea": {
       "flake": false,
       "locked": {
-        "lastModified": 1771992770,
-        "narHash": "sha256-Dx+AIEisAax2gm6jMOrXBxhJLoBb/R8q0SX/WPn+gpM=",
+        "lastModified": 1773472367,
+        "narHash": "sha256-XjRajc0EQc7S5D6TvB4rPbiR8VGrkAkVWan/LPbeTo4=",
         "owner": "mrtnvgr",
-        "repo": "jsfx",
-        "rev": "2bf88df0a98fb2e38adc08d0ec82f0d2ae854455",
+        "repo": "reastuff",
+        "rev": "ed1e30e994ce2699ae33a2d4969eb53f99d12e83",
         "type": "github"
       },
       "original": {
         "owner": "mrtnvgr",
-        "repo": "jsfx",
+        "repo": "reastuff",
         "type": "github"
       }
     },
@@ -921,11 +921,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773379542,
-        "narHash": "sha256-TVVVrlCvVTSfy4Sh43hSHaMAWwiJN5TJ6mCzP9MmTfA=",
+        "lastModified": 1773491670,
+        "narHash": "sha256-D6fOtQkUWuxc/klDeSgRHyOf4LAE3c6QkUIP/Jn/v6o=",
         "owner": "mrtnvgr",
         "repo": "reanix",
-        "rev": "7957defcf7e91772b9e8b2b9409e7ef4b7da9b08",
+        "rev": "fbac00c573d237f8381b244583823614c6071d59",
         "type": "github"
       },
       "original": {
@@ -960,7 +960,7 @@
         "home-manager": "home-manager",
         "jsfx-clones": "jsfx-clones",
         "mrtnvgr": "mrtnvgr",
-        "mrtnvgr-jsfx": "mrtnvgr-jsfx",
+        "mrtnvgr-rea": "mrtnvgr-rea",
         "nix-colors": "nix-colors",
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_5",

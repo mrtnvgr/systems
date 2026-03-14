@@ -36,8 +36,8 @@
     reascripts.url = "github:ReaTeam/ReaScripts";
     reascripts.flake = false;
 
-    mrtnvgr-jsfx.url = "github:mrtnvgr/jsfx";
-    mrtnvgr-jsfx.flake = false;
+    mrtnvgr-rea.url = "github:mrtnvgr/reastuff";
+    mrtnvgr-rea.flake = false;
 
     chkhld-jsfx.url = "github:chkhld/jsfx";
     chkhld-jsfx.flake = false;
