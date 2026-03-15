@@ -1,9 +1,9 @@
-{ inputs, config, user, ... }: let
+{ inputs, config, user, lib, ... }: let
   cfg = config.modules.desktop.audio.daws.reaper;
   scr = "${inputs.birdbird}/Global Sampler/BirdBird_";
   jsfx = ".config/REAPER/Effects/nix";
 in {
-  home-manager.users.${user} = { lib, ... }: lib.mkIf cfg.enable {
+  home-manager.users.${user} = lib.mkIf cfg.enable ({ lib, ... }: {
     programs.reanix.scripts = {
       "Global Sampler".source = "${scr}Global Sampler.lua";
       "Sample Last X Seconds".source = "${scr}Sample Last X Seconds.lua";
@@ -23,5 +23,5 @@ in {
       DEST="$HOME/.config/REAPER/Scripts/nix/global_sampler_libraries"
       install -DC "${inputs.birdbird}/Global Sampler/global_sampler_libraries"/*.lua "$DEST"
     '';
-  };
+  });
 }
