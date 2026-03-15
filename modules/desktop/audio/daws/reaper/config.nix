@@ -4,7 +4,17 @@ let
 in {
   home-manager.users.${user} = lib.mkIf cfg.enable {
     programs.reanix.config = {
+      boot.animation = false;
+
+      # do not repeat at end of project
+      playback.loop = true;
+
+      grid.dotted = false;
+
       default_track_height = "small";
+
+      # Item fades
+      fades.default_length = 1; # ms
 
       # Clean items
       display_media_item_take_name = false;
@@ -29,25 +39,13 @@ in {
 
     programs.reanix.extraConfig = {
       "reaper.ini" = /* dosini */ ''
-        ; Disable boot animation
-        [reaper]
-        splashfast=1
-
         ; Load a new project on startup
         [reaper]
         loadlastproj=19
 
-        ; Never stop playback, never replay the project
-        [reaper]
-        stopprojlen=0
-
         ; Disable media item extending
         [reaper]
         mousemovemod=16
-
-        ; Hide mixer by default
-        [reaper]
-        mixwnd_vis=0
 
         ; 8th notes grid by default
         [reaper]
@@ -65,11 +63,6 @@ in {
         [reaper]
         zoommode=3
 
-        ; Disable fade-in on playback start
-        ; TODO: remove? clicks are quite annoying actually
-        [reaper]
-        hwfadex=1
-
         ; Render with high buffer block size
         [reaper]
         renderbsnew=1024
@@ -78,15 +71,7 @@ in {
         [reaper]
         colorwhat=4
 
-        ; Solid grid lines
-        [reaper]
-        griddot=0
-
-        ; 1ms item fades
-        [reaper]
-        deffadelen=0.001
-        defsplitxfadelen=0.001
-
+        ; !
         ; Show only VST3 plugin if other formats were found
         [reaper]
         dupefilter=1
