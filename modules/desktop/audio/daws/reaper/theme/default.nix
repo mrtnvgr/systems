@@ -6,24 +6,15 @@ in {
   ];
 
   home-manager.users.${user} = lib.mkIf cfg.enable {
-    programs.reanix.extraConfig = {
-      "reaper.ini" = /* dosini */ ''
-        ; Selected theme
-        [reaper]
-        lastthemefn5=/home/${user}/.config/REAPER/ColorThemes/Reapertips.ReaperTheme
-      '';
+    programs.reanix = {
+      themes.reapertips = {
+        enable = true;
 
-      "reaper-themeconfig.ini" = /* dosini */ ''
-        ; Darken the theme
-        [Reapertips]
-        __coloradjust=1.00000000 -25 -25 51 256 192
-      '';
-    };
+        undimmed = true;
+        colored_track_names = true;
+      };
 
-    programs.reanix.themes.reapertips = {
-      enable = true;
-      undimmed = true;
-      colored_track_names = true;
+      config.theme.path = "<reapertips>";
     };
 
     # Dark menus
