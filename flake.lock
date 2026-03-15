@@ -554,11 +554,11 @@
     "mrtnvgr-rea": {
       "flake": false,
       "locked": {
-        "lastModified": 1773472367,
-        "narHash": "sha256-XjRajc0EQc7S5D6TvB4rPbiR8VGrkAkVWan/LPbeTo4=",
+        "lastModified": 1773581837,
+        "narHash": "sha256-HArqj8Du/uLKk+2VcXxJYNlkdrCby8Pv9sBTo3KVKJg=",
         "owner": "mrtnvgr",
         "repo": "reastuff",
-        "rev": "ed1e30e994ce2699ae33a2d4969eb53f99d12e83",
+        "rev": "6a02418d84dd74e054748aff7e84282acfb5d46d",
         "type": "github"
       },
       "original": {
@@ -921,11 +921,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773580220,
-        "narHash": "sha256-RVKIEZDS2oZ/ctU6QVniYFm+AhynYV3zDd0G1jgvRMU=",
+        "lastModified": 1773582013,
+        "narHash": "sha256-bKDwq244lOc/bDMkAYRoDH0EfnQ8jYX3HtfPlGz8a90=",
         "owner": "mrtnvgr",
         "repo": "reanix",
-        "rev": "d84277269fe6e08f2a43699c54651414087c215d",
+        "rev": "244cc2ccb8422de7584ed54a8d87bb9cb3017ca6",
         "type": "github"
       },
       "original": {

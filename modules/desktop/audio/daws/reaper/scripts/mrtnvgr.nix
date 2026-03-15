@@ -7,7 +7,7 @@ in {
       source = "${scripts}Unarm all, arm selected.lua";
 
       # TODO: use https://mespotin.uber.space/IniFiles/Reaper-KEY-Codes_for_reaper-kb_ini.ini
-      key = "0 65"; # A
+      key = "1 65"; # A
     };
   };
 }
