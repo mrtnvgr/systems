@@ -7,7 +7,7 @@ in {
       boot.animation = false;
 
       # do not repeat at end of project
-      playback.loop = true;
+      playback.loop = false;
 
       grid.dotted = false;
 
@@ -24,6 +24,7 @@ in {
       item_icons.min_height = 90;
 
       continuous_scrolling = true;
+      autoscroll_during_playback = true;
 
       draw_faint_peaks_in_folders = false;
       draw_faint_peaks_in_automation_lanes = false;
@@ -37,6 +38,10 @@ in {
       # TODO: reanix.config.mixer.docker.position = "down";
       # dockermode2 ??
       # [REAPERdockpref] ??
+
+      transport.play_state.show = false;
+      transport.controls.center = true;
+      transport.position = "Above ruler";
     };
 
     programs.reanix.extraConfig = {
