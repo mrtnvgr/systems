@@ -11,6 +11,8 @@ in {
 
       grid.dotted = false;
 
+      media_explorer.media.loop = false;
+
       default_track_height = "small";
 
       # Item fades
@@ -84,22 +86,27 @@ in {
         [reaper]
         recaddatloop=4
 
+        ; !
         ; Hide deletion prompt on record stop
         [reaper]
         promptendrec=0
 
+        ; !
         ; Hide velocity handles
         [midiedit]
         lastvelhand=0
 
+        ; !
         ; Bigger track spacers
         [reaper]
         trackgapmax=24
 
+        ; !
         ; Faster waveforms
         [reaper]
         recupdatems=33
 
+        ; !
         ; Faster meters
         [reaper]
         vudecay=40
@@ -113,13 +120,10 @@ in {
         [midiedit]
         scnotes=128
 
+        ; !
         ; Media explorer: samples path
         [reaper_sexplorer]
         lastdir=/home/${user}/Samples
-
-        ; Media explorer: no repeats for media previews
-        [reaper_sexplorer]
-        repeat=0
       '';
 
       "reaper-kb.ini" = /* dosini */ ''
