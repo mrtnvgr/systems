@@ -5,11 +5,13 @@ in {
   home-manager.users.${user} = lib.mkIf cfg.enable {
     programs.reanix.config = {
       boot.animation = false;
+      boot.project = "New project";
 
       # do not repeat at end of project
       playback.loop = false;
 
       grid.dotted = false;
+      grid.z-layer = "Under items";
 
       media_explorer.media.loop = false;
 
@@ -42,14 +44,12 @@ in {
       transport.play_state.show = false;
       transport.controls.center = true;
       transport.position = "Above ruler";
+
+      zoom.horizontal = "Mouse cursor";
     };
 
     programs.reanix.extraConfig = {
       "reaper.ini" = /* dosini */ ''
-        ; Load a new project on startup
-        [reaper]
-        loadlastproj=19
-
         ; Disable media item extending
         [reaper]
         mousemovemod=16
@@ -58,17 +58,9 @@ in {
         [reaper]
         projgriddiv=0.5
 
-        ; Draw grid UNDER items :)
-        [reaper]
-        gridinbg=2
-
         ; Disable item looping
         [reaper]
         loopnewitems=32
-
-        ; Zoom in/out on mouse cursor
-        [reaper]
-        zoommode=3
 
         ; Render with high buffer block size
         [reaper]

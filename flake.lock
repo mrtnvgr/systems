@@ -921,11 +921,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773585525,
-        "narHash": "sha256-+i6vhs8jycFyGOXphTNEO+kI6xgvoyMQMc9QZrWnWEg=",
+        "lastModified": 1773637531,
+        "narHash": "sha256-oCYwZJN7NWXKGJerRZNVxrSl2udeSCEe0GDF9Hqa+Es=",
         "owner": "mrtnvgr",
         "repo": "reanix",
-        "rev": "9b4b52d60105b36a3281f39acd4c7e7568640acd",
+        "rev": "a8d657e535e48c1a15b910a5386d22541f00e0e7",
         "type": "github"
       },
       "original": {
