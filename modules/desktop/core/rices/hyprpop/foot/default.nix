@@ -14,9 +14,9 @@ in {
 
         mouse.hide-when-typing = "yes";
 
-        colors.alpha = theme.opacity;
+        colors-dark.alpha = theme.opacity;
 
-        colors = {
+        colors-dark = {
           background = palette.background;
           foreground = palette.text;
           cursor = "${palette.background} ${palette.text}";
