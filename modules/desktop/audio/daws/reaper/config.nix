@@ -46,21 +46,23 @@ in {
       transport.position = "Above ruler";
 
       zoom.horizontal = "Mouse cursor";
+
+      tcp.collapse_cycle = "Normal, hidden";
+
+      # Disable item looping
+      items.loop.midi = false;
+      items.loop.imported = false;
+      items.loop.recorded = false;
+      items.loop.glued = false;
+
+      recording.looped.takes.incomplete.discard = true;
     };
 
     programs.reanix.extraConfig = {
       "reaper.ini" = /* dosini */ ''
-        ; Disable media item extending
-        [reaper]
-        mousemovemod=16
-
         ; 8th notes grid by default
         [reaper]
         projgriddiv=0.5
-
-        ; Disable item looping
-        [reaper]
-        loopnewitems=32
 
         ; Render with high buffer block size
         [reaper]
@@ -74,10 +76,6 @@ in {
         ; Show only VST3 plugin if other formats were found
         [reaper]
         dupefilter=1
-
-        ; Track folder collapsing: normal, hidden
-        [reaper]
-        tcpalign=769
 
         ; Discard incomplete takes
         [reaper]
