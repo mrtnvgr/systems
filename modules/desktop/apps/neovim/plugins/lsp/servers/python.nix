@@ -3,8 +3,6 @@
   enabled = desk.apps.neovim.enable && desk.dev.python.enable;
 in {
   home-manager.users.${user}.programs.nixvim.plugins = lib.mkIf enabled {
-    lsp.servers.ruff = {
-      enable = true;
-    };
+    lsp.servers.pyright.enable = true;
   };
 }
