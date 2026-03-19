@@ -63,6 +63,10 @@
     generators.inputs.nixpkgs.follows = "nixpkgs";
 
     bandithedoge-pkgs.url = "github:bandithedoge/nur-packages";
+
+    # TODO: package in nixpkgs, make a PR to nixvim
+    mrtnvgr-actions.url = "github:mrtnvgr/actions.nvim";
+    mrtnvgr-actions.flake = false;
   };
 
   outputs = { nixpkgs, ... } @ inputs:

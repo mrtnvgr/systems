@@ -551,6 +551,22 @@
         "type": "github"
       }
     },
+    "mrtnvgr-actions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773927893,
+        "narHash": "sha256-C60ri1ydJL+i49D+YnsQrz/uy9PL1KLHpwP/ThJ3lmI=",
+        "owner": "mrtnvgr",
+        "repo": "actions.nvim",
+        "rev": "16323011e2e715dbb24fd3ff4f3491b9032e12b4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrtnvgr",
+        "repo": "actions.nvim",
+        "type": "github"
+      }
+    },
     "mrtnvgr-rea": {
       "flake": false,
       "locked": {
@@ -960,6 +976,7 @@
         "home-manager": "home-manager",
         "jsfx-clones": "jsfx-clones",
         "mrtnvgr": "mrtnvgr",
+        "mrtnvgr-actions": "mrtnvgr-actions",
         "mrtnvgr-rea": "mrtnvgr-rea",
         "nix-colors": "nix-colors",
         "nix-gaming": "nix-gaming",
