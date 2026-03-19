@@ -7,22 +7,16 @@
     src = pkgs.fetchFromGitHub {
       owner = "mrtnvgr";
       repo = "actions.nvim";
-      rev = "64e3fc4c73cf4c67ea52631a61428f53964a9fd2";
-      hash = "sha256-652SmMElnGL8BZ0hP0EyRt59xPoPTf9djva4Lkcygc0=";
+      rev = "781d1717657f5ab035e5369883b6eb41dc51160e";
+      hash = "sha256-U8uBwJpXyTvFXX7SfpNKFihsL2Ezn/i19unaCis7Vq4=";
     };
   };
 in {
   home-manager.users.${user}.programs.nixvim = lib.mkIf cfg.enable {
     extraPlugins = [ actions-nvim ];
     extraConfigLua = ''
-      require("actions").setup({
-        actions = {
-          -- TODO: include real actions, modules.desktop.actions."..." = "..."
-          ["Format LSP code"] = function() vim.lsp.buf.format() end,
-          ["Rename symbol"] = function() vim.lsp.buf.rename() end,
-          ["Go to definition"] = function() vim.lsp.buf.definition() end,
-        },
-      })
+      local actions = require("actions");
+      actions.setup({ actions = actions.stock_actions })
     '';
 
     plugins.telescope = {
