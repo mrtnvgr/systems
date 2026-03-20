@@ -16,7 +16,7 @@
 
     def check(ip: str) -> bool:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-            sock.settimeout(0.05)
+            sock.settimeout(0.1)
             return sock.connect_ex((ip, 9050)) == 0
 
 
