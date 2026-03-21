@@ -8,7 +8,7 @@ in {
   ];
 
   config = lib.mkIf (theme.rice == "hyprpop") {
-    home-manager.users.${user} = {
+    home-manager.users.${user} = { config, ... }: {
       wayland.windowManager.hyprland = {
         enable = true;
 
@@ -19,6 +19,11 @@ in {
           };
 
           misc."background_color" = "rgb(${background})";
+
+          envd = with builtins; attrValues (mapAttrs
+            (name: value: "${name}, ${toString value}")
+            config.home.sessionVariables
+          );
         };
 
         extraConfig = lib.fileContents ./hyprland.conf;
@@ -28,6 +33,8 @@ in {
         extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
         configPackages = [ pkgs.hyprland ];
       };
+
+      home.pointerCursor.hyprcursor.enable = true;
     };
   };
 }

@@ -1,15 +1,14 @@
 { config, pkgs, user, lib, ... }: let
   cfg = config.modules.desktop;
+
+  name = "Maple";
+  size = 28;
 in {
-  home-manager.users.${user} = lib.mkIf cfg.enable {
-    home.pointerCursor = {
-      package = pkgs.catppuccin-cursors.macchiatoPink;
-      name = "catppuccin-macchiato-pink-cursors";
+  home-manager.users.${user}.home.pointerCursor = lib.mkIf cfg.enable {
+    package = pkgs.maplestory-cursor;
+    inherit name size;
 
-      size = 24;
-
-      x11.enable = true;
-      gtk.enable = true;
-    };
+    gtk.enable = true;
+    x11.enable = config.services.xserver.enable;
   };
 }

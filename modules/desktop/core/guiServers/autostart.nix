@@ -8,7 +8,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    environment.loginShellInit = ''
+    environment.loginShellInit = /* bash */ ''
       # Launch WM/DE on TTY1, return to TTY when exiting
       [ "$(tty)" = "/dev/tty1" ] && ${config._internals.DELauncher} >/dev/null
     '';
