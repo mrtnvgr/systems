@@ -1,44 +1,35 @@
-{ inputs, pkgs, config, lib, user, ... }:
-let
-  inherit (lib) mkOption types;
-
+{ inputs, pkgs, config, lib, user, ... }: let
   mrtnvgr-lib = inputs.mrtnvgr.lib { inherit pkgs; };
-  # TODO: create vst3 variants for most of these plugins
 
-  synths = with pkgs; [
-    surge-XT-vst3
+  plugins = with pkgs; [
+    dragonfly-reverb
+    # soundthread # TODO: waiting for package
+    surge-xt-vst3
     vital # vitalium-vst3
-    ripplerx
+    # decent-sampler # TODO: broken
     cardinal
     # chow-kick
-    oxefmsynth
-    sfizz-ui
-    ob-xf
-    odin2
-  ];
-
-  fx = with pkgs; [
-    lsp-plugins-vst3
+    # geonkick
+    # odin2
+    # shortcircuit-xt # TODO: useless for now :( too "beta"
+    # anina
+    # lsp-plugins-vst3
     airwin2rack
-    TAL-plugins-vst2
-    neural-amp-modeler-lv2
-    dragonfly-reverb
-    fire
-    wolf-shaper
-    luftikus-vst2
-    LUFSMeter-vst2
-    chow-tape-model
-    chow-centaur
-    chow-phaser
-    auburn-sounds-inner-pitch
-    wildergarden-maim
-    reevr
-    filtr
-    gate12
-    time12
-    spectralsuite
-    cstop
-    hamburger
+    # TAL-plugins-vst2
+    # neural-amp-modeler-lv2
+    # fire
+    # wolf-shaper
+    # luftikus-vst2
+    # LUFSMeter-vst2
+    # auburn-sounds-inner-pitch
+    # wildergarden-maim
+    # reevr
+    # filtr
+    # gate12
+    # time12
+    # qdelay
+    # cstop
+    # hamburger
   ];
 
   cfg = config.modules.desktop.audio.plugins.native;
@@ -51,14 +42,14 @@ in
   ];
 
   options.modules.desktop.audio.plugins.native = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       default = isAnyDawInstalled;
     };
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = synths ++ fx;
+    environment.systemPackages = plugins;
 
     environment.sessionVariables = let
       make = format: mrtnvgr-lib.mkAudioPluginsPaths user format;
