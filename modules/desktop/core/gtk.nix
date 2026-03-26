@@ -9,6 +9,8 @@ in {
 
         theme.name = "Adwaita";
         iconTheme.name = "Adwaita";
+
+        gtk4.theme = null;
       };
     };
 

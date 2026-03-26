@@ -5,6 +5,7 @@
 
       xdg.userDirs = rec {
         enable = true;
+        setSessionVariables = true;
 
         desktop = "/home/${user}";
         documents = "${desktop}/.local/documents";

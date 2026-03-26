@@ -13,6 +13,8 @@
 
       signing = {
         signByDefault = true;
+
+        format = "openpgp";
         key = "6FADDB43D5A5FE52683509435B3379E981EF48B1";
       };
     };
