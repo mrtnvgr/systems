@@ -25,6 +25,5 @@
     ./logs.nix
     ./temp.nix
     ./hostname.nix
-    ./nh.nix
   ];
 }
