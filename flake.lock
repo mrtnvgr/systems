@@ -10,11 +10,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1773521901,
-        "narHash": "sha256-2CPmbMwsJb8c0kvjUsQDb3wwqX9IzafE9Btsnl6a0sQ=",
+        "lastModified": 1774466152,
+        "narHash": "sha256-0IVa5QQB3ftOcHRFcJwLw0YnZlDtHSakMSdltkK3t8w=",
         "owner": "bandithedoge",
         "repo": "nur-packages",
-        "rev": "5e966fc5b7bf0a9eb35058ef16650915d6ed9f33",
+        "rev": "26b097b02e7286872f65fcf85052d16e4f0d5ab4",
         "type": "github"
       },
       "original": {
@@ -347,11 +347,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772893680,
-        "narHash": "sha256-JDqZMgxUTCq85ObSaFw0HhE+lvdOre1lx9iI6vYyOEs=",
+        "lastModified": 1774104215,
+        "narHash": "sha256-EAtviqz0sEAxdHS4crqu7JGR5oI3BwaqG0mw7CmXkO8=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "8baab586afc9c9b57645a734c820e4ac0a604af9",
+        "rev": "f799ae951fde0627157f40aec28dec27b22076d0",
         "type": "github"
       },
       "original": {
@@ -439,11 +439,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773666768,
-        "narHash": "sha256-7XvLaFMQOsfWrK+msO0Oqe5CeNYsAlSGjrl5y14gA6w=",
+        "lastModified": 1774534244,
+        "narHash": "sha256-WnmXKsbkwokDdrdI1XwRWH4RYYalOVKgV/hYQmL3/TE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ca53f083dbd4c83dd5dca8a3099374708e155c32",
+        "rev": "86014e836ca6f4a04d59b85111d39660bdda01cd",
         "type": "github"
       },
       "original": {
@@ -538,11 +538,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773377037,
-        "narHash": "sha256-t3SMvfSUqZ7idsiG+/l9xWuDRqTFDMDbZhgWWqI3YAs=",
+        "lastModified": 1774537848,
+        "narHash": "sha256-OtjORLk78yWMHqjOg4xQnSKb7ePxxcqUynXGdAbJolg=",
         "owner": "mrtnvgr",
         "repo": "nurpkgs",
-        "rev": "1a97b5fd78531cb31780201afc4fee38d5d85d83",
+        "rev": "11839dcd19d7cb31ab1a17ac83461810486ab29d",
         "type": "github"
       },
       "original": {
@@ -570,11 +570,11 @@
     "mrtnvgr-rea": {
       "flake": false,
       "locked": {
-        "lastModified": 1773581837,
-        "narHash": "sha256-HArqj8Du/uLKk+2VcXxJYNlkdrCby8Pv9sBTo3KVKJg=",
+        "lastModified": 1774429901,
+        "narHash": "sha256-ZR9rLxNcj7XuFbp1XYD+2L9mX3RghHRFIVZGseeY1Bw=",
         "owner": "mrtnvgr",
         "repo": "reastuff",
-        "rev": "6a02418d84dd74e054748aff7e84282acfb5d46d",
+        "rev": "925c12c835a09cb59d1864b0caf474f54568395b",
         "type": "github"
       },
       "original": {
@@ -609,11 +609,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1773542803,
-        "narHash": "sha256-EjxdnUGP9Ym4EqAa2qmSOnQR6QTNtQThaJAyN7Kv0u8=",
+        "lastModified": 1774493390,
+        "narHash": "sha256-aBSOcFXiEbDYJDDkzwLEBvnegqeb+sieLm6HwfNOnWw=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "0fbf5fd80b87d9de87e0961735fac8faacd4b00e",
+        "rev": "745921bfb8d18daf16134433e70ce2460d9d7589",
         "type": "github"
       },
       "original": {
@@ -787,11 +787,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1773476965,
-        "narHash": "sha256-Laaj25PvGeoP5SPhMfMGxvWqM6ZjZ6LdUeEhP6b3czY=",
+        "lastModified": 1774273680,
+        "narHash": "sha256-a++tZ1RQsDb1I0NHrFwdGuRlR5TORvCEUksM459wKUA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f82ce7af0b79ac154b12e27ed800aeb97413723c",
+        "rev": "fdc7b8f7b30fdbedec91b71ed82f36e1637483ed",
         "type": "github"
       },
       "original": {
@@ -819,11 +819,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1773507054,
-        "narHash": "sha256-Q8U5VXgrcxmCxPtCCJCIZkcAX3FCZwGh1GNVIXxMND0=",
+        "lastModified": 1773840656,
+        "narHash": "sha256-9tpvMGFteZnd3gRQZFlRCohVpqooygFuy9yjuyRL2C0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e80236013dc8b77aa49ca90e7a12d86f5d8d64c9",
+        "rev": "9cf7092bdd603554bd8b63c216e8943cf9b12512",
         "type": "github"
       },
       "original": {
@@ -888,11 +888,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1772402258,
-        "narHash": "sha256-3DmCFOdmbkFML1/G9gj8Wb+rCCZFPOQtNoMCpqOF8SA=",
+        "lastModified": 1774309640,
+        "narHash": "sha256-8oWL7YLwElBY9ebYri1LlSlhf/gd1Qoqj0nbBwG2yso=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "21ae25e13b01d3b4cdc750b5f9e7bad68b150c10",
+        "rev": "28c58bf023bf537354f78d6e496a349d7a0ed554",
         "type": "github"
       },
       "original": {
@@ -986,18 +986,17 @@
         "reanix": "reanix",
         "reascripts": "reascripts",
         "saike-jsfx": "saike-jsfx",
-        "schizofox": "schizofox",
-        "tukan-jsfx": "tukan-jsfx"
+        "schizofox": "schizofox"
       }
     },
     "saike-jsfx": {
       "flake": false,
       "locked": {
-        "lastModified": 1767735376,
-        "narHash": "sha256-rHnTtdeRlgVvOpnvq7Mp50HYZNpFp5MPwjzuSM5EeuE=",
+        "lastModified": 1774193486,
+        "narHash": "sha256-HNuw3A0K5iI+el/FmTR/TDalwuKciKDOZFhW9vWpQek=",
         "owner": "JoepVanlier",
         "repo": "JSFX",
-        "rev": "d5f4c8e8c3c08f201504bd0d4044222ae196ff42",
+        "rev": "570d695aafa9ba4556cf05148bf134736ae698e9",
         "type": "github"
       },
       "original": {
@@ -1112,22 +1111,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "tukan-jsfx": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1771757036,
-        "narHash": "sha256-9Bk8FIU0+I2r00wYdPn2AODGUK7X+RzHIfjjoWdut+g=",
-        "owner": "TukanStudios",
-        "repo": "TUKAN_STUDIOS_PLUGINS",
-        "rev": "524de74c06b152b48bb568e3d762fa14cb400611",
-        "type": "github"
-      },
-      "original": {
-        "owner": "TukanStudios",
-        "repo": "TUKAN_STUDIOS_PLUGINS",
         "type": "github"
       }
     }

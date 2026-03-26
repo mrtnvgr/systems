@@ -48,9 +48,6 @@
     saike-jsfx.url = "github:JoepVanlier/JSFX";
     saike-jsfx.flake = false;
 
-    tukan-jsfx.url = "github:TukanStudios/TUKAN_STUDIOS_PLUGINS";
-    tukan-jsfx.flake = false;
-
     birdbird.url = "github:Bird-Bird/ReaScript_Testing";
     birdbird.flake = false;
     # =========================

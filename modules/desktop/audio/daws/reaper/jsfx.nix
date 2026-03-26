@@ -13,7 +13,5 @@ in {
     home.file."${jsfx}/jclones/Classic_Master_Limiter.jsfx".source = "${inputs.jsfx-clones}/jsfx/JClones_Classic_Master_Limiter.jsfx";
 
     home.file."${jsfx}/saike/seqs".source = "${inputs.saike-jsfx}/SequencedFX";
-
-    home.file."${jsfx}/tukan".source = inputs.tukan-jsfx;
   };
 }
