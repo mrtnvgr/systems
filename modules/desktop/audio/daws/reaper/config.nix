@@ -23,7 +23,7 @@ in {
       # Clean items
       display_media_item_take_name = false;
       draw_labels_above_the_item.enable = false;
-      item_icons.min_height = 90;
+      item.icons.min_height = 90;
 
       continuous_scrolling = true;
       autoscroll_during_playback = true;
@@ -58,68 +58,47 @@ in {
       recording.looped.takes.incomplete.discard = true;
     };
 
+    # TODO: turn on "Ignore mouse click unless directly on fader handle"
+
     programs.reanix.extraConfig = {
-      "reaper.ini" = /* dosini */ ''
-        ; 8th notes grid by default
-        [reaper]
-        projgriddiv=0.5
+      "reaper.ini" = {
+        # 8th notes grid by default
+        reaper.projgriddiv = 0.5;
 
-        ; Render with high buffer block size
-        [reaper]
-        renderbsnew=1024
+        # Render with high buffer block size
+        reaper.renderbsnew = 1024;
 
-        ; Midi editor: note color = track color
-        [reaper]
-        colorwhat=4
+        # Midi editor: note color = track color
+        reaper.colorwhat = 4;
 
-        ; !
-        ; Show only VST3 plugin if other formats were found
-        [reaper]
-        dupefilter=1
+        # !: Show only VST3 plugins if other formats were found
+        reaper.dupefilter = 1;
 
-        ; Discard incomplete takes
-        [reaper]
-        recaddatloop=4
+        # !: Hide deletion prompt on record stop
+        reaper.promptendrec = 0;
 
-        ; !
-        ; Hide deletion prompt on record stop
-        [reaper]
-        promptendrec=0
+        # !: Hide velocity handles
+        midiedit.lastvelhand = 0;
 
-        ; !
-        ; Hide velocity handles
-        [midiedit]
-        lastvelhand=0
+        # !: Bigger track spacers
+        reaper.trackgapmax = 24;
 
-        ; !
-        ; Bigger track spacers
-        [reaper]
-        trackgapmax=24
+        # !: Faster waveforms
+        reaper.recupdatems = 33;
 
-        ; !
-        ; Faster waveforms
-        [reaper]
-        recupdatems=33
+        # !: Faster meters
+        reaper.vudecay = 40;
 
-        ; !
-        ; Faster meters
-        [reaper]
-        vudecay=40
+        # Lower media buffer size
+        reaper.workbufmsex = 600;
+        reaper.prebufperb = 50;
 
-        ; Lower media buffer size
-        [reaper]
-        workbufmsex=600
-        prebufperb=50
+        # Middle mouse -> hand scroll navigation
+        midiedit.scnotes = 128;
 
-        ; Middle mouse -> hand scroll navigation
-        [midiedit]
-        scnotes=128
-
-        ; !
-        ; Media explorer: samples path
-        [reaper_sexplorer]
-        lastdir=/home/${user}/Samples
-      '';
+        # !: Media explorer: samples path
+        reaper_sexplorer.lastdir = "/home/${user}/Samples";
+      };
 
       "reaper-kb.ini" = /* dosini */ ''
         ; Recording shortcuts
@@ -140,28 +119,24 @@ in {
         KEY 13 82 _SWS_AWCONSOLSEL 0		 # Main : Ctrl+Shift+R : SWS/AW: Consolidate Selection
       '';
 
-      "reaper-mouse.ini" = /* dosini */ ''
-        ; One-click midi note inserting
-        ; (Use Shift+Click to unselect)
-        [MM_CTX_MIDI_PIANOROLL_CLK]
-        mm_0=4 m
+      "reaper-mouse.ini" = {
+        # One-click midi note inserting
+        # (Use Shift+Click to unselect)
+        MM_CTX_MIDI_PIANOROLL_CLK.mm_0 = "4 m";
 
-        ; Adjust fades when multiple clips are selected
-        [MM_CTX_ITEMFADE]
-        mm_0=9 m
+        # Adjust fades when multiple clips are selected
+        MM_CTX_ITEMFADE.mm_0 = "9 m";
 
-        ; Select items without cursor moving
-        [MM_CTX_ITEM_CLK]
-        mm_0=3 m
+        # Select items without cursor moving
+        # TODO: move cursor if clicked on item edges
+        MM_CTX_ITEM_CLK.mm_0 = "3 m";
 
-        ; Ctrl + drag: draw selected midi item (default) => draw empty item
-        [MM_CTX_TRACK]
-        mm_2=5 m
+        # Ctrl + drag: draw selected midi item (default) => draw empty item
+        MM_CTX_TRACK.mm_2 = "5 m";
 
-        ; Ctrl + draw: adjust item volume
-        [MM_CTX_ITEM]
-        mm_2=20 m
-      '';
+        # Ctrl + draw: adjust item volume
+        MM_CTX_ITEM.mm_2 = "20 m";
+      };
     };
   };
 }
