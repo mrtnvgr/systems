@@ -56,6 +56,30 @@ in {
       items.loop.glued = false;
 
       recording.looped.takes.incomplete.discard = true;
+
+      media_explorer.columns = {
+        file_size.enable      = false;
+        title.enable          = false;
+        artist.enable         = false;
+        album.enable          = false;
+        mod_date.enable       = false;
+        genre.enable          = false;
+        comment.enable        = false;
+        description.enable    = false;
+        bpm.enable            = false;
+        key.enable            = false;
+        custom_tags.enable    = false;
+        favourite.enable      = false;
+        temporary_mark.enable = false;
+        sample_rate.enable    = false;
+        channels.enable       = false;
+        start_offset.enable   = false;
+        length.enable         = false;
+        bitrate.enable        = false;
+        peak_volume.enable    = false;
+        loudness.enable       = false;
+        image.enable          = false;
+      };
     };
 
     # TODO: turn on "Ignore mouse click unless directly on fader handle"
