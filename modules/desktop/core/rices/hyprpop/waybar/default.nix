@@ -144,47 +144,46 @@ let
     modules-right = [ "tray" "wireplumber" "backlight" "battery" "clock" ];
 
     "custom/flake" = {
-        "format" = " ";
-        "tooltip" = false;
+      format = " ";
+      tooltip = false;
     };
 
     "hyprland/workspaces" = {
-        "persistent-workspaces" = { "*" = 4; };
+      persistent-workspaces."*" = 4;
     };
 
-    "tray" = {
-        "icon-size" = 12;
-        "spacing" = 5;
+    tray = {
+      icon-size = 12;
+      spacing = 5;
     };
 
-    "wireplumber" = {
-        "format" = "{icon} {volume}%";
-        "format-muted" = "󰝟 {volume}%";
-        "on-click" = "amixer -q sset Master toggle";
-        "format-icons" = [ "" "" "" ];
+    wireplumber = {
+      format = "{icon} {volume}%";
+      format-muted = "󰝟 {volume}%";
+      on-click = "amixer -q sset Master toggle";
+      format-icons = [ "" "" "" ];
+      max-volume = 300;
     };
 
-    "backlight" = {
-        "format" = "{icon} {percent}%";
-        "format-icons" = [ "" "" ];
+    backlight = {
+      format = "{icon} {percent}%";
+      format-icons = [ "" "" ];
     };
 
-    "battery" = {
-        "interval" = 10;
-        "states" = {
-            "warning" = 30;
-            "critical" = 15;
-        };
-        "format" = "󰂄 {capacity}%";
-        "format-discharging" = "{icon} {capacity}%";
-        "format-icons" = [ "󰂎" "󰁻" "󰁾" "󰂀" "󰁹" ];
+    battery = {
+      interval = 10;
+      states.warning = 30;
+      states.critical = 15;
+      format = "󰂄 {capacity}%";
+      format-discharging = "{icon} {capacity}%";
+      format-icons = [ "󰂎" "󰁻" "󰁾" "󰂀" "󰁹" ];
     };
 
-    "clock" = {
-        "interval" = 1;
-        "format" = " {:%H:%M}";
-        "format-alt" = " {:%e %B %Y}";
-        "tooltip" = false;
+    clock = {
+      interval = 1;
+      format = " {:%H:%M}";
+      format-alt = " {:%e %B %Y}";
+      tooltip = false;
     };
   }];
 in {
