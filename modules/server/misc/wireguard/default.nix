@@ -45,10 +45,6 @@ in {
     };
   };
 
-  imports = [
-    ./tor.nix
-  ];
-
   config = lib.mkIf cfg.enable {
     networking.wg-quick.interfaces.wg0 = {
       listenPort = cfg.port;
