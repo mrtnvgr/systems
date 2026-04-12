@@ -28,10 +28,10 @@ in {
       continuous_scrolling = true;
       autoscroll_during_playback = true;
 
-      draw_faint_peaks_in_folders = false;
-      draw_faint_peaks_in_automation_lanes = false;
+      folders.faint_peaks.enable = true;
+      automation.faint_peaks.enable = true;
 
-      filled_automation_envelopes = false;
+      automation.fill.in_lanes = true;
 
       mixer.dock = true;
       # TODO: reanix.config.mixer.docker.position = "down";
@@ -80,6 +80,9 @@ in {
         loudness.enable       = false;
         image.enable          = false;
       };
+
+      # Prevent mouse edits of single envelope points from moving past other envelope points
+      automation.points.guard = true;
     };
 
     # TODO: turn on "Ignore mouse click unless directly on fader handle"
