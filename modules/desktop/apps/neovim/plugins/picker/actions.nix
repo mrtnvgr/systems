@@ -8,14 +8,15 @@
 in {
   home-manager.users.${user}.programs.nixvim = lib.mkIf cfg.enable {
     extraPlugins = [ actions-nvim ];
+
     extraConfigLua = ''
-      local actions = require("actions");
-      actions.setup({ actions = actions.stock_actions })
+      require("actions").setup()
+      MiniPick.registry.action_list = require("actions.pickers").action_list
     '';
 
-    plugins.telescope = {
-      enabledExtensions = [ "actions" ];
-      keymaps."?" = "actions action_list";
-    };
+    keymaps = [
+      # note: use just `MiniPick.registry.action_list` when plugin setup will be before the `keymaps` stage
+      { mode = "n"; key = "?"; action.__raw = ''require("actions.pickers").action_list''; }
+    ];
   };
 }

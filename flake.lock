@@ -554,11 +554,11 @@
     "mrtnvgr-actions": {
       "flake": false,
       "locked": {
-        "lastModified": 1773927893,
-        "narHash": "sha256-C60ri1ydJL+i49D+YnsQrz/uy9PL1KLHpwP/ThJ3lmI=",
+        "lastModified": 1775987072,
+        "narHash": "sha256-o6pu/24YYtlCRAw0pRrlccVeSPcOnMn70i8n7BKMHgc=",
         "owner": "mrtnvgr",
         "repo": "actions.nvim",
-        "rev": "16323011e2e715dbb24fd3ff4f3491b9032e12b4",
+        "rev": "5b9dc4e43146aaafa129c3c9603ea98c24faed6e",
         "type": "github"
       },
       "original": {
