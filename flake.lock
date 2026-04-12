@@ -570,11 +570,11 @@
     "mrtnvgr-rea": {
       "flake": false,
       "locked": {
-        "lastModified": 1774765480,
-        "narHash": "sha256-MJmMqf7VAsaZc/ZeRuTwB7w72NzSnvFPcycV2y9Fi+w=",
+        "lastModified": 1775960375,
+        "narHash": "sha256-HQ+vaaePKR8blAKEPe4QB2583Jk6BjNyePMSO+Q/hIY=",
         "owner": "mrtnvgr",
         "repo": "reastuff",
-        "rev": "7d6ca73b4a901164a208106522e7cb0e531c316e",
+        "rev": "9037ae328e2f14217aebf8fea520e48c4d832620",
         "type": "github"
       },
       "original": {
