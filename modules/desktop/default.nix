@@ -3,7 +3,7 @@
 
   imports = [
     ./core
-    ./feats
+    ./services
     ./apps
     ./dev
     ./games

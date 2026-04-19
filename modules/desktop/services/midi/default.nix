@@ -1,9 +1,9 @@
 { pkgs, lib, config, user, ... }:
 let
   inherit (lib) mkIf mkEnableOption;
-  cfg = config.modules.desktop.feats.midi;
+  cfg = config.modules.desktop.services.midi;
 in {
-  options.modules.desktop.feats.midi.enable = mkEnableOption "midi support";
+  options.modules.desktop.services.midi.enable = mkEnableOption "midi support";
   config = mkIf cfg.enable {
     home-manager.users.${user} = {
       programs.timidity = {

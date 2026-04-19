@@ -19,10 +19,6 @@
       };
     };
 
-    feats = {
-      midi.enable = true;
-    };
-
     apps = {
       neovim.enable = true;
       firefox.enable = true;
@@ -33,7 +29,7 @@
       python.enable = true;
     };
 
-    feats = {
+    services = {
       bluetooth.enable = true;
     };
   };
